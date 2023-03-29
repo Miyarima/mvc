@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="{{ asset('img/glider.svg') }}">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <header class="header">
+            <nav class="nav">
+                <ul>
+                    <li><a href="{{ path('index') }}">Home</a></li>
+                    <li><a href="{{ path('about') }}">About</a></li>
+                    <li><a href="{{ path('report') }}">Report</a></li>
+                    <li><a href="{{ path('lucky') }}">lucky</a></li>
+                    <li><a href="{{ path('quote') }}">quote</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main class="main">
+            {% block body %}{% endblock %}
+        </main>
+        <footer>
+            <div class="info">
+                <ul>
+                    <li><a href="{{ path('index') }}">🏠 Home</a></li>
+                    <li><a href="{{ path('about') }}">🧑 About</a></li>
+                    <li><a href="{{ path('report') }}">📄 Report</a></li>
+                    <li><a href="{{ path('lucky') }}">🍀 lucky</a></li>
+                    <li><a href="{{ path('quote') }}">🎩 quote</a></li>
+                </ul>
+                <p class="center">&copy; Miyarima</p>
+            </div>
+        </footer>
+    </body>
+</html>
