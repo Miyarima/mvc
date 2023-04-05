@@ -60,6 +60,10 @@ code {
     border-radius: 2px;
 }
 
+.card {
+    width: 12%;
+}
+
 .header {
     display: flex;
     align-items: center;
@@ -169,4 +173,9 @@ code {
 .center-div {
     display: flex;
     justify-content: center;
+}
+
+.center-cards {
+    width: fit-content;
+    margin: 0 auto;
 }

@@ -100,8 +100,7 @@ class ReportController extends AbstractController
 
     #[Route("/card/deck", name: "show_deck", methods: ['GET'])]
     public function showDeck(
-        Request $request,
-        SessionInterface $session
+        Request $request
     ): Response
     {
         // $removeCards = $request->request->get("removed_cards");
@@ -124,6 +123,30 @@ class ReportController extends AbstractController
 
         $data = [
             // "card" => $card->getName(),
+            "deck" => $cardNames,
+        ];
+
+        return $this->render('cards/deck.html.twig', $data);
+    }
+
+    #[Route("/card/deck/shuffle", name: "shuffle_deck", methods: ['GET'])]
+    public function shuffleDeck(
+        Request $request
+    ): Response
+    {
+        // $removeCards = $request->request->get("removed_cards");
+        $deck = new DeckOfCards();
+        for ($i = 1; $i <= 52; $i++) {
+            $deck->add(new Card());
+        }
+
+        $cardNames = [];
+        foreach($deck->getCards() as $card) {
+            $cardNames[] = $card->getName();
+        }
+        shuffle($cardNames);
+
+        $data = [
             "deck" => $cardNames,
         ];
 
