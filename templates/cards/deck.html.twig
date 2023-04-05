@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Deck{% endblock %}
+
+{% block body %}
+    <h1 class="center">Deck</h1>
+    {# {{ dump(deck) }} #}
+    {% for card in deck %}
+        <img src="{{ asset('img/'~ card ~'.svg') }}" alt="">
+    {% endfor %}
+    {# <section>
+        <p>
+            <a href="{{ asset('img/'~ card ~'.svg') }}">
+                <img src="{{ asset('img/'~ card ~'.svg') }}" alt="">
+            </a>
+        </p><br>
+    </section><br> #}
+{% endblock %}

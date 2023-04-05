@@ -2,9 +2,15 @@
 
 namespace App\Controller;
 
+use App\Deck\Card;
+use App\Deck\DeckOfCards;
+
+use SebastianBergmann\Environment\Console;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ReportController extends AbstractController
@@ -80,5 +86,47 @@ class ReportController extends AbstractController
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
         return $response;
+    }
+
+    #[Route("/card", name: "cards", methods: ['GET'])]
+    public function card(
+        SessionInterface $session
+    ): Response
+    {
+        $session->set("removed_cards", []);
+
+        return $this->render('cards/cards.html.twig');
+    }
+
+    #[Route("/card/deck", name: "show_deck", methods: ['GET'])]
+    public function showDeck(
+        Request $request,
+        SessionInterface $session
+    ): Response
+    {
+        // $removeCards = $request->request->get("removed_cards");
+        $deck = new DeckOfCards();
+        for ($i = 1; $i <= 52; $i++) {
+            $deck->add(new Card());
+        }
+
+        // $deck->removeCard("6_of_clubs");
+
+        $cardNames = [];
+        foreach($deck->getCards() as $card) {
+            $cardNames[] = $card->getName();
+        }
+        
+        // var_dump($deck->getSpecificCard(34)->getName());
+
+        // $card = new Card();
+        // $card->setName("4_of_clubs");
+
+        $data = [
+            // "card" => $card->getName(),
+            "deck" => $cardNames,
+        ];
+
+        return $this->render('cards/deck.html.twig', $data);
     }
 }
