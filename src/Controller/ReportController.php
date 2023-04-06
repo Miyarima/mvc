@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Deck\Card;
 use App\Deck\DeckOfCards;
 
+use App\Traits\CreateDeck;
+
 use SebastianBergmann\Environment\Console;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -15,6 +17,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ReportController extends AbstractController
 {
+    use CreateDeck;
+
     #[Route("/", name: "index")]
     public function index(): Response
     {
@@ -91,38 +95,33 @@ class ReportController extends AbstractController
     #[Route("/card", name: "cards", methods: ['GET'])]
     public function card(
         SessionInterface $session
-    ): Response
-    {
-        $session->set("removed_cards", []);
+    ): Response {
+        // $session->set("removed_cards", []);
 
         return $this->render('cards/cards.html.twig');
     }
 
     #[Route("/card/deck", name: "show_deck", methods: ['GET'])]
     public function showDeck(
-        Request $request
+        SessionInterface $session
     ): Response
     {
-        // $removeCards = $request->request->get("removed_cards");
-        $deck = new DeckOfCards();
-        for ($i = 1; $i <= 52; $i++) {
-            $deck->add(new Card());
-        }
+        // $deck = new DeckOfCards();
+        // for ($i = 1; $i <= 52; $i++) {
+        //     $deck->add(new Card());
+        // }
 
-        // $deck->removeCard("6_of_clubs");
+        $deck = $this->getDeck($session);
+        if($deck === null) {
+            $deck = $this->createDeck($session);
+        }
 
         $cardNames = [];
         foreach($deck->getCards() as $card) {
             $cardNames[] = $card->getName();
         }
-        
-        // var_dump($deck->getSpecificCard(34)->getName());
-
-        // $card = new Card();
-        // $card->setName("4_of_clubs");
 
         $data = [
-            // "card" => $card->getName(),
             "deck" => $cardNames,
         ];
 
@@ -131,10 +130,11 @@ class ReportController extends AbstractController
 
     #[Route("/card/deck/shuffle", name: "shuffle_deck", methods: ['GET'])]
     public function shuffleDeck(
-        Request $request
+        SessionInterface $session
     ): Response
-    {
-        // $removeCards = $request->request->get("removed_cards");
+    {   
+        $session->set("removed_cards", []);
+
         $deck = new DeckOfCards();
         for ($i = 1; $i <= 52; $i++) {
             $deck->add(new Card());
@@ -151,5 +151,61 @@ class ReportController extends AbstractController
         ];
 
         return $this->render('cards/deck.html.twig', $data);
+    }
+
+ #[Route("/card/deck/draw", name: "draw_card", methods: ['GET'])]
+    public function drawCard(
+        SessionInterface $session
+    ): Response {
+        $deck = $this->getDeck($session);
+        if($deck === null) {
+            $deck = $this->createDeck($session);
+        }
+
+        $key = random_int(0, $deck->getNumberCards()-1);
+        $card = $deck->getSpecificCard($key)->getName();
+        $deck->removeCard($card);
+
+        $this->removeAndStoreCard($card, $session);
+
+        $data = [
+            "card" => $card,
+            "cardRemaning" => $deck->getNumberCards(),
+        ];
+
+        return $this->render('cards/draw_card.html.twig', $data);
+    }
+
+    #[Route("/card/deck/draw/{number<\d+>}", name: "draw_specific_card", methods: ['GET'])]
+    public function drawSpecificCard(
+        int $number,
+        SessionInterface $session
+    ): Response {
+        $deck = $this->getDeck($session);
+        if($deck === null) {
+            $deck = $this->createDeck($session);
+        }
+        
+        if ($number > $deck->getNumberCards()) {
+            throw new \Exception("There are not that many cards left in the deck!");
+        }
+
+        // foreach($deck as $card) {
+        //     echo $card . "<br>";
+        // }
+        // var_dump($deck);
+
+        $card = $deck->getSpecificCard($number)->getName();
+        $deck->removeCard($card);
+
+
+        $this->removeAndStoreCard($card, $session);
+
+        $data = [
+            "card" => $card,
+            "cardRemaning" => $deck->getNumberCards(),
+        ];
+
+        return $this->render('cards/draw_card.html.twig', $data);
     }
 }

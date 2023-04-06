@@ -170,6 +170,10 @@ code {
     text-decoration: underline;
 }
 
+.center-text {
+    text-align: center;
+}
+
 .center-div {
     display: flex;
     justify-content: center;

@@ -8,9 +8,9 @@
             <h4>Länkar</h4>
             <p>
                 <p>Här kan du se hela <a href="{{ path('show_deck') }}">leken</a>. <code>/card/deck</code></p><br>
-                <p>Här kan du blanda <a href="{{ path('shuffle_deck') }}">leken</a>. <code>/card/shuffle</code></p><br>
-                <p>Här kan du dra ett kort ur <a href="{{ path('cards') }}">leken</a>. <code>/card/draw</code></p><br>
-                <p>Här kan du dre ett specifikt kort ur <a href="{{ path('cards') }}">leken</a>. <code>/card/draw/:number</code></p>
+                <p>Här kan du blanda <a href="{{ path('shuffle_deck') }}">leken</a>. <code>/card/deck/shuffle</code></p><br>
+                <p>Här kan du dra ett kort ur <a href="{{ path('draw_card') }}">leken</a>. <code>/card/deck/draw</code></p><br>
+                <p>Här kan du dra ett specifikt kort ur <a href="{{ path('draw_specific_card', {number:0}) }}">leken</a>. <code>/card/deck/draw/:number</code></p><br>
             </p><br>
             <h4>Mina klasser</h4>
             <p>

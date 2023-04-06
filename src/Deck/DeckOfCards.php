@@ -25,7 +25,7 @@ class DeckOfCards
     ];
 
     public function add(Card $card): void
-    {   
+    {
         $card->setName($this->cardNames[$this->cardCount]);
         $this->deck[] = $card;
         $this->cardCount++;
@@ -42,16 +42,17 @@ class DeckOfCards
     }
 
     public function getSpecificCard($pos): Card
-    {
+    {   
+        $this->deck = array_values($this->deck);
         return $this->deck[$pos];
     }
 
     public function removeCard($name): void
     {
-        $pos = array_search($name, array_map(function($card) {
+        $pos = array_search($name, array_map(function ($card) {
             return $card->getName();
         }, $this->deck));
-        
+
         if ($pos !== false) {
             unset($this->deck[$pos]);
         }
