@@ -64,6 +64,10 @@ code {
     width: 12%;
 }
 
+.img {
+    width: 100%;
+}
+
 .header {
     display: flex;
     align-items: center;

@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Api{% endblock %}
+
+{% block body %}
+    <h1 class="center">Api</h1>
+        <section>
+            <h4>Länkar</h4>
+            <p>
+                <p><a href="{{ path('quote') }}">Den här routen ger ett slumpat quote, samt dagens datum och tid</a>. <code>/api/quote</code></p><br>
+                <p><a href="{{ path('api_show_deck') }}">Den här routen ger hela decken</a>. <code>/api/deck</code></p><br>
+                <p><a href="{{ path('api_shuffle_deck_get') }}">Den här routen ger hela decken shufflad</a>. <code>/api/deck/shuffle</code></p><br>
+                <p><a href="{{ path('api_draw_card_get') }}">Den här routen ger ett slupmat draget kort</a>. <code>/api/deck/draw</code></p><br>
+                <p><a href="{{ path('api_draw_specific_card', {number:0}) }}">Den här drar kortet som är på platsen</a>. <code>/api/deck/draw</code></p><br>
+            </p><br>
+            <h4>Mina api routes</h4>
+            <p>
+                Här är alla mina api routes.
+            </p>
+        </section><br>
+{% endblock %}

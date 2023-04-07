@@ -42,7 +42,7 @@ class DeckOfCards
     }
 
     public function getSpecificCard($pos): Card
-    {   
+    {
         $this->deck = array_values($this->deck);
         return $this->deck[$pos];
     }

@@ -7,20 +7,20 @@
         <section>
             <h4>Länkar</h4>
             <p>
-                <p>Här kan du se hela <a href="{{ path('show_deck') }}">leken</a>. <code>/card/deck</code></p><br>
-                <p>Här kan du blanda <a href="{{ path('shuffle_deck') }}">leken</a>. <code>/card/deck/shuffle</code></p><br>
-                <p>Här kan du dra ett kort ur <a href="{{ path('draw_card') }}">leken</a>. <code>/card/deck/draw</code></p><br>
-                <p>Här kan du dra ett specifikt kort ur <a href="{{ path('draw_specific_card', {number:0}) }}">leken</a>. <code>/card/deck/draw/:number</code></p><br>
+                <p><a href="{{ path('show_deck') }}">Här kan du se hela leken</a>. <code>/card/deck</code></p><br>
+                <p><a href="{{ path('shuffle_deck') }}">Här kan du blanda leken</a>. <code>/card/deck/shuffle</code></p><br>
+                <p><a href="{{ path('draw_card') }}">Här kan du dra ett kort ur leken</a>. <code>/card/deck/draw</code></p><br>
+                <p><a href="{{ path('draw_specific_card', {number:0}) }}">Här kan du dra ett specifikt kort ur leken</a>. <code>/card/deck/draw/:number</code></p><br>
             </p><br>
             <h4>Mina klasser</h4>
             <p>
-                Jag har gjort mina klasser.
+                Jag har två klasser, Card och DeckOfcards. Card klassen
+                har ett namn som man kan sätta och hämta. DeckOfcards använder
+                sig av card objekt genom att spara dem i en array.
             </p><br>
             <h4>UML</h4>
             <p>
-                <a href="{{ asset('img/2_of_clubs-min.svg') }}">
-                    <img src="{{ asset('img/2_of_clubs-min.svg') }}" alt="">
-                </a>
+                <img class="img" src="{{ asset('img/uml.png') }}" alt="">
             </p><br>
         </section><br>
 {% endblock %}
