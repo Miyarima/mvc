@@ -9,11 +9,6 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 trait CreateDeck
 {
-    private function restoreDeckKeys($deck): array
-    {
-        return $deck = array_values($deck);
-    }
-
     private function createDeck(SessionInterface $session): DeckOfCards
     {
         $deck = new DeckOfCards();

@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Drawn Card{% endblock %}
+
+{% block body %}
+    <h1 class="center">Draget kort!</h1>
+    <section>
+        <h4 class="center-text">Det finns {{ cardRemaning }} kvar i leken.</h4>
+        <div class="center-div">
+            {% for card in cards %}
+                <a href="{{ asset('img/'~ card ~'-min.svg') }}">
+                    <img src="{{ asset('img/'~ card ~'-min.svg') }}" alt="">
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

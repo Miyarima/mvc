@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Deck\Card;
+use App\Deck\CardHand;
 use App\Deck\DeckOfCards;
 
 use App\Traits\CreateDeck;
@@ -181,14 +182,23 @@ class ApiController extends AbstractController
             throw new \Exception("There are not that many cards left in the deck!");
         }
 
-        $card = $deck->getSpecificCard($number)->getName();
-        $deck->removeCard($card);
+        $hand = new CardHand();
 
+        for ($i = 0; $i < $number; $i++) {
+            $key = random_int(0, $deck->getNumberCards()-1);
+            $card = $deck->getSpecificCard($key)->getName();
+            $hand->add($deck->getSpecificCard($key));
+            $deck->removeCard($card);
+            $this->removeAndStoreCard($card, $session);
+        }
 
-        $this->removeAndStoreCard($card, $session);
+        $cardNames = [];
+        foreach($hand->getCards() as $card) {
+            $cardNames[] = $card->getName();
+        }
 
         $data = [
-            "card" => $card,
+            "cards" => $cardNames,
             "cardRemaning" => $deck->getNumberCards(),
         ];
 
