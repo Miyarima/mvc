@@ -1,0 +1,40 @@
+{% extends "base/base.html.twig" %}
+
+{% block title %}Black Jack{% endblock %}
+
+{% block body %}
+    <h1 class="center-text">Black Jack</h1>
+        <section>
+            <h4>Välkommen!</h4>
+            <p>
+                <p>
+                    På den här sidan kan du spela det populära kortspelet blackjack. 
+                    Målet med spelet är att få en hand med ett högre totalvärde än 
+                    dealerns hand, utan att överstiga värdet 21.
+                </p><br>
+                <p>
+                    Korten har olika värden: Ess kan räknas som 1 eller 11, klädda kort 
+                    (knekt, dam och kung) räknas som 10, medan övriga kort räknas med 
+                    deras angivna värde (till exempel är en 5:a värd 5 poäng).
+                </p><br>
+                <p>
+                    När spelet börjar får du och dealern två kort var. Du kan sedan välja
+                    att stanna med din nuvarande hand, ta ett till kort för att förbättra
+                    din hand, eller dubbla insatsen och ta ytterligare ett kort. Om du
+                    får en hand med ett värde över 21 så förlorar du direkt.
+                </p><br>
+                <p>
+                    Efter att du har spelat färdigt tar dealern sina kort. Reglerna för hur 
+                    dealern agerar kan variera, men på den här sidan måste dealern dra kort 
+                    tills hen har lika mycket som din hand, mer än din hand eller överskrider 
+                    värdet 21.
+                </p><br>
+                <p>
+                    Om du får en högre hand än dealern utan att överstiga 21 så vinner 
+                    du en summa lika med din insats. Om dealern vinner så förlorar du 
+                    din insats. Om det blir lika så återbetalas din insats till dig 
+                    utan att någon vinner. Lycka till!
+                </p>
+        </section><br>
+        <a class="button" href="{{ path('start_black_jack') }}">Starta Spelet!</a>
+{% endblock %}

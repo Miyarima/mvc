@@ -9,23 +9,6 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 trait CreateDeck
 {
-    private function createDeck(SessionInterface $session): DeckOfCards
-    {
-        $deck = new DeckOfCards();
-        for ($i = 1; $i <= 52; $i++) {
-            $deck->add(new Card());
-        }
-
-        $removedCards = $session->get("removed_cards");
-        if($removedCards !== null) {
-            foreach($removedCards as $remove) {
-                $deck->removeCard($remove);
-            }
-        }
-
-        return $deck;
-    }
-
     private function getDeck(SessionInterface $session): DeckOfCards
     {
         $removedCards = $session->get("removed_cards");

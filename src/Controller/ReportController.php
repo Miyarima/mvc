@@ -23,19 +23,19 @@ class ReportController extends AbstractController
     #[Route("/", name: "index")]
     public function index(): Response
     {
-        return $this->render('index.html.twig');
+        return $this->render('base/index.html.twig');
     }
 
     #[Route("/about", name: "about")]
     public function about(): Response
     {
-        return $this->render('about.html.twig');
+        return $this->render('base/about.html.twig');
     }
 
     #[Route("/report", name: "report")]
     public function report(): Response
     {
-        return $this->render('report.html.twig');
+        return $this->render('base/report.html.twig');
     }
 
     #[Route("/lucky", name: "lucky")]
@@ -54,7 +54,7 @@ class ReportController extends AbstractController
             'img' => $picture
         ];
 
-        return $this->render('lucky.html.twig', $data);
+        return $this->render('base/lucky.html.twig', $data);
     }
 
     #[Route("/card", name: "cards", methods: ['GET'])]
@@ -68,9 +68,6 @@ class ReportController extends AbstractController
         SessionInterface $session
     ): Response {
         $deck = $this->getDeck($session);
-        if($deck === null) {
-            $deck = $this->createDeck($session);
-        }
 
         $cardNames = [];
         foreach($deck->getCards() as $card) {
@@ -113,9 +110,6 @@ class ReportController extends AbstractController
         SessionInterface $session
     ): Response {
         $deck = $this->getDeck($session);
-        if($deck === null) {
-            $deck = $this->createDeck($session);
-        }
 
         $key = random_int(0, $deck->getNumberCards()-1);
         $card = $deck->getSpecificCard($key)->getName();
@@ -137,9 +131,6 @@ class ReportController extends AbstractController
         SessionInterface $session
     ): Response {
         $deck = $this->getDeck($session);
-        if($deck === null) {
-            $deck = $this->createDeck($session);
-        }
 
         if ($number > $deck->getNumberCards()) {
             throw new \Exception("There are not that many cards left in the deck!");

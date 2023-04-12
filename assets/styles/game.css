@@ -1,0 +1,54 @@
+.main-game {
+    max-width: 1100px;
+    min-height: 800px;
+    margin: 0 auto;
+    background-color: darkgreen;
+}
+
+.center-cards {
+    width: fit-content;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 0.5em;
+}
+
+.border-cards {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.card-bj {
+    width: 90px;
+}
+
+.your-cards,
+.border-cards {
+    border-radius: 0.3em;
+    min-height: 166.7px;
+    padding: 1em;
+}
+
+.your-cards {
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.dealer-cards {
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 10em;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.game-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 5em;
+    margin-top: 2em;
+    padding: 0 2.5em;
+}
+
+.game-text {
+    color: #fff;
+    font-size: 1.4em;
+}

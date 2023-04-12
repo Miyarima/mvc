@@ -1,0 +1,42 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:  #c06;
+    min-height: 75px;
+    margin-bottom: 4em;
+}
+
+.nav ul {
+    display: flex;
+    padding: 0.3em;
+    width: fit-content;
+    gap: 1.5em;
+    justify-content: space-between;
+}
+
+.nav ul li {
+    list-style: none;
+}
+
+.nav ul a {
+    text-decoration: none;
+    font-size: 1.3em;
+    padding-bottom: 0.3em;
+    color: #fff;
+    font-family: 'Poppins', san-serif;
+}
+
+.nav ul a:hover {
+    border-bottom: 3px solid #fff;
+    border-radius: 2px;
+}
+
+.site-header {
+    background-size: cover;
+    height: 100px;
+}
+
+.site-title {
+    font-size: 1.3em;
+}

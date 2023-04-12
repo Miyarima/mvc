@@ -1,0 +1,20 @@
+{% extends "base/base.html.twig" %}
+
+{% block title %}Me!{% endblock %}
+
+{% block body %}
+    <h1 class="center-text">Me!</h1>
+    <a href="{{ asset('img/me.jpg') }}">
+        <img src="{{ asset('img/me.jpg') }}" alt="">
+    </a>
+    <p>
+        Hi, my name is Jonathan! I'm a 23-year-old 
+        student from Sweden who has a keen interest in IT, cars, 
+        and anime. Currently, I'm studying a course called MVC, 
+        which is a web development framework. I love the technical
+        aspects of IT and the mechanics of cars. I'm always
+        eager to learn new things and explore new opportunities in 
+        these fields. I'm excited to see where my journey 
+        will take me.
+    </p>
+{% endblock %}

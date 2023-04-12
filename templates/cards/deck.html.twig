@@ -1,10 +1,10 @@
-{% extends "base.html.twig" %}
+{% extends "base/base.html.twig" %}
 
 {% block title %}Deck{% endblock %}
 
 {% block body %}
-    <h1 class="center">Deck</h1>
-    <div class="center-cards">
+    <h1 class="center-text">Deck</h1>
+    <div class="center-div-cards">
         {% for card in deck %}
             <img class="card" src="{{ asset('img/'~ card ~'-min.svg') }}" alt="">
         {% endfor %}

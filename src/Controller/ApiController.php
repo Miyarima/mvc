@@ -67,9 +67,6 @@ class ApiController extends AbstractController
         SessionInterface $session
     ): Response {
         $deck = $this->getDeck($session);
-        if($deck === null) {
-            $deck = $this->createDeck($session);
-        }
 
         $cardNames = [];
         foreach($deck->getCards() as $card) {
@@ -127,9 +124,6 @@ class ApiController extends AbstractController
         SessionInterface $session
     ): Response {
         $deck = $this->getDeck($session);
-        if($deck === null) {
-            $deck = $this->createDeck($session);
-        }
 
         return $this->apiDrawCardPost($deck, $session);
     }
@@ -164,9 +158,6 @@ class ApiController extends AbstractController
         SessionInterface $session
     ): Response {
         $deck = $this->getDeck($session);
-        if($deck === null) {
-            $deck = $this->createDeck($session);
-        }
 
         return $this->apiDrawSpecificCardPost($deck, $number, $session);
     }

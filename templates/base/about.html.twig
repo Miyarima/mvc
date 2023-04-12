@@ -1,0 +1,30 @@
+{% extends "base/base.html.twig" %}
+
+{% block title %}About{% endblock %}
+
+{% block body %}
+    <h1 class="center-text">About</h1>
+    <div class="two-columns">
+        <section>
+            <a href="{{ asset('img/mos.png') }}">
+                <img src="{{ asset('img/mos.png') }}" alt="">
+            </a><br><br>
+            <p>
+                The course "Object-Oriented Web Technologies" (also known as MVC) teaches 
+                object-oriented programming techniques in the programming language PHP. 
+                You'll learn classic object-oriented constructions, object-oriented programming 
+                in a web-based framework together with databases, and unit testing.
+            </p><br>
+            <p>
+                The course covers programming in a web environment, object-oriented programming 
+                in PHP, SQL with a database together with PHP Data Objects, and development of 
+                web applications in a framework with integrated technologies such as Apache, PHP, 
+                HTML, CSS, and SQL.
+            </p><br>
+        </section>
+        <aside class="aside">
+            <a href="https://github.com/dbwebb-se/mvc">MVC GitHub</a>
+            <a href="https://github.com/miyarima">My GitHub</a>
+        </aside>
+    </div>
+{% endblock %}
