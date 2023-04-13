@@ -20,9 +20,12 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="game-buttons">
-            <a class="button" href="#">STÅ</a>
-            <a class="button" href="{{ path('start_black_jack') }}">DRA</a>
-        </div>
+        <form method="post" action="">
+            <div class="game-buttons">
+                <a class="button" href="#">STÅ</a>
+                <input class="button" type="submit" name="roll" value="DRA"
+                onClick="this.form.action='{{ draw }}';">
+            </div>
+        </form>
     </section>
 {% endblock %}

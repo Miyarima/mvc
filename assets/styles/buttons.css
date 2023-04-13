@@ -16,6 +16,7 @@
 .button:hover {
     background-color: #ddd;
     background-image: none;
+    cursor: pointer;
 }
 
 .button:active {

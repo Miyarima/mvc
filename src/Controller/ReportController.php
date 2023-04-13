@@ -43,9 +43,8 @@ class ReportController extends AbstractController
     {
         $number = random_int(0, 100);
 
+        $picture = 'img/me.jpg';
         if ($number > 50) {
-            $picture = 'img/me.jpg';
-        } else {
             $picture = 'img/me.jpg';
         }
 
@@ -133,7 +132,7 @@ class ReportController extends AbstractController
         $deck = $this->getDeck($session);
 
         if ($number > $deck->getNumberCards()) {
-            throw new \Exception("There are not that many cards left in the deck!");
+            $number === $deck->getNumberCards();
         }
 
         $hand = new CardHand();

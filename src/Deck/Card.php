@@ -4,7 +4,7 @@ namespace App\Deck;
 
 class Card
 {
-    private $name;
+    private string $name;
 
     public function __construct()
     {
@@ -16,7 +16,7 @@ class Card
         return $this->name;
     }
 
-    public function setName($name): void
+    public function setName(string $name): void
     {
         $this->name = $name;
     }

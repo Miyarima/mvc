@@ -6,9 +6,9 @@ use App\Deck\Card;
 
 class DeckOfCards
 {
-    private $deck = [];
-    private $cardCount = 0;
-    private $cardNames = [
+    private array $deck = [];
+    private int $cardCount = 0;
+    private array $cardNames = [
         "2_of_clubs","3_of_clubs","4_of_clubs","5_of_clubs",
         "6_of_clubs","7_of_clubs","8_of_clubs","9_of_clubs",
         "10_of_clubs","jack_of_clubs","queen_of_clubs","king_of_clubs",
@@ -41,13 +41,17 @@ class DeckOfCards
         return $this->deck;
     }
 
-    public function getSpecificCard($pos): Card
+    public function shuffleDeck(): void
+    {
+        shuffle($this->deck);
+    }
+    public function getSpecificCard(int $pos): Card
     {
         $this->deck = array_values($this->deck);
         return $this->deck[$pos];
     }
 
-    public function removeCard($name): void
+    public function removeCard(string $name): void
     {
         $pos = array_search($name, array_map(function ($card) {
             return $card->getName();

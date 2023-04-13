@@ -31,6 +31,8 @@ class ApiController extends AbstractController
     {
         $number = random_int(0, 100);
 
+        $quote = "Who decides limits? And based on what? You said you worked hard? Well, maybe you need to work a little harder. Is that really the limit of your strength? Could you of tomorrow beat you today? Instead of giving in, move forward.  - Saitama";
+
         if ($number < 13) {
             $quote = "Life is not a game of luck. If you wanna win, work hard. - Sora";
         } elseif ($number < 25) {
@@ -45,8 +47,6 @@ class ApiController extends AbstractController
             $quote = "Reject common sense to make the impossible possible.  - Simon";
         } elseif ($number < 88) {
             $quote = "You cant sit around envying other peoples worlds. You have to go out and change your own.  - Shinichi";
-        } else {
-            $quote = "Who decides limits? And based on what? You said you worked hard? Well, maybe you need to work a little harder. Is that really the limit of your strength? Could you of tomorrow beat you today? Instead of giving in, move forward.  - Saitama";
         }
 
         $data = [
@@ -104,7 +104,7 @@ class ApiController extends AbstractController
     }
 
     #[Route("/api/deck/shuffle", name: "api_shuffle_deck_post", methods: ['POST'])]
-    public function apiShuffleDeckPost($cardNames): Response
+    public function apiShuffleDeckPost(array $cardNames): Response
     {
         shuffle($cardNames);
 
@@ -130,7 +130,7 @@ class ApiController extends AbstractController
 
     #[Route("/api/deck/draw", name: "api_draw_card_post", methods: ['POST'])]
     public function apiDrawCardPost(
-        $deck,
+        DeckOfCards $deck,
         SessionInterface $session
     ): Response {
 
@@ -164,13 +164,13 @@ class ApiController extends AbstractController
 
     #[Route("/api/deck/draw", name: "api_draw_specific_card_post", methods: ['POST'])]
     public function apiDrawSpecificCardPost(
-        $deck,
-        $number,
+        DeckOfCards $deck,
+        int $number,
         SessionInterface $session
     ): Response {
 
         if ($number > $deck->getNumberCards()) {
-            throw new \Exception("There are not that many cards left in the deck!");
+            $number === $deck->getNumberCards();
         }
 
         $hand = new CardHand();

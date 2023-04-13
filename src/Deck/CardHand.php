@@ -6,8 +6,8 @@ use App\Deck\Card;
 
 class CardHand
 {
-    private $hand = [];
-    private $cardCount = 0;
+    private array $hand = [];
+    private int $cardCount = 0;
 
     public function add(Card $card): void
     {
@@ -25,13 +25,13 @@ class CardHand
         return $this->hand;
     }
 
-    public function getSpecificCard($pos): Card
+    public function getSpecificCard(int $pos): Card
     {
         $this->hand = array_values($this->hand);
         return $this->hand[$pos];
     }
 
-    public function removeCard($name): void
+    public function removeCard(string $name): void
     {
         $pos = array_search($name, array_map(function ($card) {
             return $card->getName();
