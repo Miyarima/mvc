@@ -38,9 +38,10 @@ class GameController extends AbstractController
         $blackJack->setPlayer($session->get("playerCards"));
 
         $data = [
-            "cards" => $blackJack->getPlayer(),
             "cardRemaning" => $deck->getNumberCards(),
-            "draw" => $this->generateUrl('black_jack_draw')
+            "draw" => $this->generateUrl('black_jack_draw'),
+            "player" => $blackJack->getPlayer(),
+            "playerPoints" => $blackJack->playerPoints()
         ];
 
         return $this->render('game/game.html.twig', $data);

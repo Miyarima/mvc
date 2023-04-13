@@ -1,8 +1,6 @@
-.button {
+.button,
+.grey-button {
     color: #222;
-    background-color: #fff;
-    background-image: linear-gradient(#eee, #ddd);
-    border: 1px solid #ccc;
     text-decoration: none;
     display: inline-block;
     font-family: 'Merriweather', serif;
@@ -11,6 +9,18 @@
     text-align: center;
     border-radius: 0.2rem;
     width: 100%;
+}
+
+.button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    background-image: linear-gradient(#eee, #ddd);
+}
+
+.grey-button {
+    background-color: #aaa;
+    border: 1px solid rgb(100, 100, 100);
+    background-image: linear-gradient(rgb(150, 150, 150), rgb(130, 130, 130));
 }
 
 .button:hover {

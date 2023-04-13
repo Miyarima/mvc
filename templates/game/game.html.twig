@@ -12,10 +12,14 @@
                 {% endfor %}
             </div>
         </div>
-        <h4 class="game-text">Din Hand: <strong>6</strong></h4>
+        <h4 class="game-text">Din Hand: 
+            <strong>
+                {{ playerPoints }} {% if playerPoints > 21 %}(Busted){% endif %}
+            </strong>
+        </h4>
         <div class="border-cards your-cards">
             <div class="center-cards">
-                {% for card in cards %}
+                {% for card in player %}
                     <img class="card-bj" src="{{ asset('img/'~ card ~'-min.svg') }}" alt="">
                 {% endfor %}
             </div>
@@ -23,8 +27,13 @@
         <form method="post" action="">
             <div class="game-buttons">
                 <a class="button" href="#">STÅ</a>
-                <input class="button" type="submit" name="roll" value="DRA"
-                onClick="this.form.action='{{ draw }}';">
+                {% if playerPoints < 21 %}
+                    <input class="button" type="submit" name="draw" value="DRA"
+                    onClick="this.form.action='{{ draw }}';">
+                {% else %}
+                    <input class="grey-button" type="submit" name="draw" value="Busted"
+                    onClick="this.form.action='{{ draw }}';">
+                {% endif %}
             </div>
         </form>
     </section>

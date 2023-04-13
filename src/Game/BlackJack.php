@@ -11,6 +11,21 @@ class BlackJack
     private CardHand $playerHand;
     private CardHand $houseHand;
     private DeckOfcards $deck;
+    private array $values = [
+        "2" => 2,
+        "3" => 3,
+        "4" => 4,
+        "5" => 5,
+        "6" => 6,
+        "7" => 7,
+        "8" => 8,
+        "9" => 9,
+        "10" => 10,
+        "jack" => 10,
+        "queen" => 10,
+        "king" => 10,
+        "ace" => 11
+    ];
 
     public function __construct() {
         $this->playerHand = new CardHand();
@@ -69,5 +84,15 @@ class BlackJack
     public function getHouse(): CardHand
     {
         return $this->houseHand;
+    }
+
+    public function playerPoints(): int
+    {   
+        $total = 0;
+        foreach ($this->playerHand->getCards() as $card) {
+            $val = explode("_", $card->getName());
+            $total += $this->values[$val[0]];
+        }
+        return $total;
     }
 }
