@@ -4,11 +4,11 @@
 
 {% block body %}
     <section>
-        <h4 class="game-text">Husets Hand: <strong>8</strong></h4>
+        <h4 class="game-text">Husets Hand: <strong>{{ housePoints }}</strong></h4>
         <div class="border-cards dealer-cards">
             <div class="center-cards">
-                {% for i in 0..1 %}
-                    <img class="card-bj" src="{{ asset('img/2_of_clubs-min.svg') }}" alt="">
+                {% for card in house %}
+                    <img class="card-bj" src="{{ asset('img/'~ card ~'-min.svg') }}" alt="">
                 {% endfor %}
             </div>
         </div>
@@ -26,13 +26,14 @@
         </div>
         <form method="post" action="">
             <div class="game-buttons">
-                <a class="button" href="#">STÅ</a>
+                <input class="button" type="submit" name="draw" value="STÅ"
+                    onClick="this.form.action='{{ houseDraw }}';">
                 {% if playerPoints < 21 %}
                     <input class="button" type="submit" name="draw" value="DRA"
-                    onClick="this.form.action='{{ draw }}';">
+                    onClick="this.form.action='{{ playerDraw }}';">
                 {% else %}
                     <input class="grey-button" type="submit" name="draw" value="Busted"
-                    onClick="this.form.action='{{ draw }}';">
+                    onClick="this.form.action='{{ playerDraw }}';">
                 {% endif %}
             </div>
         </form>

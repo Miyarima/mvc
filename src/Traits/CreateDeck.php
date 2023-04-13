@@ -40,4 +40,11 @@ trait CreateDeck
         $drawn[] = $card;
         $session->set("playerCards", $drawn);
     }
+
+    private function drawnHouseCards(string $card, SessionInterface $session): void
+    {
+        $drawn = $session->get("houseCards");
+        $drawn[] = $card;
+        $session->set("houseCards", $drawn);
+    }
 }

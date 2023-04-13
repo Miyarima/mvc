@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
+//TODO GÖR SÅ ATT KORT FÖRSVINNER NÄR MAN DRAR DEM
+
 class GameController extends AbstractController
 {
     use CreateDeck;
@@ -28,6 +30,7 @@ class GameController extends AbstractController
     ): Response {
         $blackJack = new BlackJack();
 
+        $blackJack->setDeck([]);
         if ($session->get("removed_cards") !== null) {
             $blackJack->setDeck($session->get("removed_cards"));
         }
@@ -36,12 +39,18 @@ class GameController extends AbstractController
         $deck = $blackJack->getDeck();
 
         $blackJack->setPlayer($session->get("playerCards"));
+        $blackJack->setHouse($session->get("houseCards"));
+
+        // var_dump($session->get("housePoints"));
 
         $data = [
             "cardRemaning" => $deck->getNumberCards(),
-            "draw" => $this->generateUrl('black_jack_draw'),
+            "playerDraw" => $this->generateUrl('black_jack_draw'),
+            "houseDraw" => $this->generateUrl('black_jack_house_draw'),
             "player" => $blackJack->getPlayer(),
-            "playerPoints" => $blackJack->playerPoints()
+            "house" => $blackJack->getHouse(),
+            "playerPoints" => $blackJack->playerPoints(),
+            "housePoints" => $blackJack->housePoints()
         ];
 
         return $this->render('game/game.html.twig', $data);
@@ -51,6 +60,8 @@ class GameController extends AbstractController
     public function draw(
         SessionInterface $session
     ): Response {
+        //TODO SLUMPA BEHÖVS INTE OM DECKEN ÄR SHUFFLAD
+        //TODO DE MEST HÄR BORDE VARA I BLACKJACK KLASSEN
         $deck = $this->getDeck($session);
         $randInt = random_int(0, $deck->getNumberCards()-1);
         $card = $deck->getSpecificCard($randInt)->getName();
@@ -59,4 +70,40 @@ class GameController extends AbstractController
         return $this->redirectToRoute('start_black_jack');
     }
 
+    #[Route("/blackjack/game/house", name: "black_jack_house_draw", methods: ['POST'])]
+    public function houseDraw(
+        SessionInterface $session
+    ): Response {
+        //TODO SLUMPA BEHÖVS INTE OM DECKEN ÄR SHUFFLAD
+        //TODO DE MEST HÄR BORDE VARA I BLACKJACK KLASSEN
+        $blackJack = new BlackJack();
+
+        $blackJack->setDeck([]);
+        if ($session->get("removed_cards") !== null) {
+            $blackJack->setDeck($session->get("removed_cards"));
+        }
+
+        $deck = $blackJack->getDeck();
+
+        $blackJack->setPlayer($session->get("playerCards"));
+        $blackJack->setHouse($session->get("houseCards"));
+        
+        while ($blackJack->playerPoints() >= $blackJack->housePoints()) {
+            $randInt = random_int(0, $deck->getNumberCards()-1);
+            $card = $deck->getSpecificCard($randInt)->getName();
+            $this->drawnHouseCards($card, $session);
+            $blackJack->setHouse($session->get("houseCards"));
+        }
+        // exit();
+        // $session->set("housePoints", $blackJack->housePoints());
+
+        return $this->redirectToRoute('start_black_jack');
+    }
+
+    //? 6 (2) varje kort är 7 | 42
+    //? 5 (2) varje kort är 6 | 30
+    //? 4 (2) varje kort är 5 | 20
+    //? 3 (2) varje kort är 4 | 12
+    //? 2 (2) varje kort är 3 | 6
+    //? 1 (2) varje kort är 2 | 2
 }

@@ -39,7 +39,7 @@ class BlackJack
             $this->deck->add(new Card());
         }
 
-        if($removed !== null) {
+        if($removed !== []) {
             foreach($removed as $remove) {
                 $this->deck->removeCard($remove);
             }
@@ -60,6 +60,7 @@ class BlackJack
 
     public function setPlayer(array $hand): void
     {
+        $this->playerHand =  new CardHand();
         foreach ($hand as $name) {
             $card = new Card();
             $card->setName($name);
@@ -67,10 +68,15 @@ class BlackJack
         }
     }
 
-    // public function setHouse(array $hand): void
-    // {
-
-    // }
+    public function setHouse(array $hand): void
+    {
+        $this->houseHand =  new CardHand();
+        foreach ($hand as $name) {
+            $card = new Card();
+            $card->setName($name);
+            $this->houseHand->add($card);
+        }
+    }
 
     public function getPlayer(): array
     {
@@ -81,9 +87,13 @@ class BlackJack
         return $cards;
     }
 
-    public function getHouse(): CardHand
+    public function getHouse(): array
     {
-        return $this->houseHand;
+        $cards = [];
+        foreach ($this->houseHand->getCards() as $card) {
+            $cards[] = $card->getName();
+        }
+        return $cards;
     }
 
     public function playerPoints(): int
@@ -93,6 +103,17 @@ class BlackJack
             $val = explode("_", $card->getName());
             $total += $this->values[$val[0]];
         }
+        return $total;
+    }
+
+    public function housePoints(): int
+    {   
+        $total = 0;
+        foreach ($this->houseHand->getCards() as $card) {
+            $val = explode("_", $card->getName());
+            $total += $this->values[$val[0]];
+        }
+
         return $total;
     }
 }
