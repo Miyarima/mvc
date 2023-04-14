@@ -6,8 +6,19 @@ use App\Deck\Card;
 
 class DeckOfCards
 {
+    /**
+     * @var array<Card> $deck
+     */
     private array $deck = [];
+
+    /**
+    * @var int $cardCount
+    */
     private int $cardCount = 0;
+
+    /**
+    * @var array<string> $cardNames
+    */
     private array $cardNames = [
         "2_of_clubs","3_of_clubs","4_of_clubs","5_of_clubs",
         "6_of_clubs","7_of_clubs","8_of_clubs","9_of_clubs",
@@ -36,6 +47,9 @@ class DeckOfCards
         return $this->cardCount;
     }
 
+    /**
+     * @return array<Card>
+     */
     public function getCards(): array
     {
         return $this->deck;
@@ -45,6 +59,7 @@ class DeckOfCards
     {
         shuffle($this->deck);
     }
+
     public function getSpecificCard(int $pos): Card
     {
         $this->deck = array_values($this->deck);

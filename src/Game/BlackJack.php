@@ -10,7 +10,11 @@ class BlackJack
 {
     private CardHand $playerHand;
     private CardHand $houseHand;
-    private DeckOfcards $deck;
+    private DeckOfCards $deck;
+
+    /**
+    * @var array<string, int> $values
+    */
     private array $values = [
         "2" => 2,
         "3" => 3,
@@ -27,12 +31,16 @@ class BlackJack
         "ace" => 11
     ];
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->playerHand = new CardHand();
         $this->houseHand = new CardHand();
         $this->deck = new DeckOfCards();
     }
 
+    /**
+     * @param array<string> $removed
+     */
     public function setDeck(array $removed): void
     {
         for ($i = 1; $i <= 52; $i++) {
@@ -58,6 +66,9 @@ class BlackJack
         }
     }
 
+    /**
+     * @param array<string> $hand
+     */
     public function setPlayer(array $hand): void
     {
         $this->playerHand =  new CardHand();
@@ -68,6 +79,9 @@ class BlackJack
         }
     }
 
+    /**
+     * @param array<string> $hand
+     */
     public function setHouse(array $hand): void
     {
         $this->houseHand =  new CardHand();
@@ -78,6 +92,9 @@ class BlackJack
         }
     }
 
+    /**
+     * @return array<string>
+     */
     public function getPlayer(): array
     {
         $cards = [];
@@ -87,6 +104,9 @@ class BlackJack
         return $cards;
     }
 
+    /**
+     * @return array<string>
+     */
     public function getHouse(): array
     {
         $cards = [];
@@ -97,7 +117,7 @@ class BlackJack
     }
 
     public function playerPoints(): int
-    {   
+    {
         $total = 0;
         foreach ($this->playerHand->getCards() as $card) {
             $val = explode("_", $card->getName());
@@ -107,7 +127,7 @@ class BlackJack
     }
 
     public function housePoints(): int
-    {   
+    {
         $total = 0;
         foreach ($this->houseHand->getCards() as $card) {
             $val = explode("_", $card->getName());
@@ -116,4 +136,9 @@ class BlackJack
 
         return $total;
     }
+
+    // public function aceInHand(): bool
+    // {
+
+    // }
 }

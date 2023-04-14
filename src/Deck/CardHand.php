@@ -6,7 +6,14 @@ use App\Deck\Card;
 
 class CardHand
 {
+    /**
+     * @var array<Card> $hand
+     */
     private array $hand = [];
+
+    /**
+    * @var int $cardCount
+    */
     private int $cardCount = 0;
 
     public function add(Card $card): void
@@ -20,6 +27,9 @@ class CardHand
         return $this->cardCount;
     }
 
+    /**
+     * @return array<Card>
+     */
     public function getCards(): array
     {
         return $this->hand;

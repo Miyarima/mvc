@@ -103,6 +103,9 @@ class ApiController extends AbstractController
         return $this->apiShuffleDeckPost($cardNames);
     }
 
+    /**
+     * @param string[] $cardNames
+     */
     #[Route("/api/deck/shuffle", name: "api_shuffle_deck_post", methods: ['POST'])]
     public function apiShuffleDeckPost(array $cardNames): Response
     {

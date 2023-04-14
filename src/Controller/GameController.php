@@ -18,7 +18,7 @@ class GameController extends AbstractController
 
     #[Route("/blackjack", name: "black_jack", methods: ['GET'])]
     public function blackJack(SessionInterface $session): Response
-    {   
+    {
         $session->set("playerCards", []);
         $session->set("houseCards", []);
         return $this->render('game/landing_page.html.twig');
@@ -40,8 +40,6 @@ class GameController extends AbstractController
 
         $blackJack->setPlayer($session->get("playerCards"));
         $blackJack->setHouse($session->get("houseCards"));
-
-        // var_dump($session->get("housePoints"));
 
         $data = [
             "cardRemaning" => $deck->getNumberCards(),
@@ -87,23 +85,19 @@ class GameController extends AbstractController
 
         $blackJack->setPlayer($session->get("playerCards"));
         $blackJack->setHouse($session->get("houseCards"));
-        
-        while ($blackJack->playerPoints() >= $blackJack->housePoints()) {
+
+        $stop = 17;
+        if ($blackJack->playerPoints() > 17 and $blackJack->playerPoints() <= 21) {
+            $stop = $blackJack->playerPoints();
+        }
+
+        while ($blackJack->playerPoints() >= $stop) {
             $randInt = random_int(0, $deck->getNumberCards()-1);
             $card = $deck->getSpecificCard($randInt)->getName();
             $this->drawnHouseCards($card, $session);
             $blackJack->setHouse($session->get("houseCards"));
         }
-        // exit();
-        // $session->set("housePoints", $blackJack->housePoints());
 
         return $this->redirectToRoute('start_black_jack');
     }
-
-    //? 6 (2) varje kort är 7 | 42
-    //? 5 (2) varje kort är 6 | 30
-    //? 4 (2) varje kort är 5 | 20
-    //? 3 (2) varje kort är 4 | 12
-    //? 2 (2) varje kort är 3 | 6
-    //? 1 (2) varje kort är 2 | 2
 }
