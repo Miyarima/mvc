@@ -12,6 +12,9 @@
                 {% endfor %}
             </div>
         </div>
+        {% if message != "" %}
+            <h1 class="game-text center-text ending-text">{{ message }}</h1>
+        {% endif %}
         <h4 class="game-text">Din Hand: 
             <strong>
                 {{ playerPoints }} {% if playerPoints > 21 %}(Busted){% endif %}
@@ -26,16 +29,25 @@
         </div>
         <form method="post" action="">
             <div class="game-buttons">
-                <input class="button" type="submit" name="draw" value="STÅ"
+                {% if gameStatus == "Stand" or gameStatus == "Done"%}
+                    <div class="grey-button">STÅ</div>
+                    <div class="grey-button">Busted</div>
+                {% elseif playerPoints < 21 %}
+                    <input class="button" type="submit" name="draw" value="STÅ"
                     onClick="this.form.action='{{ houseDraw }}';">
-                {% if playerPoints < 21 %}
                     <input class="button" type="submit" name="draw" value="DRA"
                     onClick="this.form.action='{{ playerDraw }}';">
                 {% else %}
-                    <input class="grey-button" type="submit" name="draw" value="Busted"
-                    onClick="this.form.action='{{ playerDraw }}';">
+                    <input class="button" type="submit" name="draw" value="STÅ"
+                    onClick="this.form.action='{{ houseDraw }}';">
+                    <div class="grey-button">Busted</div>
                 {% endif %}
             </div>
         </form>
+        {% if gameStatus == "Done"%}
+            <div class="game-buttons">
+                <a class="button end-button" href="{{ path('black_jack_restart') }}">Spela Igen</a>
+            </div>
+        {% endif %}
     </section>
 {% endblock %}

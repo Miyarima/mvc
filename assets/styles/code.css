@@ -1,0 +1,26 @@
+.base {
+    background-color: #222;
+    color: #fff;
+    padding: 1em;
+    border-radius: 10px;
+
+    font-size: 1em;
+    font-family: 'Merriweather', serif;
+    line-height: 1.4em;
+}
+
+.base .comment {
+    color: rgb(34, 173, 24);
+}
+
+.base .function {
+    color: rgb(155, 155, 255);
+}
+
+.base .var {
+    color: rgb(255, 155, 155);
+}
+
+.base .if {
+    color: rgb(174, 219, 9);
+}

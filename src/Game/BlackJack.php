@@ -43,6 +43,7 @@ class BlackJack
      */
     public function setDeck(array $removed): void
     {
+        $this->deck =  new DeckOfCards();
         for ($i = 1; $i <= 52; $i++) {
             $this->deck->add(new Card());
         }
@@ -137,8 +138,64 @@ class BlackJack
         return $total;
     }
 
+    /**
+     * @return array<string>
+     */
+    public function houseDraw(): array
+    {
+        $stop = 17;
+        if ($this->playerPoints() > 17 and $this->playerPoints() <= 21) {
+            $stop = 21;
+        }
+
+        $cards = [];
+        while ($stop >= $this->housePoints()) {
+            $randInt = random_int(0, $this->deck->getNumberCards()-1);
+            $card = $this->deck->getSpecificCard($randInt)->getName();
+            $this->deck->removeCard($card);
+            $cards[] = $card;
+            $this->setHouse($cards);
+        }
+
+        return $cards;
+    }
+
+    /**
+     * @return string
+     */
+    public function playerDraw(): string
+    {
+        $randInt = random_int(0, $this->deck->getNumberCards()-1);
+        $card = $this->deck->getSpecificCard($randInt)->getName();
+        $this->deck->removeCard($card);
+
+        return $card;
+    }
+
+    public function winner(): string
+    {
+        $message = "Det blev oavgjort!";
+        if ($this->housePoints() > 21) {
+            $message = "Du vann! Dealern har över 21 poäng.";
+        } else if ($this->playerPoints() > 21) {
+            $message = "Dealern vinner! Du har över 21 poäng.";
+        }  else if ($this->playerPoints() > $this->housePoints()) {
+            $message = "Du vann!";
+        } else if ($this->housePoints() > $this->playerPoints()) {
+            $message = "Dealern vinner!";
+        }
+
+        return $message;
+    }
+
     // public function aceInHand(): bool
     // {
 
+    // }
+
+    // $housecards = $blackJack->houseDraw();
+
+    // foreach ($housecards as $card) {
+    //     $this->drawnHouseCards($card, $session);
     // }
 }

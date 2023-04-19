@@ -33,18 +33,4 @@ trait CreateDeck
         $removedCards[] = $card;
         $session->set("removed_cards", $removedCards);
     }
-
-    private function drawnPlayerCards(string $card, SessionInterface $session): void
-    {
-        $drawn = $session->get("playerCards");
-        $drawn[] = $card;
-        $session->set("playerCards", $drawn);
-    }
-
-    private function drawnHouseCards(string $card, SessionInterface $session): void
-    {
-        $drawn = $session->get("houseCards");
-        $drawn[] = $card;
-        $session->set("houseCards", $drawn);
-    }
 }

@@ -3,6 +3,7 @@
     min-height: 800px;
     margin: 0 auto;
     background-color: darkgreen;
+    position: relative;
 }
 
 .center-cards {
@@ -51,4 +52,17 @@
 .game-text {
     color: #fff;
     font-size: 1.4em;
+}
+
+.ending-text {
+    font-size: 2em;
+    position: absolute;
+    z-index: 99;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.strike {
+    text-decoration: line-through;
 }
