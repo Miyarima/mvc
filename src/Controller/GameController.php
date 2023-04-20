@@ -11,8 +11,6 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\Length;
 
-//TODO GÖR SÅ ATT KORT FÖRSVINNER NÄR MAN DRAR DEM
-
 class GameController extends AbstractController
 {
     use CreateDeck;

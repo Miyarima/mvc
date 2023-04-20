@@ -123,6 +123,9 @@ class BlackJack
         foreach ($this->playerHand->getCards() as $card) {
             $val = explode("_", $card->getName());
             $total += $this->values[$val[0]];
+            if ($total > 21 and $this->aceInHandPlayer()) {
+                $total -= 10;
+            }
         }
         return $total;
     }
@@ -133,6 +136,9 @@ class BlackJack
         foreach ($this->houseHand->getCards() as $card) {
             $val = explode("_", $card->getName());
             $total += $this->values[$val[0]];
+            if ($total > 21 and $this->aceInHandHouse()) {
+                $total -= 10;
+            }
         }
 
         return $total;
@@ -144,17 +150,22 @@ class BlackJack
     public function houseDraw(): array
     {
         $stop = 17;
-        if ($this->playerPoints() > 17 and $this->playerPoints() <= 21) {
-            $stop = 21;
+        if ($this->playerPoints() > 17 and $this->playerPoints() < 22) {
+            $stop = $this->playerPoints();
         }
 
         $cards = [];
-        while ($stop >= $this->housePoints()) {
+        $points = 0;
+        while ($stop > $points) {
             $randInt = random_int(0, $this->deck->getNumberCards()-1);
             $card = $this->deck->getSpecificCard($randInt)->getName();
             $this->deck->removeCard($card);
             $cards[] = $card;
             $this->setHouse($cards);
+            $points = $this->housePoints();
+            if ($this->housePoints() > 21 and $this->aceInHandHouse()) {
+                $points -= 10;
+            }
         }
 
         return $cards;
@@ -188,14 +199,25 @@ class BlackJack
         return $message;
     }
 
-    // public function aceInHand(): bool
-    // {
+    public function aceInHandHouse(): bool
+    {
+        foreach ($this->houseHand->getCards() as $card) {
+            $val = explode("_", $card->getName());
+            if ($val[0] === "ace") {
+                return true;
+            }
+        }
+        return false;
+    }
 
-    // }
-
-    // $housecards = $blackJack->houseDraw();
-
-    // foreach ($housecards as $card) {
-    //     $this->drawnHouseCards($card, $session);
-    // }
+    public function aceInHandPlayer(): bool
+    {
+        foreach ($this->playerHand->getCards() as $card) {
+            $val = explode("_", $card->getName());
+            if ($val[0] === "ace") {
+                return true;
+            }
+        }
+        return false;
+    }
 }
