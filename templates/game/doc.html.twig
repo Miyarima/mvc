@@ -7,64 +7,57 @@
         <section>
             <h4>Klasser</h4>
             <p>
-                En klass som hanterar spelet. Den ska kunna set och get för leken.
-                Blanda leken. Det ska finnas en spelar hand och en delear hand. 
-                Varje hand ska ha en get och set. Beräkna poängen för vardera hand.
-                Både spelaren och delearn ska kunna "dra" kort.
+                Klasen "BlackJack" ska hantera spelets regler och hålla kolla på båda händer.
+                Den ska ha en metod för att sätta decken och en för att hämta den. Dessa två 
+                metoder ska också finns för spelarens hand, samt dealern. Poäng räkning på
+                vadera hand ska också vara möjligt för att kunna utsee en vinnar, samt så att
+                ess kan vara både 1 och 11. Spelaren ska kunna dra kort och dealern ska vara 
+                delvis anpassad efter vad spelaren har fått för kort.
             </p><br>
             <h4>Psuedokod</h4>
             <pre class="base">
 <span class="comment">// Skapa en kortlek med 52 kort</span>
-<span class="var">kortlek</span> = <span class="function">skapaKortlek()</span>
+<span class="var">kortlek</span> = <span class="function">createDeck()</span>
 
 <span class="comment">// Blanda kortleken</span>
-<span class="function">blandaKortlek(kortlek)</span>
+<span class="function">shuffel(kortlek)</span>
 
 <span class="comment">// Spelarens och dealerns händer</span>
 <span class="var">playerHand</span> = []
 <span class="var">dealerHand</span> = []
 
-<span class="comment">// Ge ut två kort till spelaren</span>
-<span class="function">draKort(<span class="var">playerHand</span>, <span class="var">kortlek</span>)</span>
-<span class="function">draKort(<span class="var">playerHand</span>, <span class="var">kortlek</span>)</span>
-
-<span class="comment">// Ge ut två kort till dealern, men visa bara det första kortet</span>
-<span class="function">draKort(<span class="var">dealerHand</span>, <span class="var">kortlek</span>)</span>
-<span class="function">visaKort(<span class="var">dealerHand[0]</span>)</span>
-
 <span class="comment">// Spelar tur</span>
 <span class="function">while summa(<span class="var">playerHand</span>):</span> < 21
-    <span class="function">visaHand(<span class="var">playerHand</span>)</span>
-    <span class="function">draKort(<span class="var">playerHand</span>)</span>
-
-<span class="comment">// Om spelaren har över 21, förlora direkt</span>
-<span class="function">if summa(<span class="var">playerHand</span>):</span> > 21
-    <span class="function">visaMeddelande(</span>"Du förlorar. Du har över 21 poäng.")<span class="function">)</span>
-    avsluta
+    <span class="function">showHand(<span class="var">playerHand</span>)</span>
+    <span class="function">drawCard(<span class="var">playerHand</span>)</span>
 
 <span class="comment">// Dealerns tur</span>
-<span class="function">visaHand(<span class="var">dealerHand</span>)</span>
 <span class="function">while summa(<span class="var">dealerHand</span>):</span> < 17
-    <span class="function">draKort(<span class="var">dealerHand</span>, <span class="var">kortlek</span>)</span>
-    <span class="function">visaHand(<span class="var">dealerHand</span>)</span>
+    <span class="function">showHand(<span class="var">dealerHand</span>, <span class="var">kortlek</span>)</span>
+    <span class="function">drawHand(<span class="var">dealerHand</span>)</span>
 
 <span class="comment">// Kolla vem som vinner</span>
-<span class="var">spelareSumma</span> = <span class="function">summa(<span class="var">playerHand</span>)</span>
-<span class="var">dealerSumma</span> = <span class="function">summa(<span class="var">playerHand</span>)</span>
+<span class="var">spelareSumma</span> = <span class="function">sum(<span class="var">playerHand</span>)</span>
+<span class="var">dealerSumma</span> = <span class="function">sum(<span class="var">playerHand</span>)</span>
 
 <span class="if">if dealerSumma > 21:</span>
-    <span class="function">visaMeddelande(</span>"Dealern förlorar. Han har över 21 poäng.")<span class="function">)</span>
+    <span class="function">showMessage(</span>"Dealern förlorar. Han har över 21 poäng.")<span class="function">)</span>
 <span class="if">elif spelareSumma > 21:</span>
-    <span class="function">visaMeddelande(</span>"Du förlorar. Du har över 21 poäng."<span class="function">)</span>
+    <span class="function">showMessage(</span>"Du förlorar. Du har över 21 poäng."<span class="function">)</span>
 <span class="if">elif spelareSumma > dealerSumma:</span>
-    <span class="function">visaMeddelande(</span>"Du vinner!"<span class="function">)</span>
+    <span class="function">showMessage(</span>"Du vinner!"<span class="function">)</span>
 <span class="if">elif dealerSumma > spelareSumma:</span>
-    <span class="function">visaMeddelande(</span>"Dealern vinner!"<span class="function">)</span>
+    <span class="function">showMessage(</span>"Dealern vinner!"<span class="function">)</span>
 <span class="if">else:</span>
-    <span class="function">visaMeddelande(</span>"Det blev oavgjort!"<span class="function">)</span>
+    <span class="function">showMessage(</span>"Det blev oavgjort!"<span class="function">)</span>
 
 <span class="comment">// Avsluta spelet</span>
 avsluta
             </pre>
         </section><br>
+        <div class="img">
+            <a href="{{ asset('img/shart.png') }}">
+                <img src="{{ asset('img/shart.png') }}" alt="">
+            </a>
+        </div>
 {% endblock %}

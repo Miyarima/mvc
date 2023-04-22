@@ -188,11 +188,11 @@ class BlackJack
         $message = "Det blev oavgjort!";
         if ($this->housePoints() > 21) {
             $message = "Du vann! Dealern har över 21 poäng.";
-        } else if ($this->playerPoints() > 21) {
+        } elseif ($this->playerPoints() > 21) {
             $message = "Dealern vinner! Du har över 21 poäng.";
-        }  else if ($this->playerPoints() > $this->housePoints()) {
+        } elseif ($this->playerPoints() > $this->housePoints()) {
             $message = "Du vann!";
-        } else if ($this->housePoints() > $this->playerPoints()) {
+        } elseif ($this->housePoints() > $this->playerPoints()) {
             $message = "Dealern vinner!";
         }
 

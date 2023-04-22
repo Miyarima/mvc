@@ -74,7 +74,7 @@ class GameController extends AbstractController
     public function draw(
         SessionInterface $session
     ): Response {
-        $session->set("gameStatus", "Draw");
+        $session->set("gameStatus", "playerDraw");
 
         $blackJack = new BlackJack();
 
