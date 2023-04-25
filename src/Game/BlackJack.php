@@ -39,6 +39,7 @@ class BlackJack
     }
 
     /**
+     * Sets the deck, and removes cards that has been drawn.
      * @param array<string> $removed
      */
     public function setDeck(array $removed): void
@@ -55,11 +56,17 @@ class BlackJack
         }
     }
 
+    /** 
+     * Returns the deck.
+     */
     public function getDeck(): DeckOfCards
     {
         return $this->deck;
     }
 
+    /** 
+     * Shuffles the deck.
+     */
     public function shuffleDeck(): void
     {
         if ($this->deck->getNumberCards() > 51) {
@@ -68,6 +75,7 @@ class BlackJack
     }
 
     /**
+     * Creates a new CardHand and adds all player cards to it.
      * @param array<string> $hand
      */
     public function setPlayer(array $hand): void
@@ -81,6 +89,7 @@ class BlackJack
     }
 
     /**
+     * Creates a new CardHand and adds all house cards to it.
      * @param array<string> $hand
      */
     public function setHouse(array $hand): void
@@ -94,6 +103,7 @@ class BlackJack
     }
 
     /**
+     * Returns an array of all the cards the player has drawn.
      * @return array<string>
      */
     public function getPlayer(): array
@@ -106,6 +116,7 @@ class BlackJack
     }
 
     /**
+     * Returns an array of all the cards the house has drawn.
      * @return array<string>
      */
     public function getHouse(): array
@@ -117,6 +128,9 @@ class BlackJack
         return $cards;
     }
 
+    /** 
+     * Calculates the points of the player hand.
+     */
     public function playerPoints(): int
     {
         $total = 0;
@@ -130,6 +144,9 @@ class BlackJack
         return $total;
     }
 
+    /**
+     * Calculates the points of the house hand.
+     */
     public function housePoints(): int
     {
         $total = 0;
@@ -145,6 +162,7 @@ class BlackJack
     }
 
     /**
+     * Returns an array of cards that are drawn.
      * @return array<string>
      */
     public function houseDraw(): array
@@ -172,6 +190,7 @@ class BlackJack
     }
 
     /**
+     * Returns the name of the card that the player has drawn.
      * @return string
      */
     public function playerDraw(): string
@@ -183,6 +202,9 @@ class BlackJack
         return $card;
     }
 
+    /**
+     * Calculates the winner of the game.
+     */
     public function winner(): string
     {
         $message = "Det blev oavgjort!";
@@ -199,6 +221,9 @@ class BlackJack
         return $message;
     }
 
+    /** 
+     * Runs through the house hand and checks if there is an ace.
+     */
     public function aceInHandHouse(): bool
     {
         foreach ($this->houseHand->getCards() as $card) {
@@ -210,6 +235,9 @@ class BlackJack
         return false;
     }
 
+    /**
+     * Runs through the player hand and checks if there is an ace.
+     */
     public function aceInHandPlayer(): bool
     {
         foreach ($this->playerHand->getCards() as $card) {
