@@ -58,7 +58,7 @@ class CardHandTest extends TestCase
     /** 
      * Remove a card from a CardHand object.
      */
-    public function testCreatecardHandRemoveCard()
+    public function testCreateCardHandRemoveCard()
     {
         $cardHand = new CardHand();
 
@@ -90,7 +90,7 @@ class CardHandTest extends TestCase
     /** 
      * Remove a card from a CardHand object that doesnt exist.
      */
-    public function testCreatecardHandRemoveCardThatDoesntExist()
+    public function testCreateCardHandRemoveCardThatDoesntExist()
     {
         $cardHand = new CardHand();
 
