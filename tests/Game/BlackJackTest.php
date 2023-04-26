@@ -12,7 +12,7 @@ class BlackJackTest extends TestCase
     /** 
      * Construct a BlackJack object without arguments and check default values.
      */
-    public function testCreateBlackJackCheckDefaultValues()
+    public function testCreateBlackJackCheckDefaultValues(): void
     {
         $blackJack = new BlackJack();
         $this->assertInstanceOf("\App\Game\BlackJack", $blackJack);
@@ -21,7 +21,7 @@ class BlackJackTest extends TestCase
     /** 
      * Construct a BlackJack object with a deck.
      */
-    public function testCreateBlackJackWithDeck()
+    public function testCreateBlackJackWithDeck(): void
     {
         $blackJack = new BlackJack();
         $this->assertInstanceOf("\App\Game\BlackJack", $blackJack);
@@ -36,7 +36,7 @@ class BlackJackTest extends TestCase
     /** 
      * Construct a BlackJack object with a deck, and remove a card.
      */
-    public function testCreateBlackJackRemoveCard()
+    public function testCreateBlackJackRemoveCard(): void
     {
         $blackJack = new BlackJack();
         $this->assertInstanceOf("\App\Game\BlackJack", $blackJack);
@@ -57,7 +57,7 @@ class BlackJackTest extends TestCase
     /** 
      * Construct a BlackJack object with a deck, and shuffle it.
      */
-    public function testCreateBlackJackShuffel()
+    public function testCreateBlackJackShuffel(): void
     {
         $blackJack = new BlackJack();
         $this->assertInstanceOf("\App\Game\BlackJack", $blackJack);
@@ -76,7 +76,7 @@ class BlackJackTest extends TestCase
     /** 
      * Seting the player hand in the BlackJack object, and drawing another card.
      */
-    public function testCreateSetPlayerHand()
+    public function testCreateSetPlayerHand(): void
     {
         $blackJack = new BlackJack();
 
@@ -102,7 +102,7 @@ class BlackJackTest extends TestCase
     /** 
      * Seting the house hand in the BlackJack object.
      */
-    public function testCreateSetHouseHand()
+    public function testCreateSetHouseHand(): void
     {
         $blackJack = new BlackJack();
 
@@ -120,7 +120,7 @@ class BlackJackTest extends TestCase
     /** 
      * Seting the house hand and the player hand.
      */
-    public function testCreateSetHouseAndPlayerHand()
+    public function testCreateSetHouseAndPlayerHand(): void
     {
         $blackJack = new BlackJack();
 
@@ -145,7 +145,7 @@ class BlackJackTest extends TestCase
     /** 
      * Seting player hand with an ace in hand.
      */
-    public function testCreateSetPlayerHandWithAce()
+    public function testCreateSetPlayerHandWithAce(): void
     {
         $blackJack = new BlackJack();
 
@@ -168,7 +168,7 @@ class BlackJackTest extends TestCase
     /** 
      * Seting house hand with an ace in hand.
      */
-    public function testCreateSetHouseHandWithAce()
+    public function testCreateSetHouseHandWithAce(): void
     {
         $blackJack = new BlackJack();
 
@@ -191,7 +191,7 @@ class BlackJackTest extends TestCase
     /** 
      * Game ends in a tie.
      */
-    public function testCreateWinningMessageTie()
+    public function testCreateWinningMessageTie(): void
     {
         $blackJack = new BlackJack();
 
@@ -210,7 +210,7 @@ class BlackJackTest extends TestCase
     /** 
      * Game ends with player winning beacuse dealer has more than 21 points.
      */
-    public function testCreateWinningMessageDealerBust()
+    public function testCreateWinningMessageDealerBust(): void
     {
         $blackJack = new BlackJack();
 
@@ -229,7 +229,7 @@ class BlackJackTest extends TestCase
     /** 
      * Game ends with dealer winning beacuse player has more than 21 points.
      */
-    public function testCreateWinningMessagePlayerBust()
+    public function testCreateWinningMessagePlayerBust(): void
     {
         $blackJack = new BlackJack();
 
@@ -248,7 +248,7 @@ class BlackJackTest extends TestCase
     /** 
      * Game ends with player winning.
      */
-    public function testCreateWinningMessagePlayerWinning()
+    public function testCreateWinningMessagePlayerWinning(): void
     {
         $blackJack = new BlackJack();
 
@@ -267,7 +267,7 @@ class BlackJackTest extends TestCase
     /** 
      * Game ends with dealer winning.
      */
-    public function testCreateWinningMessageDealerWinning()
+    public function testCreateWinningMessageDealerWinning(): void
     {
         $blackJack = new BlackJack();
 

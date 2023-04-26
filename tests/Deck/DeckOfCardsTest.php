@@ -12,7 +12,7 @@ class DeckOfCardsTest extends TestCase
     /**
      * Construct a DeckOfCards object with all cards.
      */
-    public function testCreateDeckOfCards()
+    public function testCreateDeckOfCards(): void
     {
         $deckOfCards = new DeckOfCards();
         $this->assertInstanceOf("\App\Deck\DeckOfCards", $deckOfCards);
@@ -29,7 +29,7 @@ class DeckOfCardsTest extends TestCase
     /** 
      * Shuffle DeckOfCards.
      */
-    public function testCreateShuffleDeckOfCards()
+    public function testCreateShuffleDeckOfCards(): void
     {
         $deckOfCards = new DeckOfCards();
 
@@ -46,7 +46,7 @@ class DeckOfCardsTest extends TestCase
     /** 
      * Remove a card from a DeckOfCards object.
      */
-    public function testCreateDeckOfCardsRemoveCard()
+    public function testCreateDeckOfCardsRemoveCard(): void
     {
         $deckOfCards = new DeckOfCards();
 
@@ -79,7 +79,7 @@ class DeckOfCardsTest extends TestCase
     /** 
      * Remove a card from a CardHand object that doesnt exist.
      */
-    public function testCreateDeckOfCardsRemoveCardThatDoesntExist()
+    public function testCreateDeckOfCardsRemoveCardThatDoesntExist(): void
     {
         $deckOfCards = new DeckOfCards();
 

@@ -35,7 +35,7 @@ class DeckOfCards
         "jack_of_spades","queen_of_spades","king_of_spades","ace_of_spades"
     ];
 
-    /** 
+    /**
      * Adds a card to the deck.
      */
     public function add(Card $card): void
@@ -45,7 +45,7 @@ class DeckOfCards
         $this->cardCount++;
     }
 
-    /** 
+    /**
      * Returns the number of cards in the deck.
      */
     public function getNumberCards(): int
@@ -70,7 +70,7 @@ class DeckOfCards
         shuffle($this->deck);
     }
 
-    /** 
+    /**
      * Returns a card from the deck.
      */
     public function getSpecificCard(int $pos): Card
@@ -79,7 +79,7 @@ class DeckOfCards
         return $this->deck[$pos];
     }
 
-    /** 
+    /**
      * Removes a card from the deck.
      */
     public function removeCard(string $name): void

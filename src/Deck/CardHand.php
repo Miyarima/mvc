@@ -16,7 +16,7 @@ class CardHand
     */
     private int $cardCount = 0;
 
-    /** 
+    /**
      * Adds a card to the hand.
      */
     public function add(Card $card): void
@@ -25,7 +25,7 @@ class CardHand
         $this->cardCount++;
     }
 
-    /** 
+    /**
      * Returns the number of cards in the hand.
      */
     public function getNumberCards(): int
@@ -42,7 +42,7 @@ class CardHand
         return $this->hand;
     }
 
-    /** 
+    /**
      * Returns a specific card from the hand.
      */
     public function getSpecificCard(int $pos): Card
@@ -51,7 +51,7 @@ class CardHand
         return $this->hand[$pos];
     }
 
-    /** 
+    /**
      * Removes a card from the hand.
      */
     public function removeCard(string $name): void

@@ -11,7 +11,7 @@ class Card
         $this->name = "";
     }
 
-    /** 
+    /**
      * Returns the name of the card.
      */
     public function getName(): string
@@ -19,7 +19,7 @@ class Card
         return $this->name;
     }
 
-    /** 
+    /**
      * Sets the name of the card.
      */
     public function setName(string $name): void

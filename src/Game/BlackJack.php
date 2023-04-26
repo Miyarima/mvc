@@ -56,7 +56,7 @@ class BlackJack
         }
     }
 
-    /** 
+    /**
      * Returns the deck.
      */
     public function getDeck(): DeckOfCards
@@ -64,7 +64,7 @@ class BlackJack
         return $this->deck;
     }
 
-    /** 
+    /**
      * Shuffles the deck.
      */
     public function shuffleDeck(): void
@@ -128,7 +128,7 @@ class BlackJack
         return $cards;
     }
 
-    /** 
+    /**
      * Calculates the points of the player hand.
      */
     public function playerPoints(): int
@@ -221,7 +221,7 @@ class BlackJack
         return $message;
     }
 
-    /** 
+    /**
      * Runs through the house hand and checks if there is an ace.
      */
     public function aceInHandHouse(): bool
