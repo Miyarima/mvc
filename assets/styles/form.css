@@ -1,0 +1,35 @@
+.input {
+    font-size: 1.1em;
+    line-height: 1.4em;
+    font-family: 'Poppins', san-serif;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 0.2rem;
+    padding: 0.6rem;
+    box-sizing: border-box;
+    margin-bottom: 1.4rem;
+}
+
+.input {
+    width: 100%;
+}
+
+.input:valid{
+    border: 1px solid green;
+}
+
+.input-label {
+    font-family: 'Merriweather', serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 2rem 0 0;
+    display: block;
+}
+
+.input-label:first-of-type {
+    margin: 1rem 0 0;
+}
+
+.input-label::after {
+    content: ":";
+}

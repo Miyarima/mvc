@@ -1,0 +1,22 @@
+{% extends "base/base.html.twig" %}
+
+{% block title %}Library{% endblock %}
+
+{% block body %}
+    <h1 class="center-text">Bibliotek</h1>
+        <section>
+            <h4>Välkommen!</h4>
+            <p>
+                Välkommen till det lilla biblioteket! Här kan du enkelt 
+                hantera dina böcker på ett användarvänligt sätt. Med vår 
+                användarvänliga gränssnitt kan du se alla dina böcker, 
+                lägga till nya böcker, uppdatera befintliga böcker och 
+                ta bort dem. Dessutom kan du lägga till omslagsbilder 
+                för dina böcker och se bokomslaget direkt från bibliotekets 
+                gränssnitt. Vi ser fram emot att hjälpa dig hantera ditt 
+                bibliotek på ett enkelt och smidigt sätt!
+            </p>
+        </section><br>
+        <a class="button" href="{{ path('form_book') }}">Lägg Till en Bok</a>
+        <a class="button" href="{{ path('library_show_all') }}">Visa alla böcker</a>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base/base.html.twig' %}
+
+{% block title %}Add New Book{% endblock %}
+
+{% block body %}
+    <h1 class="center-text">En ny bok har blivit tillagd.</h1>
+    <section>
+        <h4><strong>Titel:</strong> {{ title }}</h4>
+        <h4><strong>Författare:</strong> {{ author }}</h4>
+        <h4><strong>Bildlänk:</strong> {{ img }}</h4>
+        <h4><strong>ISBN:</strong> {{ isbn }}</h4>
+    </section><br>
+    <form>
+        <input class="button" type="submit" value="Gå Till Startsidan"
+        onClick="this.form.action='{{ libraryUrl }}';">
+    </form>
+{% endblock %}

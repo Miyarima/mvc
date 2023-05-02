@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1682520232">
-  <project timestamp="1682520232">
+<coverage generated="1682863078">
+  <project timestamp="1682863078">
     <file name="/home/jonathan/dbwebb-kurser/mvc/me/report/src/Controller/ApiController.php">
       <class name="App\Controller\ApiController" namespace="global">
         <metrics complexity="23" methods="10" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="106" coveredstatements="0" elements="116" coveredelements="0"/>
@@ -384,7 +384,7 @@
       <line num="154" type="stmt" count="8"/>
       <line num="155" type="stmt" count="8"/>
       <line num="156" type="stmt" count="8"/>
-      <line num="157" type="stmt" count="4"/>
+      <line num="157" type="stmt" count="3"/>
       <line num="161" type="stmt" count="8"/>
       <line num="168" type="method" name="houseDraw" visibility="public" complexity="6" crap="6.01" count="2"/>
       <line num="170" type="stmt" count="2"/>
@@ -418,12 +418,12 @@
       <line num="217" type="stmt" count="2"/>
       <line num="218" type="stmt" count="1"/>
       <line num="221" type="stmt" count="5"/>
-      <line num="227" type="method" name="aceInHandHouse" visibility="public" complexity="3" crap="3" count="6"/>
-      <line num="229" type="stmt" count="6"/>
-      <line num="230" type="stmt" count="6"/>
-      <line num="231" type="stmt" count="6"/>
-      <line num="232" type="stmt" count="4"/>
-      <line num="235" type="stmt" count="3"/>
+      <line num="227" type="method" name="aceInHandHouse" visibility="public" complexity="3" crap="3" count="4"/>
+      <line num="229" type="stmt" count="4"/>
+      <line num="230" type="stmt" count="4"/>
+      <line num="231" type="stmt" count="4"/>
+      <line num="232" type="stmt" count="3"/>
+      <line num="235" type="stmt" count="2"/>
       <line num="241" type="method" name="aceInHandPlayer" visibility="public" complexity="3" crap="3" count="4"/>
       <line num="243" type="stmt" count="4"/>
       <line num="244" type="stmt" count="4"/>
