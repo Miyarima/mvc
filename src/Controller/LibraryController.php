@@ -31,7 +31,7 @@ class LibraryController extends AbstractController
         ]);
     }
 
-    #[Route('/library/add/book', name: 'library_show_all', methods: ['POST'])]
+    #[Route('/library/add/book', name: 'add_book', methods: ['POST'])]
     public function addBook(
         ManagerRegistry $doctrine,
         Request $request
@@ -60,11 +60,15 @@ class LibraryController extends AbstractController
         $books = $libraryRepository
             ->findAll();
 
-        $response = $this->json($books);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
+        $allBooks = [];
+        foreach ($books as $book) {
+            $allBooks[] = [$book->getImgLink(), $book->getId()];
+        }
+
+        return $this->render('library/all_books.html.twig', [
+            "libraryUrl" => $this->generateUrl('library'),
+            "books" => $allBooks,
+        ]);
     }
 
     #[Route('/library/show/{id}', name: 'show_book_by_id', methods: ['GET'])]
@@ -72,14 +76,16 @@ class LibraryController extends AbstractController
         LibraryRepository $libraryRepository,
         int $id
     ): Response {
-        $books = $libraryRepository
+        $book = $libraryRepository
             ->find($id);
 
-        $response = $this->json($books);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
+        return $this->render('library/single_book.html.twig', [
+            "libraryUrl" => $this->generateUrl('library'),
+            "title" => $book->getTitle(),
+            "author" => $book->getAuthor(),
+            "img" => $book->getImgLink(),
+            "isbn" => $book->getIsbn(),
+        ]);
     }
 
     #[Route('/library/delete/book/{id}', name: 'delete_book_by_id', methods: ['GET'])]

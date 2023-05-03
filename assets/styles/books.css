@@ -1,0 +1,10 @@
+.single-book {
+    display: flex;
+    gap: 2em;
+}
+
+.all-books {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}

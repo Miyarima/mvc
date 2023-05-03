@@ -1,0 +1,18 @@
+{% extends 'base/base.html.twig' %}
+
+{% block title %}Add New Book{% endblock %}
+
+{% block body %}
+    <h1 class="center-text">Alla böker i biblioteket.</h1>
+    <section class="all-books">
+        {% for book in books %}
+            <a href="{{ path('show_book_by_id', {id:book[1]}) }}">
+                <img src="{{ asset('img/'~ book[0] ~'.jpg') }}" alt="">
+            </a>
+        {% endfor %}
+    </section><br>
+    <form>
+        <input class="button" type="submit" value="Gå Till Startsidan"
+        onClick="this.form.action='{{ libraryUrl }}';">
+    </form>
+{% endblock %}

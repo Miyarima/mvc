@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Deck\Card;
 use App\Deck\CardHand;
 use App\Deck\DeckOfCards;
+use App\Repository\LibraryRepository;
 
 use App\Traits\CreateDeck;
 
@@ -221,6 +222,35 @@ class ApiController extends AbstractController
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
 
+        return $response;
+    }
+
+    #[Route('/api/library/books', name: 'api_library', methods: ['GET'])]
+    public function showApiLibrary(
+        LibraryRepository $libraryRepository
+    ): Response {
+        $books = $libraryRepository
+            ->findAll();
+
+        $response = $this->json($books);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
+
+    #[Route('/api/library/book/{isbn}', name: 'api_library_by_isbn', methods: ['GET'])]
+    public function showApiBookByIsbn(
+        LibraryRepository $libraryRepository,
+        int $isbn
+    ): Response {
+        $books = $libraryRepository
+            ->find($isbn);
+
+        $response = $this->json($books);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
         return $response;
     }
 }
