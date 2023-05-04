@@ -245,7 +245,7 @@ class ApiController extends AbstractController
         int $isbn
     ): Response {
         $books = $libraryRepository
-            ->find($isbn);
+            ->findByIsbn($isbn);
 
         $response = $this->json($books);
         $response->setEncodingOptions(

@@ -12,6 +12,8 @@
                 <p><a href="{{ path('api_shuffle_deck_get') }}">Den här routen ger hela decken shufflad</a>. <code>/api/deck/shuffle</code></p><br>
                 <p><a href="{{ path('api_draw_card_get') }}">Den här routen ger ett slupmat draget kort</a>. <code>/api/deck/draw</code></p><br>
                 <p><a href="{{ path('api_draw_specific_card', {number:1}) }}">Den här drar antalet kort som ges</a>. <code>/api/deck/draw</code></p><br>
+                <p><a href="{{ path('api_library') }}">Alla böker i biblioteket</a>. <code>api/library/books</code></p><br>
+                <p><a href="{{ path('api_library_by_isbn', {isbn:9780316029186}) }}">Specifik bok med ISBN</a>. <code>api/library/book/isbn</code></p><br>
             </p><br>
             <h4>Mina api routes</h4>
             <p>

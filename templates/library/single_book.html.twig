@@ -1,6 +1,6 @@
 {% extends 'base/base.html.twig' %}
 
-{% block title %}Add New Book{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block body %}
     <h1 class="center-text">{{ title }}.</h1>
@@ -12,8 +12,9 @@
             <h4><strong>ISBN:</strong> {{ isbn }}</h4>
         </div>
     </section><br>
-    <form>
-        <input class="button" type="submit" value="Gå Till Startsidan"
-        onClick="this.form.action='{{ libraryUrl }}';">
-    </form>
+    <div class="game-buttons">
+        <a class="button" href="{{ path('library_show_all') }}">Gå Tillbaka</a>
+        <a class="button" href="{{ path('update_book', {id:id}) }}">Uppdatera</a>
+        <a class="button" href="{{ path('delete_book', {id:id}) }}">Ta Bort</a>
+    </div>
 {% endblock %}

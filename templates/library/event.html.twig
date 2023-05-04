@@ -1,17 +1,16 @@
 {% extends 'base/base.html.twig' %}
 
-{% block title %}Add New Book{% endblock %}
+{% block title %}Bok Event{% endblock %}
 
 {% block body %}
-    <h1 class="center-text">En ny bok har blivit tillagd.</h1>
+    <h1 class="center-text">Boken {{ title }} har blivit {{ text }}.</h1>
     <section>
         <h4><strong>Titel:</strong> {{ title }}</h4>
         <h4><strong>Författare:</strong> {{ author }}</h4>
         <h4><strong>Bildlänk:</strong> {{ img }}</h4>
         <h4><strong>ISBN:</strong> {{ isbn }}</h4>
     </section><br>
-    <form>
-        <input class="button" type="submit" value="Gå Till Startsidan"
-        onClick="this.form.action='{{ libraryUrl }}';">
-    </form>
+    <div class="game-buttons">
+        <a class="button" href="{{ path('library_show_all') }}">Gå Tillbaka</a>
+    </div>
 {% endblock %}

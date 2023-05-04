@@ -39,6 +39,12 @@ class LibraryRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByIsbn($isbn)
+    {
+        return $this->findOneBy(['isbn' => $isbn]);
+    }
+
+
 //    /**
 //     * @return Library[] Returns an array of Library objects
 //     */

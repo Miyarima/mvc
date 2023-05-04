@@ -18,7 +18,10 @@
         <label class="input-label" for="ISBN">ISBN</label>
         <input class="input" type="number" id="ISBN" name="ISBN" required step="1"/>
     
-        <input class="button" type="submit" value="Lägg Till"
-        onClick="this.form.action='{{ addBookUrl }}';">
+        <div class="game-buttons">
+            <a class="button" href="{{ path('library_show_all') }}">Gå Tillbaka</a>
+            <input class="button" type="submit" value="Lägg Till"
+            onClick="this.form.action='{{ addBookUrl }}';">
+        </div>
     </form>
 {% endblock %}

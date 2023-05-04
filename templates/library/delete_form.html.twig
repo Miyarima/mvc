@@ -1,0 +1,29 @@
+{% extends 'base/base.html.twig' %}
+
+{% block title %}Tar bort Book{% endblock %}
+
+{% block body %}
+    <h1 class="center-text">Håller på att ta bort {{ title }}</h1>
+
+    <form method="POST">
+        <label class="input-label" for="title">Titel</label>
+        <input class="input" type="text" id="title" name="title" value="{{ title }}" readonly/>
+    
+        <label class="input-label" for="author">Författare</label>
+        <input class="input" type="text" id="author" name="author" value="{{ author }}" readonly/>
+    
+        <label class="input-label" for="img">Bild Länk</label>
+        <input class="input" type="text" id="img" name="img" value="{{ img }}" readonly/>
+
+        <label class="input-label" for="ISBN">ISBN</label>
+        <input class="input" type="number" id="ISBN" name="ISBN" value="{{ isbn }}" readonly/>
+        
+        <input type="hidden" name="id" value="{{ id }}" readonly>
+
+        <div class="game-buttons">
+            <a class="button" href="{{ path('show_book_by_id', {id:id}) }}">Gå Tillbaka</a>
+            <input class="button" type="submit" value="Ta Bort"
+            onClick="this.form.action='{{ deleteBookUrl }}';">
+        </div>
+    </form>
+{% endblock %}

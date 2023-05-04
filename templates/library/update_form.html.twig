@@ -1,0 +1,29 @@
+{% extends 'base/base.html.twig' %}
+
+{% block title %}Uppdatera Book{% endblock %}
+
+{% block body %}
+    <h1 class="center-text">Uppdatera {{ title }}</h1>
+
+    <form method="POST">
+        <label class="input-label" for="title">Titel</label>
+        <input class="input" type="text" id="title" name="title" value="{{ title }}" required/>
+    
+        <label class="input-label" for="author">Författare</label>
+        <input class="input" type="text" id="author" name="author" value="{{ author }}" required/>
+    
+        <label class="input-label" for="img">Bild Länk</label>
+        <input class="input" type="text" id="img" name="img" value="{{ img }}" required/>
+
+        <label class="input-label" for="ISBN">ISBN</label>
+        <input class="input" type="number" id="ISBN" name="ISBN" value="{{ isbn }}" required step="1"/>
+        
+        <input type="hidden" name="id" value="{{ id }}" readonly>
+
+        <div class="game-buttons">
+            <a class="button" href="{{ path('show_book_by_id', {id:id}) }}">Gå Tillbaka</a>
+            <input class="button" type="submit" value="Spara"
+            onClick="this.form.action='{{ updateBookUrl }}';">
+        </div>
+    </form>
+{% endblock %}
