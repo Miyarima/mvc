@@ -8,9 +8,9 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class Book
 {
-    private $book;
-    private $doctrine;
-    private $libraryRepository;
+    private Library $book;
+    private ManagerRegistry $doctrine;
+    private LibraryRepository $libraryRepository;
 
     public function __construct(
         ManagerRegistry $doctrine,
@@ -23,9 +23,8 @@ class Book
     /**
      * Creates a new Library object.
      */
-    public function createBook(
-        array $data
-    ): void {
+    public function createBook(array $data): void
+    {
         $book = new Library();
 
         $book->setTitle($data['title']);
@@ -49,11 +48,10 @@ class Book
     /**
      * Updates Library object in database.
      */
-    public function updateBook(
-        array $data
-    ): void {
+    public function updateBook(array $data): void
+    {
         $book = $this->libraryRepository->find($data['id']);
-        
+
         $book->setTitle($data['title']);
         $book->setAuthor($data['author']);
         $book->setIsbn($data['ISBN']);
@@ -69,7 +67,7 @@ class Book
         string $id
     ): void {
         $book = $this->libraryRepository->find($id);
-        
+
         $this->libraryRepository->remove($book, true);
     }
 }
