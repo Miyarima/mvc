@@ -7,7 +7,13 @@
     <section class="all-books">
         {% for book in books %}
             <a href="{{ path('show_book_by_id', {id:book[1]}) }}">
-                <img src="{{ asset('img/'~ book[0] ~'.jpg') }}" alt="">
+                {% set imagePath = 'img/' ~ book[0] ~ '.jpg' %}
+                {% set fileExists = file_exists(imagePath) %}
+                {% if fileExists %}
+                    <img src="{{ asset('img/'~ book[0] ~'.jpg') }}" alt="">
+                {% else %}
+                    <img src="{{ asset('img/default.jpg') }}" alt="">
+                {% endif %}
             </a>
         {% endfor %}
     </section><br>
