@@ -23,7 +23,7 @@ class Library
     private ?string $author = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $img_link = null;
+    private ?string $imgLink = null;
 
     public function getId(): ?int
     {
@@ -68,12 +68,12 @@ class Library
 
     public function getImgLink(): ?string
     {
-        return $this->img_link;
+        return $this->imgLink;
     }
 
-    public function setImgLink(string $img_link): self
+    public function setImgLink(string $imgLink): self
     {
-        $this->img_link = $img_link;
+        $this->imgLink = $imgLink;
 
         return $this;
     }

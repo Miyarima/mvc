@@ -21,7 +21,7 @@
         <input type="hidden" name="id" value="{{ id }}" readonly>
 
         <div class="game-buttons">
-            <a class="button" href="{{ path('show_book_by_id', {id:id}) }}">Gå Tillbaka</a>
+            <a class="button" href="{{ path('show_book_by_id', {bookId:id}) }}">Gå Tillbaka</a>
             <input class="button" type="submit" value="Spara"
             onClick="this.form.action='{{ updateBookUrl }}';">
         </div>

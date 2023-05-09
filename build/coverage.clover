@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1683207874">
-  <project timestamp="1683207874">
+<coverage generated="1683635584">
+  <project timestamp="1683635584">
     <file name="/home/jonathan/dbwebb-kurser/mvc/me/report/src/Controller/ApiController.php">
       <class name="App\Controller\ApiController" namespace="global">
         <metrics complexity="25" methods="12" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="120" coveredstatements="0" elements="132" coveredelements="0"/>
@@ -557,12 +557,12 @@
       <line num="217" type="stmt" count="2"/>
       <line num="218" type="stmt" count="1"/>
       <line num="221" type="stmt" count="5"/>
-      <line num="227" type="method" name="aceInHandHouse" visibility="public" complexity="3" crap="3" count="4"/>
-      <line num="229" type="stmt" count="4"/>
-      <line num="230" type="stmt" count="4"/>
-      <line num="231" type="stmt" count="4"/>
+      <line num="227" type="method" name="aceInHandHouse" visibility="public" complexity="3" crap="3" count="6"/>
+      <line num="229" type="stmt" count="6"/>
+      <line num="230" type="stmt" count="6"/>
+      <line num="231" type="stmt" count="6"/>
       <line num="232" type="stmt" count="3"/>
-      <line num="235" type="stmt" count="2"/>
+      <line num="235" type="stmt" count="4"/>
       <line num="241" type="method" name="aceInHandPlayer" visibility="public" complexity="3" crap="3" count="4"/>
       <line num="243" type="stmt" count="4"/>
       <line num="244" type="stmt" count="4"/>
@@ -658,6 +658,18 @@
       <line num="20" type="stmt" count="0"/>
       <metrics loc="23" ncloc="23" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="8" coveredelements="0"/>
     </file>
-    <metrics files="14" loc="1473" ncloc="1319" classes="13" methods="87" coveredmethods="28" conditionals="0" coveredconditionals="0" statements="486" coveredstatements="111" elements="573" coveredelements="139"/>
+    <file name="/home/jonathan/dbwebb-kurser/mvc/me/report/src/Twig/FileExistsExtension.php">
+      <class name="App\Twig\FileExistsExtension" namespace="global">
+        <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="6" coveredelements="0"/>
+      </class>
+      <line num="10" type="method" name="getFunctions" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="12" type="stmt" count="0"/>
+      <line num="13" type="stmt" count="0"/>
+      <line num="14" type="stmt" count="0"/>
+      <line num="17" type="method" name="fileExists" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="19" type="stmt" count="0"/>
+      <metrics loc="22" ncloc="22" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="6" coveredelements="0"/>
+    </file>
+    <metrics files="15" loc="1495" ncloc="1341" classes="14" methods="89" coveredmethods="28" conditionals="0" coveredconditionals="0" statements="490" coveredstatements="111" elements="579" coveredelements="139"/>
   </project>
 </coverage>

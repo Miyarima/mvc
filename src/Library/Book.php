@@ -64,9 +64,9 @@ class Book
      * Delete Library object in database.
      */
     public function deleteBook(
-        string $id
+        string $bookId
     ): void {
-        $book = $this->libraryRepository->find($id);
+        $book = $this->libraryRepository->find($bookId);
 
         $this->libraryRepository->remove($book, true);
     }

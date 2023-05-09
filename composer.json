@@ -112,7 +112,8 @@
         "clean-all": [
             "@clean",
             "rm -rf vendor composer.lock"
-        ]
+        ],
+        "phpmetrics": "tools/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json"
     },
     "conflict": {
         "symfony/symfony": "*"

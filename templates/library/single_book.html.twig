@@ -14,7 +14,7 @@
     </section><br>
     <div class="game-buttons">
         <a class="button" href="{{ path('library_show_all') }}">Gå Tillbaka</a>
-        <a class="button" href="{{ path('update_book', {id:id}) }}">Uppdatera</a>
-        <a class="button" href="{{ path('delete_book', {id:id}) }}">Ta Bort</a>
+        <a class="button" href="{{ path('update_book', {bookId:id}) }}">Uppdatera</a>
+        <a class="button" href="{{ path('delete_book', {bookId:id}) }}">Ta Bort</a>
     </div>
 {% endblock %}

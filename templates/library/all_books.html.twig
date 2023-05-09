@@ -6,7 +6,7 @@
     <h1 class="center-text">Alla böker i biblioteket.</h1>
     <section class="all-books">
         {% for book in books %}
-            <a href="{{ path('show_book_by_id', {id:book[1]}) }}">
+            <a href="{{ path('show_book_by_id', {bookId:book[1]}) }}">
                 {% set imagePath = 'img/' ~ book[0] ~ '.jpg' %}
                 {% set fileExists = file_exists(imagePath) %}
                 {% if fileExists %}

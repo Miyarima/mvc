@@ -71,13 +71,13 @@ class LibraryController extends AbstractController
         ]);
     }
 
-    #[Route('/library/show/{id}', name: 'show_book_by_id', methods: ['GET'])]
+    #[Route('/library/show/{bookId}', name: 'show_book_by_id', methods: ['GET'])]
     public function showBookByID(
         LibraryRepository $libraryRepository,
-        int $id
+        int $bookId
     ): Response {
         $book = $libraryRepository
-            ->find($id);
+            ->find($bookId);
 
         return $this->render('library/single_book.html.twig', [
             "title" => $book->getTitle(),
@@ -88,16 +88,16 @@ class LibraryController extends AbstractController
         ]);
     }
 
-    #[Route('/library/delete/book/{id}', name: 'delete_book', methods: ['GET'])]
+    #[Route('/library/delete/book/{bookId}', name: 'delete_book', methods: ['GET'])]
     public function deleteBook(
         LibraryRepository $libraryRepository,
-        int $id
+        int $bookId
     ): Response {
-        $book = $libraryRepository->find($id);
+        $book = $libraryRepository->find($bookId);
 
         if (!$book) {
             throw $this->createNotFoundException(
-                'No book found for id '.$id
+                'No book found for id '.$bookId
             );
         }
 
@@ -127,16 +127,16 @@ class LibraryController extends AbstractController
         return $this->redirectToRoute('library_show_all');
     }
 
-    #[Route('/library/update/book/{id}', name: 'update_book', methods: ['GET'])]
+    #[Route('/library/update/book/{bookId}', name: 'update_book', methods: ['GET'])]
     public function updateBook(
         LibraryRepository $libraryRepository,
-        int $id
+        int $bookId
     ): Response {
-        $book = $libraryRepository->find($id);
+        $book = $libraryRepository->find($bookId);
 
         if (!$book) {
             throw $this->createNotFoundException(
-                'No book found for id '.$id
+                'No book found for id '.$bookId
             );
         }
 
