@@ -21,7 +21,13 @@
             tester. I det flesta fall, ju högre täckning desto bättre, då det är 
             mindre risk för buggar och fel. Men den är inte bulletproof, tester går
             att skapa som täcker mycket men testar inget. De automatiska testerna kan
-            vara enhetstester, integrationstester, funktionstester, etc.
+            vara enhetstester, integrationstester, funktionstester, etc.<br><br>
+            Så här kan det se ut<br>
+            <a href="{{ asset('img/covrage.png') }}">
+                <img src="{{ asset('img/covrage.png') }}" alt="">
+            </a><br>
+            Nu har jag bara enhetstester på mina klasser och inte controllers därav
+            den låga % på covrage.
         </p><br>
         <h4>Complexity (komplexitet)</h4>
         <p>
@@ -50,7 +56,13 @@
             (Afferent Coupling). Ce mäter hur många andra klasser eller moduler som
             klassen är beroende av. Ca mäter hur många andra klasser eller moduler som
             är berode av just denna klassen. Tillsammans get de en indikation på hur
-            väl en klass är isolerad.
+            väl en klass är isolerad.<br><br>
+            Denna klassen används nästan av alla klasser, men använder själv 
+            ingen annan.
+            <a href="{{ asset('img/coupling.png') }}">
+                <img class="img" src="{{ asset('img/coupling.png') }}" alt="">
+            </a><br>
+            Så den har ett instabilitets score på 0 (Ce/(Ce + Ca)).
         </p><br>
         <h4>CRAP (Change Risk Anti-Patterns)</h4>
         <p>
@@ -64,7 +76,7 @@
 
     <section>
         <h2 id="phpmetrics">Phpmetrics</h2>
-        <h4>Codestyle (kodstil)</h4>
+        <h4>Metrics</h4>
         <p>
             <a href="{{ asset('img/phpm_overview.png') }}">
                 <img class="img" src="{{ asset('img/phpm_overview.png') }}" alt="">
