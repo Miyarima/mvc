@@ -76,22 +76,50 @@
 
     <section>
         <h2 id="phpmetrics">Phpmetrics</h2>
-        <h4>Metrics</h4>
+        <p class="underline img-padding">
+            Tre potentiella svaga punkter identifierade av phpmetrics är apiControllern,
+            libraryControllern och blackJackControllern. 
+        </p><br>
         <p>
-            <a href="{{ asset('img/phpm_overview.png') }}">
-                <img class="img" src="{{ asset('img/phpm_overview.png') }}" alt="">
+            ApiControllern har potentiellt för mycket kontroll, kan möjligvis innehålla
+            någon bugg, samt har den en hög komplexitet.
+            <a href="{{ asset('img/apicontroller.png') }}">
+                <img class="img underline img-padding" src="{{ asset('img/apicontroller.png') }}" alt="">
+            </a>
+            Librarycontroller har en väldigt hög Maintainability Index.
+            <a href="{{ asset('img/librarycontroller.png') }}">
+                <img class="img underline img-padding" src="{{ asset('img/librarycontroller.png') }}" alt="">
+            </a>
+            blackJackControllern har en väldigt hög Maintainability Index samt komplexitet.
+            <a href="{{ asset('img/blackjackcontroller.png') }}">
+                <img class="img img-padding" src="{{ asset('img/blackjackcontroller.png') }}" alt="">
             </a>
         </p><br>
     </section><br>
 
     <section>
         <h2 id="phpmetrics">Scrutinizer</h2>
-        <h4>Score</h4>
         <p>
-            <a href="{{ asset('img/scrut_score.png') }}">
-                <img src="{{ asset('img/scrut_score.png') }}" alt="">
-            </a>
+            På den här bilden ser vi att den totala poängen är 9.96, kod täckning är
+            bara 24% och builden har passerat. Så ett potentiellt problem skulle kunna
+            vara den låga kod täckningen.
         </p><br>
+        <a href="{{ asset('img/scrut_score.png') }}">
+            <img class="underline img-padding" src="{{ asset('img/scrut_score.png') }}" alt="">
+        </a>
+        <p>
+            Här är ett till av problemen Scrutinizer har identifierat, den enda klassen som inte
+            har ett "A" i betyg då den har CRAP score.
+        </p>
+        <a href="{{ asset('img/scrut_api.png') }}">
+            <img class="img underline img-padding" src="{{ asset('img/scrut_api.png') }}" alt="">
+        </a>
+        <p>
+            Här två potentiella buggar som Scrutinizer har hittat.
+        </p>
+        <a href="{{ asset('img/scrut_bug.png') }}">
+            <img class="img underline img-padding" src="{{ asset('img/scrut_bug.png') }}" alt="">
+        </a>
     </section><br>
 
 {% endblock %}

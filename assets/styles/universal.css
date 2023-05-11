@@ -67,3 +67,13 @@ code {
 .center-text {
     text-align: center;
 }
+
+.underline {
+    border-bottom: 2px solid rgb(221, 221, 221);
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+.img-padding {
+    padding: 1em;
+}
