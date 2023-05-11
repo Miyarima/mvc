@@ -86,15 +86,26 @@
             <a href="{{ asset('img/apicontroller.png') }}">
                 <img class="img underline img-padding" src="{{ asset('img/apicontroller.png') }}" alt="">
             </a>
-            Librarycontroller har en väldigt hög Maintainability Index.
+            Librarycontroller har en väldigt låg Maintainability Index.
             <a href="{{ asset('img/librarycontroller.png') }}">
                 <img class="img underline img-padding" src="{{ asset('img/librarycontroller.png') }}" alt="">
             </a>
-            blackJackControllern har en väldigt hög Maintainability Index samt komplexitet.
+            blackJackControllern har en låg Maintainability Index samt väldigt hög komplexitet. 
             <a href="{{ asset('img/blackjackcontroller.png') }}">
-                <img class="img img-padding" src="{{ asset('img/blackjackcontroller.png') }}" alt="">
+                <img class="img underline img-padding" src="{{ asset('img/blackjackcontroller.png') }}" alt="">
             </a>
         </p><br>
+        <p>
+            De tre potentiellt problemen är främst komplexitet och en hög sådan kan göra koden 
+            svårare att förstå och underhålla koden. Jag har antaligen många olika utfall som
+            kan ske i de olika controllerna då de innehåller ganska många olika routes. Men 
+            dess routes är nödvändiga för att uppnå funktionaliteten jag vill ha. Det finns 
+            säkerligen saker som går att göra för att förbättra poängen, som att dela upp i 
+            flera controllers eller skriva om koden innut. Men att dela upp den känns väldigt
+            onödigt när det ändå är så små som det är.<br><br>
+            För att höja Maintainability Index skulle jag kunna skriva om controllerna, 
+            alternativ försöka väva in mer av koden som ligger i kontrollerna in i klasserna.
+        </p>
     </section><br>
 
     <section>
@@ -120,6 +131,17 @@
         <a href="{{ asset('img/scrut_bug.png') }}">
             <img class="img underline img-padding" src="{{ asset('img/scrut_bug.png') }}" alt="">
         </a>
+        <p>
+            De tre potentiella problemen Scrutnizer har hittat är låg kod täckning, en klass 
+            som har högt CRAP score och några buggar.<br><br>
+            Nu har jag låg kod täckning för att vi bara gjorde enhetstester för våra klasser
+            och större delen av koden befinner sig i mina controllers. CRAP:en i apiControllern
+            är nog pågrund av en onädigt komplex if-sats och att Phpmetrics identifierade den som
+            en "Gud" klass.<br><br>
+            "Buggarna" skulle bara uppstå om man letar efter en bok som inte finns, då stämmer inte 
+            retur värde på metoden. Vilket inte spelar någon stor roll, Scrutinizer själv klassar
+            de som "Severity minor".
+        </p>
     </section><br>
 
 {% endblock %}
