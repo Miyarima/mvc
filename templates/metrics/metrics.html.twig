@@ -1,0 +1,85 @@
+{% extends "base/base.html.twig" %}
+
+{% block title %}Report | Metrics{% endblock %}
+
+{% block body %}
+    <h1 class="center-text">Metrics</h1>
+
+    <section>
+        <h2 id="Introduktion">Introduktion</h2>
+        <h4>Codestyle (kodstil)</h4>
+        <p>
+            Codestyle är att man ska skriva kod som är lätt att läsa, förstå och 
+            underhålla. Detta kan innebära korrekt använding av indentering,
+            använding av läsbara/förklarande variabel- och funktionsnamn, samt följa
+            riktlinjer för hur koden ska vara formaterad då detta underlättar för 
+            andra utvecklar att förstår koden och gör samarbetet smidigare. 
+        </p><br>
+        <h4>Coverage (täckning)</h4>
+        <p>
+            Code Coverage handlar om hur mycket av koden som testas av automatiska 
+            tester. I det flesta fall, ju högre täckning desto bättre, då det är 
+            mindre risk för buggar och fel. Men den är inte bulletproof, tester går
+            att skapa som täcker mycket men testar inget. De automatiska testerna kan
+            vara enhetstester, integrationstester, funktionstester, etc.
+        </p><br>
+        <h4>Complexity (komplexitet)</h4>
+        <p>
+            Complexity är hur komplicerad koden är och hur många olika vägar som kan
+            tas genom koden. För varje If-sats vilkor eller loop blir det en ny väg 
+            genom koden, så med många if-satser blir det snabbt många vägar. En hög
+            komplexitet kan göra koden svårare att förstå och underhålla.
+        </p><br>
+        <h4>Cohesion (sammanhållning)</h4>
+        <p>
+            Cohesion handlar om hur väl ens olika delar av koden hörsamman och hur
+            väl de samverkar. Ett exemple skulle vara en klass som har hand om mer 
+            än en ansvarsområde, den har en dålig cohesion. En högre sammanhållning
+            innebär att sammanhörande kod är grupperad, vilket också oftas gör det 
+            enklar att förstå och underhålla.
+        </p><br>
+        <h4>Coupling (koppling)</h4>
+        <p>
+            Coupling är hur mycket oilka delar av koden är beroende av varandra. Så 
+            om en klass använder andra klasser har den externa berode till dem. Samt 
+            om klassen blir använd av en annan klass är det också ett berode. Låg 
+            coupling innebär att olika delar av koden kan ändras utan att få några 
+            oförväntade problem. Hög coupling kan göra det svårt att ändra koden utan 
+            större konsekvenser, samt intoducera buggar.<br><br>
+            Det finns två sätt att mäta Coupling, Ce (Efferent Coupling) och Ca 
+            (Afferent Coupling). Ce mäter hur många andra klasser eller moduler som
+            klassen är beroende av. Ca mäter hur många andra klasser eller moduler som
+            är berode av just denna klassen. Tillsammans get de en indikation på hur
+            väl en klass är isolerad.
+        </p><br>
+        <h4>CRAP (Change Risk Anti-Patterns)</h4>
+        <p>
+            CRAP är en metod för att mäta kodkvaliteten baserat på Coupling och 
+            Complexity. CRAP räknar antalet rader kod och multiplicera med antalet
+            gånger en metod eller funktion blir kallad, och till sist dividerar med
+            komplexiteten för metoden eller funktionen. Ett högt CRAP kan innebära
+            större risk för att ändringar i koden kan introducera nya buggar eller fel.
+        </p><br>
+    </section><br>
+
+    <section>
+        <h2 id="phpmetrics">Phpmetrics</h2>
+        <h4>Codestyle (kodstil)</h4>
+        <p>
+            <a href="{{ asset('img/phpm_overview.png') }}">
+                <img class="img" src="{{ asset('img/phpm_overview.png') }}" alt="">
+            </a>
+        </p><br>
+    </section><br>
+
+    <section>
+        <h2 id="phpmetrics">Scrutinizer</h2>
+        <h4>Score</h4>
+        <p>
+            <a href="{{ asset('img/scrut_score.png') }}">
+                <img src="{{ asset('img/scrut_score.png') }}" alt="">
+            </a>
+        </p><br>
+    </section><br>
+
+{% endblock %}

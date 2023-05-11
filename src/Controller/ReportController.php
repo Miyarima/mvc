@@ -157,4 +157,9 @@ class ReportController extends AbstractController
 
         return $this->render('cards/draw_cards_many.html.twig', $data);
     }
+
+    #[Route("/metrics", name: "metrics", methods: ['GET'])]
+    public function metrics(): Response {
+        return $this->render('metrics/metrics.html.twig');
+    }
 }
