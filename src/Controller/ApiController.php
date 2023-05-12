@@ -29,29 +29,23 @@ class ApiController extends AbstractController
 
     #[Route("/api/quote", name: "quote")]
     public function quote(): Response
-    {
-        $number = random_int(0, 100);
+    {   
 
-        $quote = "Who decides limits? And based on what? You said you worked hard? Well, maybe you need to work a little harder. Is that really the limit of your strength? Could you of tomorrow beat you today? Instead of giving in, move forward.  - Saitama";
+        $quotes = [
+            "Who decides limits? And based on what? You said you worked hard? Well, maybe you need to work a little harder. Is that really the limit of your strength? Could you of tomorrow beat you today? Instead of giving in, move forward.  - Saitama",
+            "Life is not a game of luck. If you wanna win, work hard. - Sora",
+            "If you cant do something, then dont. Focus on what you can do.  - Shiroe",
+            "To know sorrow is not terrifying. What is terrifuing is to knw you cant go back to the happiness you could have. - Rangiku",
+            "Ill leave tomorrows problems to tomorrows me.  - Saitama",
+            "Knowing what it feels to be in pain, is exactly why we try to be kind to others.  - Jiraiya",
+            "Reject common sense to make the impossible possible.  - Simon",
+            "You cant sit around envying other peoples worlds. You have to go out and change your own.  - Shinichi"
+        ];
 
-        if ($number < 13) {
-            $quote = "Life is not a game of luck. If you wanna win, work hard. - Sora";
-        } elseif ($number < 25) {
-            $quote = "If you cant do something, then dont. Focus on what you can do.  - Shiroe";
-        } elseif ($number < 38) {
-            $quote = "To know sorrow is not terrifying. What is terrifuing is to knw you cant go back to the happiness you could have. - Rangiku";
-        } elseif ($number < 50) {
-            $quote = "Ill leave tomorrows problems to tomorrows me.  - Saitama";
-        } elseif ($number < 63) {
-            $quote = "Knowing what it feels to be in pain, is exactly why we try to be kind to others.  - Jiraiya";
-        } elseif ($number < 75) {
-            $quote = "Reject common sense to make the impossible possible.  - Simon";
-        } elseif ($number < 88) {
-            $quote = "You cant sit around envying other peoples worlds. You have to go out and change your own.  - Shinichi";
-        }
+        $number = random_int(0, 7);
 
         $data = [
-            'quote' => $quote,
+            'quote' => $quotes[$number],
             'date' => date("Y-m-d"),
             'timestamp' => date("H:i:s")
         ];
