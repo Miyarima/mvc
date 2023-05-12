@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1683894143">
-  <project timestamp="1683894143">
+<coverage generated="1683896942">
+  <project timestamp="1683896942">
     <file name="/home/jonathan/dbwebb-kurser/mvc/me/report/src/Controller/ApiController.php">
       <class name="App\Controller\ApiController" namespace="global">
         <metrics complexity="18" methods="12" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="115" coveredstatements="0" elements="127" coveredelements="0"/>
@@ -554,12 +554,12 @@
       <line num="217" type="stmt" count="2"/>
       <line num="218" type="stmt" count="1"/>
       <line num="221" type="stmt" count="5"/>
-      <line num="227" type="method" name="aceInHandHouse" visibility="public" complexity="3" crap="3" count="5"/>
-      <line num="229" type="stmt" count="5"/>
-      <line num="230" type="stmt" count="5"/>
-      <line num="231" type="stmt" count="5"/>
+      <line num="227" type="method" name="aceInHandHouse" visibility="public" complexity="3" crap="3" count="4"/>
+      <line num="229" type="stmt" count="4"/>
+      <line num="230" type="stmt" count="4"/>
+      <line num="231" type="stmt" count="4"/>
       <line num="232" type="stmt" count="3"/>
-      <line num="235" type="stmt" count="3"/>
+      <line num="235" type="stmt" count="2"/>
       <line num="241" type="method" name="aceInHandPlayer" visibility="public" complexity="3" crap="3" count="4"/>
       <line num="243" type="stmt" count="4"/>
       <line num="244" type="stmt" count="4"/>
