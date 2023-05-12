@@ -29,8 +29,7 @@ class ApiController extends AbstractController
 
     #[Route("/api/quote", name: "quote")]
     public function quote(): Response
-    {   
-
+    {
         $quotes = [
             "Who decides limits? And based on what? You said you worked hard? Well, maybe you need to work a little harder. Is that really the limit of your strength? Could you of tomorrow beat you today? Instead of giving in, move forward.  - Saitama",
             "Life is not a game of luck. If you wanna win, work hard. - Sora",

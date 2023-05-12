@@ -159,7 +159,8 @@ class ReportController extends AbstractController
     }
 
     #[Route("/metrics", name: "metrics", methods: ['GET'])]
-    public function metrics(): Response {
+    public function metrics(): Response
+    {
         return $this->render('metrics/metrics.html.twig');
     }
 }

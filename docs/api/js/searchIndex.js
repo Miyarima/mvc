@@ -151,6 +151,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ReportController.html#method_drawSpecificCard"
         },                {
+            "fqsen": "\\App\\Controller\\ReportController\u003A\u003Ametrics\u0028\u0029",
+            "name": "metrics",
+            "summary": "",
+            "url": "classes/App-Controller-ReportController.html#method_metrics"
+        },                {
             "fqsen": "\\App\\Deck\\Card",
             "name": "Card",
             "summary": "",
@@ -521,10 +526,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Entity-Library.html#property_author"
         },                {
-            "fqsen": "\\App\\Entity\\Library\u003A\u003A\u0024img_link",
-            "name": "img_link",
+            "fqsen": "\\App\\Entity\\Library\u003A\u003A\u0024imgLink",
+            "name": "imgLink",
             "summary": "",
-            "url": "classes/App-Entity-Library.html#property_img_link"
+            "url": "classes/App-Entity-Library.html#property_imgLink"
         },                {
             "fqsen": "\\App\\Library\\Book",
             "name": "Book",
