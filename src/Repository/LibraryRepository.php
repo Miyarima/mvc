@@ -39,14 +39,14 @@ class LibraryRepository extends ServiceEntityRepository
         }
     }
 
-    public function findByIsbn(int $isbn): Library
+    public function findByIsbn(int $isbn): ?Library
     {
         $library = $this->findOneBy(['isbn' => $isbn]);
-    
-        if (!$library instanceof Library) {
-            throw new \RuntimeException(sprintf('Library with ISBN %d not found.', $isbn));
-        }
-        
+
+        // if (!$library instanceof Library) {
+        //     throw new \RuntimeException(sprintf('Library with ISBN %d not found.', $isbn));
+        // }
+
         return $library;
     }
 
