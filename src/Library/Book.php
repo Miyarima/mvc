@@ -6,6 +6,8 @@ use App\Entity\Library;
 use App\Repository\LibraryRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+use RuntimeException;
+
 class Book
 {
     private Library $book;
@@ -50,14 +52,22 @@ class Book
      */
     public function updateBook(array $data): void
     {
-        $book = $this->libraryRepository->find($data['id']);
+        try {
+            $book = $this->libraryRepository->find($data['id']);
 
-        $book->setTitle($data['title']);
-        $book->setAuthor($data['author']);
-        $book->setIsbn($data['ISBN']);
-        $book->setImgLink($data['img']);
+            if (!$book) {
+                throw new RuntimeException('Book not found');
+            }
 
-        $this->libraryRepository->save($book, true);
+            $book->setTitle($data['title']);
+            $book->setAuthor($data['author']);
+            $book->setIsbn($data['ISBN']);
+            $book->setImgLink($data['img']);
+
+            $this->libraryRepository->save($book, true);
+        } catch (RuntimeException $e) {
+            echo 'An error occurred: ' . $e->getMessage();
+        }
     }
 
     /**
@@ -66,8 +76,16 @@ class Book
     public function deleteBook(
         string $bookId
     ): void {
-        $book = $this->libraryRepository->find($bookId);
+        try {
+            $book = $this->libraryRepository->find($bookId);
 
-        $this->libraryRepository->remove($book, true);
+            if (!$book) {
+                throw new RuntimeException('Book not found');
+            }
+
+            $this->libraryRepository->remove($book, true);
+        } catch (RuntimeException $e) {
+            echo 'An error occurred: ' . $e->getMessage();
+        }
     }
 }
