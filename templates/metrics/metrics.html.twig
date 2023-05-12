@@ -161,8 +161,51 @@
         </p><br>
         <h4>Efter implementation</h4>
         <p>
-            Nu har jag inte speciellt mycket att välja på så jag tänker fixa metoden som har B
-            i betyg för att förhoppningsvis komma upp i en 10.
+            Den enda förändring som sket i phpmetrics efter implementationen
+            <a href="{{ asset('img/metric_diff.png') }}">
+                <img class="img underline img-padding" src="{{ asset('img/metric_diff.png') }}" alt="">
+            </a>
+            Men i Scrutinizer har större skillnader sket. Mitt Scrutinizer score är nu 10.
+            <a href="{{ asset('img/scrut_score_diff.png') }}">
+                <img class="img underline img-padding" src="{{ asset('img/scrut_score_diff.png') }}" alt="">
+            </a>
+            Samt det finns nu bara 1 issues kvar som inte är introducerad av mig då jag inte har skapa
+            karnel.php filen.
+            <a href="{{ asset('img/scrut_issues.png') }}">
+                <img class="img underline img-padding" src="{{ asset('img/scrut_issues.png') }}" alt="">
+            </a>
+        </p><br>
+    </section><br>
+
+    <section>
+        <h2 id="diskussion">Diskussion</h2>
+        <h4>Jobba med kodkvalitet</h4>
+        <p>
+            Jag skulle säga att man kan jobba med "clean code" aktivit med externa 
+            validatorer/linters som Scrutinizer och Phpmetrics. Dess verktyg upplever
+            jag har hjälpt att identifiera problem t.ex. buggar, metoder och funktioner
+            som kan förbättras. Så man får en bättre översikt över kvaliteten, men också
+            om den går upp eller ner efter ny funktionalitet blir introducerad.
+        </p><br>
+        <h4>Fördelar</h4>
+        <p>
+            Att använda externa linters på det hör visset kan identifiera problem som
+            man själv inte upptäckt. Man skapar en högra kodkvalitet om man följer 
+            vad t.ex. Scrutinizer vill/rekomenderar att man ändrar.
+        </p><br>
+        <h4>Nackdelar</h4>
+        <p>
+            Att få Scrutnizer att automatiskt hålla kolla på projektet tog ganska lång
+            tid och många steg man behöver för att det ska fungerar. Det verkar också
+            som att det kan få lite falska positiva lite här och där.
+        </p><br>
+        <h4>Andra möjligheter</h4>
+        <p>
+            Det beror helt på situationen, om man jobbar i ett team så känns det 
+            här som ett ganska bra alternativ. Men om man jobbar själv (och även i teams)
+            skulle jag nog försöka ha en bra kod struktur till att börja med och guidelines
+            att följa för hur och vart koden ska skrivas. Så att så lite problem och/eller 
+            kollision mellan olika delar av projekt uppstår.
         </p><br>
     </section><br>
 
