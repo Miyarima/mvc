@@ -109,13 +109,13 @@
     </section><br>
 
     <section>
-        <h2 id="phpmetrics">Scrutinizer</h2>
+        <h2 id="scrutinizer">Scrutinizer</h2>
         <p>
             På den här bilden ser vi att den totala poängen är 9.96, kod täckning är
             bara 24% och builden har passerat. Så ett potentiellt problem skulle kunna
             vara den låga kod täckningen.
         </p><br>
-        <a href="{{ asset('img/scrut_score.png') }}">
+        <a href="https://scrutinizer-ci.com/g/Miyarima/mvc/">
             <img class="underline img-padding" src="{{ asset('img/scrut_score.png') }}" alt="">
         </a>
         <p>
@@ -126,7 +126,7 @@
             <img class="img underline img-padding" src="{{ asset('img/scrut_api.png') }}" alt="">
         </a>
         <p>
-            Här två potentiella buggar som Scrutinizer har hittat.
+            Scrutinizer hittade här en major bugg.
         </p>
         <a href="{{ asset('img/scrut_bug.png') }}">
             <img class="img underline img-padding" src="{{ asset('img/scrut_bug.png') }}" alt="">
@@ -142,6 +142,30 @@
             retur värde på metoden. Vilket inte spelar någon stor roll, Scrutinizer själv klassar
             de som "Severity minor".
         </p>
+    </section><br>
+
+    <section>
+        <h2 id="förbättringar">Förbättringar</h2>
+        <p>
+            Nu har jag inte speciellt mycket att välja på så jag tänker fixa metoden som har B
+            i betyg för att förhoppningsvis komma upp i en 10. Detta tänker jag göra genom att
+            skriva om större delar av metoden. Jag har en onödig if-sats som kan skriva om ganska
+            mycket bättre.<br><br>
+            Jag tänker också fixa major buggen Scrutinizer hittade LibraryRepository genom att
+            följa vad den säger och lägga till en extra type-check. Jag väljer att fixa denna
+            då en allvarlig bugg känns ganska vikigt att få bort.<br><br>
+            Till sist är planen att få upp kod täckningen. En röd 24% ser inte speciellt rolig
+            ut, särskilt inte när alla de andra är gröna. Så att få den gul i alla fall skulle 
+            nog se bättre ut.<br><br>
+            Jag tror att Scrutnizers poäng kommer bli 10, det kommer att se bättre ut med en högre
+            procent i kod täckning, samt att inte har något major bugg känns bättre.
+
+        </p><br>
+        <h4>Efter implementation</h4>
+        <p>
+            Nu har jag inte speciellt mycket att välja på så jag tänker fixa metoden som har B
+            i betyg för att förhoppningsvis komma upp i en 10.
+        </p><br>
     </section><br>
 
 {% endblock %}
