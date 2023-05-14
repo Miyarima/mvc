@@ -10,10 +10,10 @@
         <h4>Codestyle (kodstil)</h4>
         <p>
             Codestyle är att man ska skriva kod som är lätt att läsa, förstå och 
-            underhålla. Detta kan innebära korrekt använding av indentering,
-            använding av läsbara/förklarande variabel- och funktionsnamn, samt följa
-            riktlinjer för hur koden ska vara formaterad då detta underlättar för 
-            andra utvecklar att förstår koden och gör samarbetet smidigare. 
+            underhålla. Detta kan innebära korrekt användning av indentering, 
+            användning av läsbara/förklarande variabel- och funktionsnamn, samt 
+            följa riktlinjer för hur koden ska vara formaterad då detta underlättar 
+            för andra utvecklar att förstår koden och gör samarbetet smidigare.
         </p><br>
         <h4>Coverage (täckning)</h4>
         <p>
@@ -27,36 +27,36 @@
                 <img src="{{ asset('img/covrage.png') }}" alt="">
             </a><br>
             Nu har jag bara enhetstester på mina klasser och inte controllers därav
-            den låga % på covrage.
+            den låga % på coverage.
         </p><br>
         <h4>Complexity (komplexitet)</h4>
         <p>
-            Complexity är hur komplicerad koden är och hur många olika vägar som kan
-            tas genom koden. För varje If-sats vilkor eller loop blir det en ny väg 
-            genom koden, så med många if-satser blir det snabbt många vägar. En hög
-            komplexitet kan göra koden svårare att förstå och underhålla.
+            Complexity är hur komplicerad koden är och hur många olika vägar som 
+            kan tas genom koden. För varje If-sats villkor eller loop blir det en 
+            ny väg genom koden, så med många if-satser blir det snabbt många vägar. 
+            En hög komplexitet kan göra koden svårare att förstå och underhålla.
         </p><br>
         <h4>Cohesion (sammanhållning)</h4>
         <p>
-            Cohesion handlar om hur väl ens olika delar av koden hörsamman och hur
-            väl de samverkar. Ett exemple skulle vara en klass som har hand om mer 
-            än en ansvarsområde, den har en dålig cohesion. En högre sammanhållning
-            innebär att sammanhörande kod är grupperad, vilket också oftas gör det 
-            enklar att förstå och underhålla.
+            Cohesion handlar om hur väl ens olika delar av koden hör samman och hur 
+            väl de samverkar. Ett exempel skulle vara en klass som har hand om mer 
+            än en ansvarsområde, den har en dålig cohesion. En högre sammanhållning 
+            innebär att sammanhörande kod är grupperad, vilket också oftast gör 
+            det enklare att förstå och underhålla.
         </p><br>
         <h4>Coupling (koppling)</h4>
         <p>
-            Coupling är hur mycket oilka delar av koden är beroende av varandra. Så 
-            om en klass använder andra klasser har den externa berode till dem. Samt 
-            om klassen blir använd av en annan klass är det också ett berode. Låg 
-            coupling innebär att olika delar av koden kan ändras utan att få några 
-            oförväntade problem. Hög coupling kan göra det svårt att ändra koden utan 
-            större konsekvenser, samt intoducera buggar.<br><br>
+            Coupling är hur mycket olika delar av koden är beroende av varandra. 
+            Så om en klass använder andra klasser har den externa beroende till 
+            dem. Samt om klassen blir använd av en annan klass är det också ett 
+            beroende. Låg coupling innebär att olika delar av koden kan ändras utan 
+            att få några oförväntade problem. Hög coupling kan göra det svårt att 
+            ändra koden utan större konsekvenser, samt introducera buggar.<br><br>
             Det finns två sätt att mäta Coupling, Ce (Efferent Coupling) och Ca 
-            (Afferent Coupling). Ce mäter hur många andra klasser eller moduler som
-            klassen är beroende av. Ca mäter hur många andra klasser eller moduler som
-            är berode av just denna klassen. Tillsammans get de en indikation på hur
-            väl en klass är isolerad.<br><br>
+            (Afferent Coupling). Ce mäter hur många andra klasser eller moduler som 
+            klassen är beroende av. Ca mäter hur många andra klasser eller moduler 
+            som är beroende av just denna klassen. Tillsammans get de en indikation 
+            på hur väl en klass är isolerad.<br><br>
             Denna klassen används nästan av alla klasser, men använder själv 
             ingen annan.
             <a href="{{ asset('img/coupling.png') }}">
@@ -76,12 +76,12 @@
 
     <section>
         <h2 id="phpmetrics">Phpmetrics</h2>
-        <p class="underline img-padding">
+        <p class="underline">
             Tre potentiella svaga punkter identifierade av phpmetrics är apiControllern,
             libraryControllern och blackJackControllern. 
         </p><br>
         <p>
-            ApiControllern har potentiellt för mycket kontroll, kan möjligvis innehålla
+            ApiControllern har potentiellt för mycket kontroll, kan möjligtvis innehålla
             någon bugg, samt har den en hög komplexitet.
             <a href="{{ asset('img/apicontroller.png') }}">
                 <img class="img underline img-padding" src="{{ asset('img/apicontroller.png') }}" alt="">
@@ -96,13 +96,13 @@
             </a>
         </p><br>
         <p>
-            De tre potentiellt problemen är främst komplexitet och en hög sådan kan göra koden 
-            svårare att förstå och underhålla koden. Jag har antaligen många olika utfall som
-            kan ske i de olika controllerna då de innehåller ganska många olika routes. Men 
-            dess routes är nödvändiga för att uppnå funktionaliteten jag vill ha. Det finns 
-            säkerligen saker som går att göra för att förbättra poängen, som att dela upp i 
-            flera controllers eller skriva om koden innut. Men att dela upp den känns väldigt
-            onödigt när det ändå är så små som det är.<br><br>
+            De tre potentiellt problemen är främst komplexitet och en hög sådan kan göra 
+            koden svårare att förstå och underhålla koden. Jag har antagligen många olika 
+            utfall som kan ske i de olika controllerna då de innehåller ganska många olika 
+            routes. Men dess routes är nödvändiga för att uppnå funktionaliteten jag vill 
+            ha. Det finns säkerligen saker som går att göra för att förbättra poängen, som 
+            att dela upp i flera controllers eller skriva om koden inuti. Men att dela upp 
+            den känns väldigt onödigt när det ändå är så små som det är..<br><br>
             För att höja Maintainability Index skulle jag kunna skriva om controllerna, 
             alternativ försöka väva in mer av koden som ligger i kontrollerna in i klasserna.
         </p>
@@ -134,10 +134,10 @@
         <p>
             De tre potentiella problemen Scrutnizer har hittat är låg kod täckning, en klass 
             som har högt CRAP score och några buggar.<br><br>
-            Nu har jag låg kod täckning för att vi bara gjorde enhetstester för våra klasser
-            och större delen av koden befinner sig i mina controllers. CRAP:en i apiControllern
-            är nog pågrund av en onädigt komplex if-sats och att Phpmetrics identifierade den som
-            en "Gud" klass.<br><br>
+            Nu har jag låg kod täckning för att vi bara gjorde enhetstester för våra klasser 
+            och större delen av koden befinner sig i mina controllers. CRAP:en i apiControllern 
+            är nog på grund av en onödigt komplex if-sats och att Phpmetrics identifierade 
+            den som en "Gud" klass.<br><br>
             "Buggarna" skulle bara uppstå om man letar efter en bok som inte finns, då stämmer inte 
             retur värde på metoden. Vilket inte spelar någon stor roll, Scrutinizer själv klassar
             de som "Severity minor".
@@ -151,9 +151,9 @@
             i betyg för att förhoppningsvis komma upp i en 10. Detta tänker jag göra genom att
             skriva om större delar av metoden. Jag har en onödig if-sats som kan skriva om ganska
             mycket bättre.<br><br>
-            Jag tänker också fixa major buggen Scrutinizer hittade LibraryRepository genom att
-            följa vad den säger och lägga till en extra type-check. Jag väljer att fixa denna
-            då en allvarlig bugg känns ganska vikigt att få bort.<br><br>
+            Jag tänker också fixa major buggen Scrutinizer hittade LibraryRepository genom att 
+            följa vad den säger och lägga till en extra type-check. Jag väljer att fixa denna 
+            då en allvarlig bugg känns ganska viktigt att få bort.<br><br>
             Till sist är planen att få bort så många issues som möjligt.<br><br>
             Jag tror att Scrutnizers poäng kommer bli 10, det kommer att se bättre ut att inte har 
             något major bugg, samt känns det bättre med så få issues som möjligt.
@@ -171,7 +171,7 @@
             </a>
             Samt det finns nu bara 1 issues kvar som inte är introducerad av mig då jag inte har skapa
             karnel.php filen.
-            <a href="{{ asset('img/scrut_issues.png') }}">
+            <a href="https://scrutinizer-ci.com/g/Miyarima/mvc/">
                 <img class="img underline img-padding" src="{{ asset('img/scrut_issues.png') }}" alt="">
             </a>
         </p><br>
@@ -181,17 +181,17 @@
         <h2 id="diskussion">Diskussion</h2>
         <h4>Jobba med kodkvalitet</h4>
         <p>
-            Jag skulle säga att man kan jobba med "clean code" aktivit med externa 
-            validatorer/linters som Scrutinizer och Phpmetrics. Dess verktyg upplever
-            jag har hjälpt att identifiera problem t.ex. buggar, metoder och funktioner
-            som kan förbättras. Så man får en bättre översikt över kvaliteten, men också
+            Jag skulle säga att man kan jobba med "clean code" aktivt med externa 
+            validatorer/linters som Scrutinizer och Phpmetrics. Dess verktyg upplever 
+            jag har hjälpt att identifiera problem t.ex. Buggar, metoder och funktioner 
+            som kan förbättras. Så man får en bättre översikt över kvaliteten, men också 
             om den går upp eller ner efter ny funktionalitet blir introducerad.
         </p><br>
         <h4>Fördelar</h4>
         <p>
             Att använda externa linters på det hör visset kan identifiera problem som
             man själv inte upptäckt. Man skapar en högra kodkvalitet om man följer 
-            vad t.ex. Scrutinizer vill/rekomenderar att man ändrar.
+            vad t.ex. Scrutinizer vill/rekommenderar att man ändrar.
         </p><br>
         <h4>Nackdelar</h4>
         <p>
