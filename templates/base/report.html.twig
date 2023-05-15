@@ -229,4 +229,52 @@
         </p><br>
     </section><br>
 
+    <section>
+        <h2 id="kmom06">Kmom06</h2>
+        <h4>Hur uppfattade du verktyget phpmetrics och fann du några särskilda 
+            bitar mer värdefulla än andra? Var det några särskilda metrics 
+            eller bilder du uppskattade?</h4>
+        <p>
+            Som helhet såg jag inte större mening med phpmetrics. Kan vara för
+            att jag inte förstår hur man ska använd det och vad data säger. Den
+            enda delen jag fan någorlunda använd bar var där de summerat en klass
+            komplexitet och maintainability.
+        </p><br>
+        <h4>Berätta hur det gick att integrera med Scrutinizer och vilken är din 
+            första känsla av verktyget och dess badges? Vilken kodtäckning och 
+            kodkvalitet fick du efter första bygget?</h4>
+        <p>
+            Först gick det inte alls så Scrutinizer failade på att bygga projektet. 
+            Men det var någon extra rad som behövdes i scrutinizer.yml för att det 
+            skulle fungerar. Men när det fungerade gick det hur bra som helst. Min 
+            uppfattning av verktyget är väldigt positivt. Informationen är väldigt 
+            lättillgänglig och intuitivt. Varje gång man gör en commit kör den 
+            automatisk en granskning samt meddelar än om det..<br><br>
+            Jag hade en kodtäckning på 24%, men det är för att jag har bara skrivit
+            tester för mina klasser och inte controllerna där majoriteten av koden
+            ligger. Min kodkvalitet låg på 9.96 efter första bygget.
+        </p><br>
+        <h4>Hur är din egen syn på kodkvalitet, berätta lite om den? Tror du man 
+            kan man påvisa kodkvalitet i någon viss mån med badges eller vad tror 
+            du?</h4>
+        <p>
+            Jag tycker kodkvalitet är viktigt (tror jag) då det ger en tydliga 
+            rammar man ska hålla sig inom. Både för sin egna sanity, men också 
+            andras om de ska försöka sätta sig ner i ens kod. Så jag har förstått 
+            det kollar de också efter dåliga vanor som t.ex. att man inte skriver 
+            koden DRY och skriver en massa onödigt.<br><br>
+            Badges är lite overkill, inget som direkt behövs men känns lite extra 
+            bra när man ser dem. Det ger en också ett lätt sätt att överblicka
+            vilken nivå en projekt ligger på och om något potentiellt behöver fixas.
+            Men jag tror inte heller man ska lita på dem blint heller, då jag antar 
+            de kan ge ett falskt intyg om allt är bra, men egentligen har man något
+            stort problem som bara inte plocks upp.
+        </p><br>
+        <h4>TIL?</h4>
+        <p>
+            Hur man använder automatiska kod validatorer och varför man möjligtvis 
+            skulle använda sig av dem.
+        </p><br>
+    </section><br>
+
 {% endblock %}

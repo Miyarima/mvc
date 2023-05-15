@@ -7,9 +7,9 @@ Usage
 To start the project use `php -S loclahost:8888 -t public` too run on php's server, on port 8888.
 
 
-Contributing
+Badges
 --------------------------------------
-If you'd like to contribute to this project, don't. This is purely for educational purposes.
+[![Build Status](https://scrutinizer-ci.com/g/Miyarima/mvc/badges/build.png?b=main)](https://scrutinizer-ci.com/g/Miyarima/mvc/build-status/main) [![Code Coverage](https://scrutinizer-ci.com/g/Miyarima/mvc/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/Miyarima/mvc/?branch=main) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Miyarima/mvc/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/Miyarima/mvc/?branch=main)
 
 
 Acknowledgments
