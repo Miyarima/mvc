@@ -4,6 +4,8 @@ This repository contains an implementation of the Model-View-Controller (MVC) de
 
 Usage
 --------------------------------------
+Open a terminal and move to a folder where you would like to store the cloned repo. On GitHub press the green "Code" button and copy the link. When you have copied the link, type in the terminal **git clone <repo URL>**.
+
 To start the project use `php -S loclahost:8888 -t public` too run on php's server, on port 8888.
 
 
