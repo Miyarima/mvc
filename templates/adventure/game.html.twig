@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="{{ asset('img/glider.svg') }}">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body class="black-bg">
+        <main class="adv-game">
+            {% block body %}{% endblock %}
+        </main>
+        <footer class="adv-footer">
+            <div class="adv-footer-text">
+                <a class="adv-btn" href="{{ path('project') }}">Hem</a>
+                <p class="center">&copy; Miyarima</p>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,32 +1,31 @@
-{% extends "base/base.html.twig" %}
+{% extends "adventure/adv_base.html.twig" %}
 
-{% block title %}Adventure{% endblock %}
+{% block title %}Hero Journey{% endblock %}
 
 {% block body %}
-    <h1 class="center-text">Adventure</h1>
+    <h1 class="adv-title">Hero's Quest</h1>
         <section>
-            <h4>Välkommen till Äventyrsspelet!</h4>
-            <p>
+            <p class="text">
                 Påbörja ditt klassiska äventyr här och ge dig själv chansen att 
                 lösa gåtorna, övervinna hindren och nå det gömda målet. I detta 
                 spännande spel startar du i ett mystiskt rum, där en bild väntar 
                 på att avslöja sina hemligheter. Utforska, samla föremål och låt 
                 din fantasi guida dig genom varje steg.
-            </p>
-            <p>
+            </p><br>
+            <p class="text">
                 Här i världen av Äventyrsspelet finns det så mycket att upptäcka 
                 och utforska. Du kan ta föremål och placera dem i din ryggsäck, 
                 interagera med objekt och se vad som händer. Varje val du gör kan 
                 påverka din resa framåt. Förflytta dig genom öppningar åt öster, 
                 väster, norr och söder för att avslöja vad som väntar runt varje 
-                hörn.
-            </p>
-            <p>
+                hörn. Du kan läsa mer <a href="{{ path('about_project') }}">här</a>.
+            </p><br>
+            <p class="text">
                 Ge dig in i äventyret och låt spelet börja! Lycka till med att hitta 
                 skatten och nå målet!
             </p>
         </section><br>
-        <div class="game-buttons">
-            <a class="button" href="#">Starta Spelet</a>
+        <div class="adv-buttons">
+            <a class="adv-btn" href="{{ path('start_adventure') }}">Starta Spelet</a>
         </div>
 {% endblock %}

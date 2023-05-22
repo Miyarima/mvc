@@ -1,0 +1,20 @@
+{% extends "adventure/game.html.twig" %}
+
+{% block title %}Hero Journey{% endblock %}
+
+{% block body %}
+    <h1 class="adv-title">Hero's Quest</h1>
+        <section class="game-img">
+            <img src="{{ asset('img/'~ img ~'.png') }}" alt="">
+        </section>
+        <section>
+            {% for line in text %}
+                <p class="game-text">
+                    {{ line }}
+                </p>
+            {% endfor %}
+        </section><br>
+        <form method="POST" action="{{ commandHandler }}">
+            <input class="adv-i" type="text" id="command" name="command" placeholder=">_" required/>
+        </form>
+{% endblock %}

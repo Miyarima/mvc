@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Niconne&display=swap');
 
 @import 'universal.css';
 @import 'nav.css';
@@ -8,3 +9,8 @@
 @import 'code.css';
 @import 'form.css';
 @import 'books.css';
+
+/* Adventure Game */
+@import 'nav-adv.css';
+@import 'visuals.css';
+@import 'game-form.css';

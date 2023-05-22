@@ -44,7 +44,7 @@ p {
     font-family: 'Poppins', san-serif;
 }
 
-footer {
+.footer {
     min-height: 100px;
     background-color: #067180;
     color: #fff;

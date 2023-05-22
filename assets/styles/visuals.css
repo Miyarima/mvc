@@ -1,0 +1,89 @@
+.adv-game {
+    width: 1000px;
+    min-height: 90vh;
+    margin: 2em auto;
+    background-color: #e1be94;
+    padding: 4em;
+    border-radius: 100px;
+}
+
+.adv-footer {
+    min-height: 100px;
+    background-color: #e1be94;
+    margin-top: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.adv-footer-text {
+    background-color: #e1be94;
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 1rem;
+}
+
+.adv-btn {
+    color: #e1be94;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 1.2rem;
+    padding: 0.4rem 1rem;
+    text-align: center;
+    border-radius: 1rem;
+    width: 100%;
+}
+
+.adv-btn {
+    background-color: #222;
+    border: 1px solid #ccc;
+    background-image: linear-gradient(#111, #333);
+}
+
+.adv-btn:hover {
+    background-color: #444;
+    background-image: none;
+    cursor: pointer;
+}
+
+.adv-btn:active {
+    background-color: #444;
+    background-image: none;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.adv-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 5em;
+    margin-top: 2em;
+    padding: 0 2.5em;
+}
+
+.game-img {
+    display: flex;
+    justify-content: center;
+    padding: 2em;
+}
+
+.text {
+    font-family: 'Niconne', cursive;
+    font-size: 3rem;
+}
+
+.game-text {
+    font-family: 'Niconne', cursive;
+    font-size: 2rem;
+    color: black;
+    padding: 0.5em;
+}
+
+.adv-title {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 6rem;
+    text-align: center;
+}
+
+.black-bg {
+    background-color: #222;
+}

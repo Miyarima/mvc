@@ -13,9 +13,9 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
-        <header class="header">
-            <nav class="nav">
+    <body class="black-bg">
+        <header class="adv-head">
+            <nav class="adv-n">
                 <ul>
                     <li><a href="{{ path('index') }}">Home</a></li>
                     <li><a href="{{ path('about') }}">About</a></li>
@@ -30,24 +30,11 @@
                 </ul>
             </nav>
         </header>
-        
-        <main class="main">
+        <main class="adv-game">
             {% block body %}{% endblock %}
         </main>
-        <footer class="footer">
-            <div class="info">
-                <ul>
-                    <li><a href="{{ path('index') }}">🏠 Home</a></li>
-                    <li><a href="{{ path('about') }}">🧑 About</a></li>
-                    <li><a href="{{ path('report') }}">📄 Report</a></li>
-                    <li><a href="{{ path('lucky') }}">🍀 Lucky</a></li>
-                    <li><a href="{{ path('cards') }}">🃏 Cards</a></li>
-                    <li><a href="{{ path('api') }}">🎩 Api</a></li>
-                    <li><a href="{{ path('black_jack') }}">🃏 Black Jack</a></li>
-                    <li><a href="{{ path('library') }}">📚 Bibliotek</a></li>
-                    <li><a href="{{ path('metrics') }}">📊 Metrics</a></li>
-                    <li><a href="{{ path('project') }}">🧙🏽‍♂️ Adventure</a></li>
-                </ul>
+        <footer class="adv-footer">
+            <div class="adv-footer-text">
                 <p class="center">&copy; Miyarima</p>
             </div>
         </footer>

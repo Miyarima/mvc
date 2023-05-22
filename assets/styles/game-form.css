@@ -1,0 +1,25 @@
+.adv-i {
+    font-size: 2rem;
+    line-height: 1.4em;
+    font-family: 'Niconne', cursive;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #222;
+    border-radius: 0.2rem;
+    padding: 0.6rem;
+    box-sizing: border-box;
+    margin-bottom: 1.4rem;
+    background-color: #e1be94;
+}
+
+.adv-i {
+    width: 100%;
+}
+
+.adv-i:focus {
+    outline: none;
+}
+
+.adv-i::placeholder {
+    color: black;
+}
