@@ -5,21 +5,25 @@ namespace App\Adventure;
 use App\Adventure\Inventory;
 
 use App\Repository\PlayerRepository;
+use App\Repository\HouseRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 class Game
 {
     private Inventory $inventory;
-    private ManagerRegistry $doctrine;
-    private PlayerRepository $playerRepository;
+    private HouseClass $house;
+    // private ManagerRegistry $doctrine;
+    // private PlayerRepository $playerRepository;
 
     public function __construct(
         ManagerRegistry $doctrine,
-        PlayerRepository $playerRepository
+        PlayerRepository $playerRepository,
+        HouseRepository $houseRepository
     ) {
-        $this->doctrine = $doctrine;
-        $this->playerRepository = $playerRepository;
+        // $this->doctrine = $doctrine;
+        // $this->playerRepository = $playerRepository;
         $this->inventory = new Inventory($doctrine, $playerRepository);
+        $this->house = new HouseClass($doctrine, $houseRepository);
     }
 
     /**
@@ -35,12 +39,60 @@ class Game
             return $this->help();
         } elseif ($actions[0] == "inventory") {
             return $this->inventory();
+        } elseif ($actions[0] == "look") {
+            return $this->look($pos);
         }
 
         return [
             "error",
             ["I'm not familiar with your usage of '$command'"]
         ];
+    }
+
+    /**
+     * Depending on the $pos, it will call the appropriate method
+    */
+    public function look(string $pos): array
+    {
+        if($pos === "house") {
+            return $this->house();
+        }
+
+        return ["go", "You can't"];
+    }
+
+    /**
+     * Returns all items in the inventory
+    */
+    public function house(): array
+    {
+        return ["house", $this->house->getHouseEntries()];
+    }
+
+    /**
+     * Sends an item to be added to the house
+     * @param array<string> $item
+    */
+    public function addToHouse(array $item): void
+    {
+        $this->house->createHouseEntry($item);
+    }
+
+    /**
+     * Sends an item to be removed from the house
+    */
+    public function removeFromHouse(string $item): void
+    {
+        $this->house->removeHouseEntry($item);
+    }
+
+    /**
+     * Sends an item to be update in the house
+     * @param array<string> $item
+    */
+    public function updateHouse(array $item): void
+    {
+        $this->house->updateHouseEntry($item);
     }
 
     /**
@@ -115,7 +167,7 @@ class Game
     public function moveSouth(string $pos): array
     {
         if ($pos == "path") {
-            return ['go', 'start_adventure'];
+            return ['go', 'house_adventure'];
         } elseif ($pos == "dungeon") {
             return ['go', 'path_adventure'];
         }

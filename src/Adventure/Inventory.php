@@ -24,22 +24,22 @@ class Inventory
      */
     public function createInventoryEntry(array $data): void
     {
-        $p = new Player();
+        $item = new Player();
 
-        $p->setName($data[0]);
-        $p->setType($data[1]);
-        $p->setContent($data[2]);
+        $item->setName($data[0]);
+        $item->setType($data[1]);
+        $item->setContent($data[2]);
 
-        $this->addInventoryEntry($p);
+        $this->addInventoryEntry($item);
     }
 
     /**
      * Adds inventory entry to player.
     */
-    public function addInventoryEntry(player $p): void
+    public function addInventoryEntry(Player $item): void
     {
         $entityManager = $this->doctrine->getManager();
-        $entityManager->persist($p);
+        $entityManager->persist($item);
         $entityManager->flush();
     }
 
@@ -58,7 +58,7 @@ class Inventory
         return $allItems;
     }
 
-    /** 
+    /**
      * Removes an item from the inventory
      */
     public function removeInventoryEntry(string $name): void
@@ -67,6 +67,9 @@ class Inventory
         $this->playerRepository->remove($item, true);
     }
 
+    /**
+     * Updates an item in the inventory
+     */
     public function updateInventoryEntry(array $data): void
     {
         $item =  $this->playerRepository->findOneBy(['name' => $data[0]]);

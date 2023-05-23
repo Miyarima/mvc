@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Adventure\Game;
 use App\Repository\PlayerRepository;
+use App\Repository\HouseRepository;
 
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -27,14 +28,19 @@ class AdventureController extends AbstractController
         return $this->render('adventure/about.html.twig');
     }
 
-    #[Route('/proj/game/handel', name: 'handel_adventure', methods: ['POST'])]
+    #[Route('/proj/game/handle', name: 'handle_adventure', methods: ['POST'])]
     public function handelAdventure(
         Request $request,
         SessionInterface $session,
         ManagerRegistry $doctrine,
-        PlayerRepository $playerRepository
+        PlayerRepository $playerRepository,
+        HouseRepository $houseRepository
     ): Response {
-        $game = new Game($doctrine, $playerRepository);
+        $game = new Game(
+            $doctrine,
+            $playerRepository,
+            $houseRepository
+        );
 
         $command = "";
         foreach ($request->request as $key => $value) {
@@ -51,7 +57,7 @@ class AdventureController extends AbstractController
             return $this->render('adventure/adventure.html.twig', [
                 "text" => ["$answer $command from here!"],
                 "img" => $pos,
-                "commandHandler" => $this->generateUrl('handel_adventure'),
+                "commandHandler" => $this->generateUrl('handle_adventure'),
             ]);
         } elseif ($action === "inventory") {
             $items = [];
@@ -59,16 +65,22 @@ class AdventureController extends AbstractController
                 array_push($items, "$item[0] $item[1] $item[2]");
             }
             $answer = $items;
+        } elseif ($action === "house") {
+            $items = [];
+            foreach ($answer as $item) {
+                array_push($items, "$item[0]");
+            }
+            $answer = $items;
         }
 
         return $this->render('adventure/adventure.html.twig', [
             "text" => $answer,
             "img" => $pos,
-            "commandHandler" => $this->generateUrl('handel_adventure'),
+            "commandHandler" => $this->generateUrl('handle_adventure'),
         ]);
     }
 
-    #[Route("/proj/game/start", name: "start_adventure", methods: ['GET'])]
+    #[Route("/proj/game/house", name: "house_adventure", methods: ['GET'])]
     public function startAdventure(
         SessionInterface $session
     ): Response {
@@ -79,7 +91,7 @@ class AdventureController extends AbstractController
         return $this->render('adventure/adventure.html.twig', [
             "text" => $startText,
             "img" => $session->get("position"),
-            "commandHandler" => $this->generateUrl('handel_adventure'),
+            "commandHandler" => $this->generateUrl('handle_adventure'),
         ]);
     }
 
@@ -96,7 +108,7 @@ class AdventureController extends AbstractController
         return $this->render('adventure/adventure.html.twig', [
             "text" => $startText,
             "img" => $session->get("position"),
-            "commandHandler" => $this->generateUrl('handel_adventure'),
+            "commandHandler" => $this->generateUrl('handle_adventure'),
         ]);
     }
 
@@ -113,7 +125,7 @@ class AdventureController extends AbstractController
         return $this->render('adventure/adventure.html.twig', [
             "text" => $startText,
             "img" => $session->get("position"),
-            "commandHandler" => $this->generateUrl('handel_adventure'),
+            "commandHandler" => $this->generateUrl('handle_adventure'),
         ]);
     }
 
@@ -130,7 +142,7 @@ class AdventureController extends AbstractController
         return $this->render('adventure/adventure.html.twig', [
             "text" => $startText,
             "img" => $session->get("position"),
-            "commandHandler" => $this->generateUrl('handel_adventure'),
+            "commandHandler" => $this->generateUrl('handle_adventure'),
         ]);
     }
 }
