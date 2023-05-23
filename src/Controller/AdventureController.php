@@ -3,10 +3,6 @@
 namespace App\Controller;
 
 use App\Adventure\Game;
-use App\Repository\PlayerRepository;
-use App\Repository\HouseRepository;
-
-use Doctrine\Persistence\ManagerRegistry;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +11,14 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdventureController extends AbstractController
-{
+{   
+    private $game;
+
+    public function __construct(Game $game)
+    {
+        $this->game = $game;
+    }
+
     #[Route("/proj", name: "project", methods: ['GET'])]
     public function project(): Response
     {
@@ -31,16 +34,9 @@ class AdventureController extends AbstractController
     #[Route('/proj/game/handle', name: 'handle_adventure', methods: ['POST'])]
     public function handelAdventure(
         Request $request,
-        SessionInterface $session,
-        ManagerRegistry $doctrine,
-        PlayerRepository $playerRepository,
-        HouseRepository $houseRepository
+        SessionInterface $session
     ): Response {
-        $game = new Game(
-            $doctrine,
-            $playerRepository,
-            $houseRepository
-        );
+        $game = $this->game;
 
         $command = "";
         foreach ($request->request as $key => $value) {
@@ -53,24 +49,20 @@ class AdventureController extends AbstractController
 
         if($action === "go" && $answer !== "You can't") {
             return $this->redirectToRoute($answer);
-        } elseif ($action === "go") {
-            return $this->render('adventure/adventure.html.twig', [
-                "text" => ["$answer $command from here!"],
-                "img" => $pos,
-                "commandHandler" => $this->generateUrl('handle_adventure'),
-            ]);
+        } 
+        
+        if ($action === "go") {
+            $answer = ["$answer $command from here!"];
         } elseif ($action === "inventory") {
-            $items = [];
-            foreach ($answer as $item) {
-                array_push($items, "$item[0] $item[1] $item[2]");
-            }
-            $answer = $items;
-        } elseif ($action === "house") {
-            $items = [];
-            foreach ($answer as $item) {
-                array_push($items, "$item[0]");
-            }
-            $answer = $items;
+            $answer = array_map(
+                fn ($item) => "{$item[0]} {$item[1]} {$item[2]}",
+                $answer
+            );
+        } elseif ($action === "house" || $action === "path") {
+            $answer = array_map(
+                fn ($item) => $item[0],
+                $answer
+            );
         }
 
         return $this->render('adventure/adventure.html.twig', [

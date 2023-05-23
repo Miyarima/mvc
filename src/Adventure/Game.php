@@ -6,24 +6,24 @@ use App\Adventure\Inventory;
 
 use App\Repository\PlayerRepository;
 use App\Repository\HouseRepository;
+use App\Repository\PathRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 class Game
 {
     private Inventory $inventory;
     private HouseClass $house;
-    // private ManagerRegistry $doctrine;
-    // private PlayerRepository $playerRepository;
+    private PathClass $path;
 
     public function __construct(
         ManagerRegistry $doctrine,
         PlayerRepository $playerRepository,
-        HouseRepository $houseRepository
+        HouseRepository $houseRepository,
+        PathRepository $pathRepository
     ) {
-        // $this->doctrine = $doctrine;
-        // $this->playerRepository = $playerRepository;
         $this->inventory = new Inventory($doctrine, $playerRepository);
         $this->house = new HouseClass($doctrine, $houseRepository);
+        $this->path = new PathClass($doctrine, $pathRepository);
     }
 
     /**
@@ -56,13 +56,49 @@ class Game
     {
         if($pos === "house") {
             return $this->house();
+        } elseif ($pos === "path") {
+            return $this->path();
         }
 
         return ["go", "You can't"];
     }
 
     /**
-     * Returns all items in the inventory
+     * Returns all items in the path
+    */
+    public function path(): array
+    {
+        return ["path", $this->path->getPathEntries()];
+    }
+
+    /**
+     * Sends an item to be added to the path
+     * @param array<string> $item
+    */
+    public function addToPath(array $item): void
+    {
+        $this->path->createPathEntry($item);
+    }
+
+    /**
+     * Sends an item to be removed from the path
+    */
+    public function removeFromPath(string $item): void
+    {
+        $this->path->removePathEntry($item);
+    }
+
+    /**
+     * Sends an item to be update in the path
+     * @param array<string> $item
+    */
+    public function updatePath(array $item): void
+    {
+        $this->path->updatePathEntry($item);
+    }
+
+    /**
+     * Returns all items in the house
     */
     public function house(): array
     {
@@ -209,6 +245,7 @@ class Game
             [
             "Theses are the things you can do:",
             "Use the 'go' command to move in different directions e.g south.",
+            "Use 'look' to see what's around you.",
             "Inventory",
             "Pickup",
             "Help"
