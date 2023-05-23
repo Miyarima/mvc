@@ -40,29 +40,21 @@ class AdventureController extends AbstractController
 
         $pos = $session->get("position");
 
-        $text = [];
-
         $answer = $game->command($form, $pos);
 
         if($answer[0] === "go" && $answer[1] !== "You can't") {
             return $this->redirectToRoute($answer[1]);
         } elseif ($answer[0] === "go") {
             $str = $answer[1];
-            $text = ["$str $form from here!"];
-        }
-
-        if ($text !== []) {
             return $this->render('adventure/adventure.html.twig', [
-                "text" => $text,
+                "text" => ["$str $form from here!"],
                 "img" => $pos,
                 "commandHandler" => $this->generateUrl('handel_adventure'),
             ]);
         }
 
-        $text = ["I'm not familiar with your usage of '$form'"];
-        
         return $this->render('adventure/adventure.html.twig', [
-            "text" => $text,
+            "text" =>[$answer[1]],
             "img" => $pos,
             "commandHandler" => $this->generateUrl('handel_adventure'),
         ]);

@@ -44,6 +44,11 @@ class Game
         if($actions[0] == "go") {
             return $this->move($actions[1], $pos);
         }
+
+        return [
+            "error",
+            "I'm not familiar with your usage of '$command'"
+        ];
     }
     
     public function move(string $direction, string $pos): array
@@ -57,6 +62,8 @@ class Game
         } elseif ($direction == "west") {
             return $this->moveWest($pos);
         }
+
+        return ["go", "You can't"];
     }
 
     public function moveNorth(string $pos): array
