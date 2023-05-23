@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use Doctrine\Persistence\ManagerRegistry;
 
+use App\Adventure\Game;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,6 +31,8 @@ class AdventureController extends AbstractController
         Request $request,
         SessionInterface $session
     ): Response {
+        $game = new Game();
+
         $form = "";
         foreach ($request->request as $key => $value) {
             $form = strtolower($value);
@@ -36,66 +40,30 @@ class AdventureController extends AbstractController
 
         $pos = $session->get("position");
 
-        $text = "";
-        if ($form == "help") {
-            $text = [
-                "Theses are the things you can do:",
-                "Use the 'go' command to move in different directions e.g south.",
-                "Inventory",
-                "Pickup",
-                "Help"
-            ];
-        } elseif ($form == "go north") {
-            if ($pos == "house") {
-                return $this->redirectToRoute('path_adventure');
-            } elseif ($pos == "path") {
-                return $this->redirectToRoute('dungeon_adventure');
-            }
+        $text = [];
 
-            return $this->render('adventure/adventure.html.twig', [
-                "text" => ["You can't go North from here."],
-                "img" => $session->get("position"),
-                "commandHandler" => $this->generateUrl('handel_adventure'),
-            ]);
-        } elseif ($form == "go south") {
-            if ($pos == "path") {
-                return $this->redirectToRoute('start_adventure');
-            } elseif ($pos == "dungeon") {
-                return $this->redirectToRoute('path_adventure');
-            }
+        $answer = $game->command($form, $pos);
 
-            return $this->render('adventure/adventure.html.twig', [
-                "text" => ["You can't go South from here."],
-                "img" => $session->get("position"),
-                "commandHandler" => $this->generateUrl('handel_adventure'),
-            ]);
-        } elseif ($form == "go west") {
-            if ($pos == "path") {
-                return $this->redirectToRoute('cave_adventure');
-            }
-
-            return $this->render('adventure/adventure.html.twig', [
-                "text" => ["You can't go West from here."],
-                "img" => $session->get("position"),
-                "commandHandler" => $this->generateUrl('handel_adventure'),
-            ]);
-        } elseif ($form == "go east") {
-            if ($pos == "cave") {
-                return $this->redirectToRoute('path_adventure');
-            }
-
-            return $this->render('adventure/adventure.html.twig', [
-                "text" => ["You can't go East from here."],
-                "img" => $session->get("position"),
-                "commandHandler" => $this->generateUrl('handel_adventure'),
-            ]);
-        } else {
-            $text = ["I'm not familiar with your usage of '$form'"];
+        if($answer[0] === "go" && $answer[1] !== "You can't") {
+            return $this->redirectToRoute($answer[1]);
+        } elseif ($answer[0] === "go") {
+            $str = $answer[1];
+            $text = ["$str $form from here!"];
         }
 
+        if ($text !== []) {
+            return $this->render('adventure/adventure.html.twig', [
+                "text" => $text,
+                "img" => $pos,
+                "commandHandler" => $this->generateUrl('handel_adventure'),
+            ]);
+        }
+
+        $text = ["I'm not familiar with your usage of '$form'"];
+        
         return $this->render('adventure/adventure.html.twig', [
             "text" => $text,
-            "img" => $session->get("position"),
+            "img" => $pos,
             "commandHandler" => $this->generateUrl('handel_adventure'),
         ]);
     }
