@@ -8,7 +8,6 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class Inventory
 {
-    private Player $player;
     private ManagerRegistry $doctrine;
     private PlayerRepository $playerRepository;
 
@@ -20,13 +19,13 @@ class Inventory
         $this->playerRepository = $playerRepository;
     }
 
-    /** 
+    /**
      * Creates a new inventory entry.
      */
     public function createInventoryEntry(array $data): void
     {
         $p = new Player();
-        
+
         $p->setName($data[0]);
         $p->setType($data[1]);
         $p->setContent($data[2]);
@@ -34,7 +33,7 @@ class Inventory
         $this->addInventoryEntry($p);
     }
 
-    /** 
+    /**
      * Adds inventory entry to player.
     */
     public function addInventoryEntry(player $p): void
@@ -44,7 +43,7 @@ class Inventory
         $entityManager->flush();
     }
 
-    /** 
+    /**
      * Returns all inventory entries.
      */
     public function getInventoryEntries(): array
@@ -59,45 +58,23 @@ class Inventory
         return $allItems;
     }
 
-    /**
-     * Updates Library object in database.
+    /** 
+     * Removes an item from the inventory
      */
-    // public function updateBook(array $data): void
-    // {
-    //     try {
-    //         $book = $this->libraryRepository->find($data['id']);
+    public function removeInventoryEntry(string $name): void
+    {
+        $item =  $this->playerRepository->findOneBy(['name' => $name]);
+        $this->playerRepository->remove($item, true);
+    }
 
-    //         if (!$book) {
-    //             throw new RuntimeException('Book not found');
-    //         }
+    public function updateInventoryEntry(array $data): void
+    {
+        $item =  $this->playerRepository->findOneBy(['name' => $data[0]]);
 
-    //         $book->setTitle($data['title']);
-    //         $book->setAuthor($data['author']);
-    //         $book->setIsbn($data['ISBN']);
-    //         $book->setImgLink($data['img']);
+        $item->setName($data[0]);
+        $item->setType($data[1]);
+        $item->setContent($data[2]);
 
-    //         $this->libraryRepository->save($book, true);
-    //     } catch (RuntimeException $e) {
-    //         echo 'An error occurred: ' . $e->getMessage();
-    //     }
-    // }
-
-    /**
-     * Delete Library object in database.
-     */
-    // public function deleteBook(
-    //     string $bookId
-    // ): void {
-    //     try {
-    //         $book = $this->libraryRepository->find($bookId);
-
-    //         if (!$book) {
-    //             throw new RuntimeException('Book not found');
-    //         }
-
-    //         $this->libraryRepository->remove($book, true);
-    //     } catch (RuntimeException $e) {
-    //         echo 'An error occurred: ' . $e->getMessage();
-    //     }
-    // }
+        $this->playerRepository->save($item, true);
+    }
 }

@@ -8,22 +8,21 @@ use App\Repository\PlayerRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 class Game
-{   
+{
     private Inventory $inventory;
     private ManagerRegistry $doctrine;
     private PlayerRepository $playerRepository;
 
-    public  function __construct(
+    public function __construct(
         ManagerRegistry $doctrine,
         PlayerRepository $playerRepository
-    )
-    {
+    ) {
         $this->doctrine = $doctrine;
         $this->playerRepository = $playerRepository;
         $this->inventory = new Inventory($doctrine, $playerRepository);
     }
 
-    /** 
+    /**
      * Extracts the action from $command and calls the appropriate method
      */
     public function command(string $command, string $pos): array
@@ -43,18 +42,42 @@ class Game
             ["I'm not familiar with your usage of '$command'"]
         ];
     }
-    
-    public function addToInventory(array $item): void
-    {
-        $this->inventory->createInventoryEntry($item);
-    }
 
+    /**
+     * Returns all items in the inventory
+    */
     public function inventory(): array
     {
         return ["inventory", $this->inventory->getInventoryEntries()];
     }
 
-    /** 
+    /**
+     * Sends an item to be added to the inventory
+     * @param array<string> $item
+    */
+    public function addToInventory(array $item): void
+    {
+        $this->inventory->createInventoryEntry($item);
+    }
+
+    /**
+     * Sends an item to be removed from the inventory
+    */
+    public function removeFromInventory(string $item): void
+    {
+        $this->inventory->removeInventoryEntry($item);
+    }
+
+    /**
+     * Sends an item to be update in the inventory
+     * @param array<string> $item
+    */
+    public function updateInventory(array $item): void
+    {
+        $this->inventory->updateInventoryEntry($item);
+    }
+
+    /**
      * Depending on the $pos, it will call the appropriate method
     */
     public function move(string $direction, string $pos): array
@@ -72,7 +95,7 @@ class Game
         return ["go", "You can't"];
     }
 
-    /** 
+    /**
      * If the $pos is either house or path, you can go north
      */
     public function moveNorth(string $pos): array
@@ -86,7 +109,7 @@ class Game
         return ["go", "You can't"];
     }
 
-    /** 
+    /**
      * If the $pos is either dungeon or path, you can go south
      */
     public function moveSouth(string $pos): array
@@ -100,7 +123,7 @@ class Game
         return ["go", "You can't"];
     }
 
-    /** 
+    /**
      * If the $pos is path, you can go west
      */
     public function moveWest(string $pos): array
@@ -112,7 +135,7 @@ class Game
         return ["go", "You can't"];
     }
 
-    /** 
+    /**
      * If the $pos is cave, you can go east
      */
     public function moveEast(string $pos): array
@@ -124,10 +147,10 @@ class Game
         return ["go", "You can't"];
     }
 
-    /** 
+    /**
      * If command is 'help', it will return the help array
      */
-    public function help(): array 
+    public function help(): array
     {
         return [
             "help",
@@ -140,40 +163,4 @@ class Game
             ]
         ];
     }
-
-    /**
-     * Sets the deck, and removes cards that has been drawn.
-     * @param array<string> $removed
-     */
-    // public function setDeck(array $removed): void
-    // {
-    //     $this->deck =  new DeckOfCards();
-    //     for ($i = 1; $i <= 52; $i++) {
-    //         $this->deck->add(new Card());
-    //     }
-
-    //     if($removed !== []) {
-    //         foreach($removed as $remove) {
-    //             $this->deck->removeCard($remove);
-    //         }
-    //     }
-    // }
-
-    /**
-     * Returns the deck.
-     */
-    // public function getDeck(): DeckOfCards
-    // {
-    //     return $this->deck;
-    // }
-
-    /**
-     * Shuffles the deck.
-     */
-    // public function shuffleDeck(): void
-    // {
-    //     if ($this->deck->getNumberCards() > 51) {
-    //         $this->deck->shuffleDeck();
-    //     }
-    // }
 }

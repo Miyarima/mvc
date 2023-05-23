@@ -43,27 +43,26 @@ class AdventureController extends AbstractController
 
         $pos = $session->get("position");
 
-        $answer = $game->command($command, $pos);
+        [$action, $answer] = $game->command($command, $pos);
 
-        if($answer[0] === "go" && $answer[1] !== "You can't") {
-            return $this->redirectToRoute($answer[1]);
-        } elseif ($answer[0] === "go") {
-            $str = $answer[1];
+        if($action === "go" && $answer !== "You can't") {
+            return $this->redirectToRoute($answer);
+        } elseif ($action === "go") {
             return $this->render('adventure/adventure.html.twig', [
-                "text" => ["$str $command from here!"],
+                "text" => ["$answer $command from here!"],
                 "img" => $pos,
                 "commandHandler" => $this->generateUrl('handel_adventure'),
             ]);
-        } elseif ($answer[0] === "inventory") {
+        } elseif ($action === "inventory") {
             $items = [];
-            foreach ($answer[1] as $item) {
+            foreach ($answer as $item) {
                 array_push($items, "$item[0] $item[1] $item[2]");
             }
-            $answer[1] = $items;
+            $answer = $items;
         }
 
         return $this->render('adventure/adventure.html.twig', [
-            "text" => $answer[1],
+            "text" => $answer,
             "img" => $pos,
             "commandHandler" => $this->generateUrl('handel_adventure'),
         ]);
