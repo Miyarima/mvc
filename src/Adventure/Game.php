@@ -2,55 +2,61 @@
 
 namespace App\Adventure;
 
-// use App\Deck\Card;
-// use App\Deck\CardHand;
-// use App\Deck\DeckOfCards;
+use App\Adventure\Inventory;
+
+use App\Repository\PlayerRepository;
+use Doctrine\Persistence\ManagerRegistry;
 
 class Game
-{
-    // private CardHand $playerHand;
-    // private CardHand $houseHand;
-    // private DeckOfCards $deck;
+{   
+    private Inventory $inventory;
+    private ManagerRegistry $doctrine;
+    private PlayerRepository $playerRepository;
 
-    /**
-    * @var array<string, int> $values
-    */
-    // private array $values = [
-    //     "2" => 2,
-    //     "3" => 3,
-    //     "4" => 4,
-    //     "5" => 5,
-    //     "6" => 6,
-    //     "7" => 7,
-    //     "8" => 8,
-    //     "9" => 9,
-    //     "10" => 10,
-    //     "jack" => 10,
-    //     "queen" => 10,
-    //     "king" => 10,
-    //     "ace" => 11
-    // ];
+    public  function __construct(
+        ManagerRegistry $doctrine,
+        PlayerRepository $playerRepository
+    )
+    {
+        $this->doctrine = $doctrine;
+        $this->playerRepository = $playerRepository;
+        $this->inventory = new Inventory($doctrine, $playerRepository);
+    }
 
-    // public function __construct()
-    // {
-    //     $this->playerHand = new CardHand();
-    //     $this->houseHand = new CardHand();
-    //     $this->deck = new DeckOfCards();
-    // }
+    /** 
+     * Extracts the action from $command and calls the appropriate method
+     */
     public function command(string $command, string $pos): array
     {
         $actions = explode(" ", $command);
 
         if($actions[0] == "go") {
             return $this->move($actions[1], $pos);
+        } elseif ($actions[0] == "help") {
+            return $this->help();
+        } elseif ($actions[0] == "inventory") {
+            return $this->inventory();
         }
 
         return [
             "error",
-            "I'm not familiar with your usage of '$command'"
+            ["I'm not familiar with your usage of '$command'"]
         ];
     }
     
+    public function addToInventory(array $item): void
+    {
+        $this->inventory->createInventoryEntry($item);
+    }
+
+    public function inventory(): array
+    {
+        return ["inventory", $this->inventory->getInventoryEntries()];
+    }
+
+    /** 
+     * Depending on the $pos, it will call the appropriate method
+    */
     public function move(string $direction, string $pos): array
     {
         if ($direction == "north") {
@@ -66,6 +72,9 @@ class Game
         return ["go", "You can't"];
     }
 
+    /** 
+     * If the $pos is either house or path, you can go north
+     */
     public function moveNorth(string $pos): array
     {
         if ($pos == "house") {
@@ -77,6 +86,9 @@ class Game
         return ["go", "You can't"];
     }
 
+    /** 
+     * If the $pos is either dungeon or path, you can go south
+     */
     public function moveSouth(string $pos): array
     {
         if ($pos == "path") {
@@ -88,6 +100,9 @@ class Game
         return ["go", "You can't"];
     }
 
+    /** 
+     * If the $pos is path, you can go west
+     */
     public function moveWest(string $pos): array
     {
         if ($pos == "path") {
@@ -97,6 +112,9 @@ class Game
         return ["go", "You can't"];
     }
 
+    /** 
+     * If the $pos is cave, you can go east
+     */
     public function moveEast(string $pos): array
     {
         if ($pos == "cave") {
@@ -106,14 +124,20 @@ class Game
         return ["go", "You can't"];
     }
 
+    /** 
+     * If command is 'help', it will return the help array
+     */
     public function help(): array 
     {
         return [
+            "help",
+            [
             "Theses are the things you can do:",
             "Use the 'go' command to move in different directions e.g south.",
             "Inventory",
             "Pickup",
             "Help"
+            ]
         ];
     }
 

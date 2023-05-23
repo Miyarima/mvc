@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
-use Doctrine\Persistence\ManagerRegistry;
-
 use App\Adventure\Game;
+use App\Repository\PlayerRepository;
+
+use Doctrine\Persistence\ManagerRegistry;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,32 +30,40 @@ class AdventureController extends AbstractController
     #[Route('/proj/game/handel', name: 'handel_adventure', methods: ['POST'])]
     public function handelAdventure(
         Request $request,
-        SessionInterface $session
+        SessionInterface $session,
+        ManagerRegistry $doctrine,
+        PlayerRepository $playerRepository
     ): Response {
-        $game = new Game();
+        $game = new Game($doctrine, $playerRepository);
 
-        $form = "";
+        $command = "";
         foreach ($request->request as $key => $value) {
-            $form = strtolower($value);
+            $command = strtolower($value);
         }
 
         $pos = $session->get("position");
 
-        $answer = $game->command($form, $pos);
+        $answer = $game->command($command, $pos);
 
         if($answer[0] === "go" && $answer[1] !== "You can't") {
             return $this->redirectToRoute($answer[1]);
         } elseif ($answer[0] === "go") {
             $str = $answer[1];
             return $this->render('adventure/adventure.html.twig', [
-                "text" => ["$str $form from here!"],
+                "text" => ["$str $command from here!"],
                 "img" => $pos,
                 "commandHandler" => $this->generateUrl('handel_adventure'),
             ]);
+        } elseif ($answer[0] === "inventory") {
+            $items = [];
+            foreach ($answer[1] as $item) {
+                array_push($items, "$item[0] $item[1] $item[2]");
+            }
+            $answer[1] = $items;
         }
 
         return $this->render('adventure/adventure.html.twig', [
-            "text" =>[$answer[1]],
+            "text" => $answer[1],
             "img" => $pos,
             "commandHandler" => $this->generateUrl('handel_adventure'),
         ]);
