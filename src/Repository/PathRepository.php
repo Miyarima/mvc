@@ -39,6 +39,14 @@ class PathRepository extends ServiceEntityRepository
         }
     }
 
+    public function deleteAllRows(): void
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->delete(Path::class, 'p')
+           ->getQuery()
+           ->execute();
+    }
+
 //    /**
 //     * @return Path[] Returns an array of Path objects
 //     */

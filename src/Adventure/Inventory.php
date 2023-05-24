@@ -52,7 +52,7 @@ class Inventory
 
         $allItems = [];
         foreach ($inventory as $item) {
-            $allItems[] = [$item->getName(), $item->getType(), $item->getContent()];
+            $allItems[] = [$item->getName(), " | ",$item->getContent()];
         }
 
         return $allItems;
@@ -79,5 +79,18 @@ class Inventory
         $item->setContent($data[2]);
 
         $this->playerRepository->save($item, true);
+    }
+
+    /** 
+     * When called this function resets the player table in the database.
+    */
+    public function resetInventory(): void
+    {   
+        $stats = [["attack", "stat", "0"], ["health points", "stat", "10"]];
+
+        $this->playerRepository->deleteAllRows();
+        foreach ($stats as $stat) {
+            $this->createInventoryEntry($stat);
+        }
     }
 }

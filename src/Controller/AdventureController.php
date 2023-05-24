@@ -22,7 +22,10 @@ class AdventureController extends AbstractController
 
     #[Route("/proj", name: "project", methods: ['GET'])]
     public function project(): Response
-    {
+    {   
+        $game = $this->game;
+        $game->resetGame();
+
         return $this->render('adventure/home.html.twig');
     }
 

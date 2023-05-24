@@ -64,16 +64,11 @@ class Game
     */
     public function pickup(string $item, string $pos): array
     {
-        $pickupActions = [
-            "house" => [
-                "sword" => $this->pickupItem("sword"),
-                "quest" => $this->pickupItem("quest"),
-            ],
-        ];
-    
         if ($pos === "house") {
-            if (isset($pickupActions[$pos][$item])) {
-                return ["pickup", [$pickupActions[$pos][$item]]];
+            if ($item === "sword") {
+                return ["pickup", [$this->pickupItem("sword")]];
+            } elseif ($item === "quest") {
+                return ["pickup", [$this->pickupItem("quest")]];
             } else {
                 return ["pickup", ["There is no item named $item"]];
             }
@@ -83,7 +78,7 @@ class Game
     }
 
     public function pickupItem($item): string
-    {
+    {   
         $items = $this->house->getHousePickups();
         $wholeItem = [];
         foreach ($items as $i) {
@@ -381,6 +376,15 @@ class Game
         }
 
         return ["go", "You can't"];
+    }
+
+    public function resetGame(): void
+    {
+        $this->inventory->resetInventory();
+        $this->house->resetHouse();
+        $this->path->resetPath();
+        $this->cave->resetCave();
+        $this->dungeon->resetDungeon();
     }
 
     /**

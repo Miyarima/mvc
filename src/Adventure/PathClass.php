@@ -110,4 +110,22 @@ class PathClass
 
         return $message;
     }
+
+    /** 
+     * When called this function resets the path table in the database.
+    */
+    public function resetPath(): void
+    {   
+        $arrays = [
+            ["visit", "counter", "0"],
+            ["first message", "message", "Emotions filled the air as I left, carrying your legacy within. The cottage stood silent, but I felt both weight and excitement. Your knowledge lives on, and I'll honor it through my own adventure."],
+            ["repeated message", "message", "Embrace the path anew. May your journey bring forth glorious triumphs and bountiful riches."],
+            ["look", "info", "As you encounter a signpost, it directs you towards three distinct paths. Head south to return to the comfort of your home, venture west to explore the enchanting and bountiful caves, or brave the north to confront the perils of the deepest dungeon."],
+        ];
+
+        $this->repository->deleteAllRows();
+        foreach ($arrays as $array) {
+            $this->createPathEntry($array);
+        }
+    }
 }

@@ -110,4 +110,22 @@ class DungeonClass
 
         return $message;
     }
+
+    /** 
+     * When called this function resets the dungeon table in the database.
+    */
+    public function resetDungeon(): void
+    {   
+        $arrays = [
+            ["visit", "counter", "0"],
+            ["first message", "message", "I'm ready for the treacherous dungeon. Perils and trials await, testing my strength. Armed with knowledge, I'll conquer the guardian and claim the treasure, honoring you with every step and strike."],
+            ["repeated message", "message", "Once more, you stand in the dungeon's depths, poised to conquer the boss and claim the treasure."],
+            ["look", "info", "As you enter the dungeon, a sign warns to leave unless prepared for the boss. To retreat, go south."],
+        ];
+
+        $this->repository->deleteAllRows();
+        foreach ($arrays as $array) {
+            $this->createDungeonEntry($array);
+        }
+    }
 }

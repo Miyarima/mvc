@@ -39,6 +39,14 @@ class DungeonRepository extends ServiceEntityRepository
         }
     }
 
+    public function deleteAllRows(): void
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->delete(Dungeon::class, 'p')
+           ->getQuery()
+           ->execute();
+    }
+
 //    /**
 //     * @return Dungeon[] Returns an array of Dungeon objects
 //     */

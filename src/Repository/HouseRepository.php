@@ -39,6 +39,14 @@ class HouseRepository extends ServiceEntityRepository
         }
     }
 
+    public function deleteAllRows(): void
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->delete(House::class, 'p')
+           ->getQuery()
+           ->execute();
+    }
+
 //    /**
 //     * @return House[] Returns an array of House objects
 //     */

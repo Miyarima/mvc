@@ -39,6 +39,14 @@ class CaveRepository extends ServiceEntityRepository
         }
     }
 
+    public function deleteAllRows(): void
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->delete(Cave::class, 'p')
+           ->getQuery()
+           ->execute();
+    }
+
 //    /**
 //     * @return Cave[] Returns an array of Cave objects
 //     */
