@@ -62,6 +62,23 @@ class DungeonClass
     }
 
     /**
+     * Returns all inventory entries.
+     */
+    public function getDungeonBoss(): array
+    {
+        $dungeon = $this->repository->findAll();
+
+        $allItems = [];
+        foreach ($dungeon as $item) {
+            if ($item->getType() == "boss") {
+                $allItems[] = [$item->getName(), $item->getContent()];
+            }
+        }
+
+        return $allItems;
+    }
+
+    /**
      * Removes an item from the Dungeon
      */
     public function removeDungeonEntry(string $name): void
@@ -120,7 +137,8 @@ class DungeonClass
             ["visit", "counter", "0"],
             ["first message", "message", "I'm ready for the treacherous dungeon. Perils and trials await, testing my strength. Armed with knowledge, I'll conquer the guardian and claim the treasure, honoring you with every step and strike."],
             ["repeated message", "message", "Once more, you stand in the dungeon's depths, poised to conquer the boss and claim the treasure."],
-            ["look", "info", "As you enter the dungeon, a sign warns to leave unless prepared for the boss. To retreat, go south."],
+            ["look", "info", "As you enter the dungeon, a sign warns to leave unless prepared for the boss. To retreat, go south. However, if you are ready, type kill."],
+            ["Dreadlord Malakar, Harbinger of Chaos", "boss", "1"]
         ];
 
         $this->repository->deleteAllRows();

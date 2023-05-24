@@ -59,6 +59,23 @@ class Inventory
     }
 
     /**
+     * Returns all inventory entries.
+     */
+    public function getInventoryStats(): array
+    {
+        $inventory = $this->playerRepository->findAll();
+
+        $allItems = [];
+        foreach ($inventory as $item) {
+            if ($item->getType() == "stat") {
+                $allItems[] = [$item->getName(), $item->getContent()];
+            }
+        }
+
+        return $allItems;
+    }
+
+    /**
      * Removes an item from the inventory
      */
     public function removeInventoryEntry(string $name): void

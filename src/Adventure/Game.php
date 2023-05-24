@@ -51,12 +51,76 @@ class Game
             return $this->look($pos);
         } elseif ($actions[0] == "pickup") {
             return $this->pickup($actions[1], $pos);
+        } elseif ($actions[0] == "train") {
+            return $this->train($pos);
+        } elseif ($actions[0] == "kill") {
+            return $this->kill($pos);
         }
 
         return [
             "error",
             ["I'm not familiar with your usage of '$command'"]
         ];
+    }
+
+    /** 
+     * Check if the postion is a valid location for kill
+    */
+    public function kill(string $pos): array
+    {   
+        if ($pos === "dungeon") {
+            $stats = $this->inventory->getInventoryStats();
+            $boss = $this->dungeon->getDungeonBoss();
+            $monster = $boss[0][0];
+
+            if ($boss[0][1] === "0") {
+                return ["train", ["$monster, has already been defeated."]];
+            }
+
+            if (intval($stats[0][1]) > 14) {
+                $this->updateDungeon([$boss[0][0], "boss", "0"]);
+    
+                return ["train", ["You killed $monster, and claimed the treasure for yourself, containing the honor of this incredible achievement."]];
+            }
+            return ["train", ["$monster, proved too powerful for you, and you fled like the coward you believed yourself to be"]];
+        }
+
+        return ["train", ["To use the train, you must be inside the caves."]];
+    }
+
+    /** 
+     * Check if the postion is a valid location for train
+    */
+    public function train(string $pos): array
+    {   
+        if ($pos === "cave") {
+            $monster = [
+                "Venomous Shadowcrawler",
+                "Cursed Soulseeker",
+                "Fiery Scorchbeast",
+                "Dreadful Bonecrusher",
+                "Electric Stormfiend",
+                "Frostbite Yeti",
+                "Blazing Infernodemon",
+                "Plague-infested Swarmguard",
+                "Vengeful Spiritwraith",
+                "Corrupted Bloodreaver",
+            ];
+
+            $stats = $this->inventory->getInventoryStats();
+
+            $at = intval($stats[0][1]) + 1;
+            $hp = intval($stats[1][1]) + 2;
+
+            $this->updateInventory([$stats[0][0], "stat", "$at"]);
+            $this->updateInventory([$stats[1][0], "stat", "$hp"]);
+
+            $rand = rand(0, 9);
+
+            return ["train", ["You killed a $monster[$rand], your attack is now $at and your health is $hp"]];
+        }
+
+        return ["train", ["To use the train, you must be inside the caves."]];
     }
 
     /** 
@@ -89,10 +153,12 @@ class Game
 
         $answer = "";
         if (!empty($wholeItem)) {
-            $this->inventory->createInventoryEntry($wholeItem);
-            $this->house->removeHouseEntry($wholeItem[0]);
+            $this->addToInventory($wholeItem);
+            $this->removeFromHouse($wholeItem[0]);
             if ($item === "sword") {
-                $this->inventory->updateInventoryEntry(["attack", "stat", "10"]);
+                $stats = $this->inventory->getInventoryStats();
+                $at = intval($stats[0][1]) + 10;
+                $this->updateInventory([$stats[0][0], "stat", $at]);
                 $answer = "You picked up the $item, and 10 attack has been added";
             } else {
                 $answer = "You picked up the $item";
@@ -400,6 +466,7 @@ class Game
             "Use 'look' to see what's around you.",
             "Inventory",
             "Pickup",
+            "Train",
             "Help"
             ]
         ];

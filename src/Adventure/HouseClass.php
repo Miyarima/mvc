@@ -137,8 +137,8 @@ class HouseClass
             ["visit", "counter", "0"],
             ["first message", "message", "After dreaming of my blacksmith grandfather, I inherited his legacy. With honor and responsibility, I embarked on my own adventure, forging a path filled with challenges and surprises. Each hammer strike honored his unique knowledge."],
             ["repeated message", "message", "Once again, you find yourself inside your comfortable home, where you can gaze through your window and behold the breathtaking beauty of the fields."],
-            ["quest", "quest", "Equip yourself! AT:15, HP:20. Venture forth, defeat the dungeon boss, and seize the treasure chest. Glory and riches await your triumph!"],
-            ["Honed Claymore", "sword", "Made by the Legendary Grandfather Smith"]
+            ["quest", "quest", "Equip yourself! at:15, hp:20. Venture forth, defeat the dungeon boss, and seize the treasure chest. Glory and riches await your triumph!"],
+            ["sword", "sword", "A Honed Claymor made by the Legendary Grandfather Smith"]
         ];
 
         $this->houseRepository->deleteAllRows();
