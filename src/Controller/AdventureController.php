@@ -8,10 +8,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Mime\Message;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdventureController extends AbstractController
-{   
+{
     private $game;
 
     public function __construct(Game $game)
@@ -49,8 +50,8 @@ class AdventureController extends AbstractController
 
         if($action === "go" && $answer !== "You can't") {
             return $this->redirectToRoute($answer);
-        } 
-        
+        }
+
         if ($action === "go") {
             $answer = ["$answer $command from here!"];
         } elseif ($action === "inventory") {
@@ -58,7 +59,8 @@ class AdventureController extends AbstractController
                 fn ($item) => "{$item[0]} {$item[1]} {$item[2]}",
                 $answer
             );
-        } elseif ($action === "house" || $action === "path") {
+        } elseif ($action === "house" || $action === "path" ||
+                    $action === "cave" || $action === "dungeon") {
             $answer = array_map(
                 fn ($item) => $item[0],
                 $answer
@@ -76,12 +78,14 @@ class AdventureController extends AbstractController
     public function startAdventure(
         SessionInterface $session
     ): Response {
+        $game = $this->game;
+
         $session->set("position", "house");
 
-        $startText = ["After dreaming of my blacksmith grandfather, I inherited his legacy. With honor and responsibility, I embarked on my own adventure, forging a path filled with challenges and surprises. Each hammer strike honored his unique knowledge."];
+        $message = $game->message($session->get("position"));
 
         return $this->render('adventure/adventure.html.twig', [
-            "text" => $startText,
+            "text" => [$message],
             "img" => $session->get("position"),
             "commandHandler" => $this->generateUrl('handle_adventure'),
         ]);
@@ -91,14 +95,14 @@ class AdventureController extends AbstractController
     public function pathAdventure(
         SessionInterface $session
     ): Response {
+        $game = $this->game;
+
         $session->set("position", "path");
 
-        $startText = [
-            "Emotions filled the air as I left, carrying your legacy within. The cottage stood silent, but I felt both weight and excitement. Your knowledge lives on, and I'll honor it through my own adventure.",
-        ];
+        $message = $game->message($session->get("position"));
 
         return $this->render('adventure/adventure.html.twig', [
-            "text" => $startText,
+            "text" => [$message],
             "img" => $session->get("position"),
             "commandHandler" => $this->generateUrl('handle_adventure'),
         ]);
@@ -108,14 +112,14 @@ class AdventureController extends AbstractController
     public function caveAdventure(
         SessionInterface $session
     ): Response {
+        $game = $this->game;
+
         $session->set("position", "cave");
 
-        $startText = [
-            "As I enter the cave, following your path, I seek iron for my craft. Your inspiring stories push me to explore and overcome challenges. With your knowledge in my heart, each step and strike honors you in this mysterious realm of possibilities.",
-        ];
+        $message = $game->message($session->get("position"));
 
         return $this->render('adventure/adventure.html.twig', [
-            "text" => $startText,
+            "text" => [$message],
             "img" => $session->get("position"),
             "commandHandler" => $this->generateUrl('handle_adventure'),
         ]);
@@ -125,14 +129,14 @@ class AdventureController extends AbstractController
     public function dungeonAdventure(
         SessionInterface $session
     ): Response {
+        $game = $this->game;
+
         $session->set("position", "dungeon");
 
-        $startText = [
-            "I know the journey won't be easy. The dungeon is filled with perils and trials designed to test my strength and endurance. But I am ready to fight for the treasure and overcome the monster guarding it. Every step I take and every sword strike I make is a tribute to you and the knowledge you have imparted.",
-        ];
+        $message = $game->message($session->get("position"));
 
         return $this->render('adventure/adventure.html.twig', [
-            "text" => $startText,
+            "text" => [$message],
             "img" => $session->get("position"),
             "commandHandler" => $this->generateUrl('handle_adventure'),
         ]);

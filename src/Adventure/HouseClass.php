@@ -48,10 +48,10 @@ class HouseClass
      */
     public function getHouseEntries(): array
     {
-        $House = $this->houseRepository->findAll();
+        $house = $this->houseRepository->findAll();
 
         $allItems = [["While looking through your little hut, you find theses items"]];
-        foreach ($House as $item) {
+        foreach ($house as $item) {
             $type = $item->getType();
             if ($type === "sword" || $type === "quest") {
                 $allItems[] = [$item->getName()];
@@ -59,6 +59,24 @@ class HouseClass
         }
 
         $allItems[] = ["As you continue exploring, you notice a door to the north"];
+
+        return $allItems;
+    }
+
+    /**
+     * Returns all House entries which you can pickup.
+     */
+    public function getHousePickups(): array
+    {
+        $house = $this->houseRepository->findAll();
+
+        $allItems = [];
+        foreach ($house as $item) {
+            $type = $item->getType();
+            if ($type === "sword" || $type === "quest") {
+                $allItems[] = [$item->getName(),  $item->getType(), $item->getContent()];
+            }
+        }
 
         return $allItems;
     }
@@ -84,5 +102,29 @@ class HouseClass
         $item->setContent($data[2]);
 
         $this->houseRepository->save($item, true);
+    }
+
+    public function getMessage()
+    {
+        $messages = $this->houseRepository->findBy(['type' => 'message']);
+        $visit =  $this->houseRepository->findOneBy(['name' => 'visit']);
+
+        $message = "";
+
+        foreach ($messages as $item) {
+            if ($visit->getContent() === "0") {
+                if ($item->getName() === "first message") {
+                    $message = $item->getContent();
+                    $this->updateHouseEntry(["visit", "counter", "1"]);
+                    break;
+                }
+            } elseif ($visit->getContent() === "1") {
+                if ($item->getName() === "repeated message") {
+                    $message = $item->getContent();
+                }
+            }
+        }
+
+        return $message;
     }
 }

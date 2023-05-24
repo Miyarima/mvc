@@ -39,6 +39,14 @@ class PlayerRepository extends ServiceEntityRepository
         }
     }
 
+    public function deleteAllRows(): void
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->delete(Player::class, 'p')
+           ->getQuery()
+           ->execute();
+    }
+
 //    /**
 //     * @return Player[] Returns an array of Player objects
 //     */

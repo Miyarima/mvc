@@ -7,6 +7,8 @@ use App\Adventure\Inventory;
 use App\Repository\PlayerRepository;
 use App\Repository\HouseRepository;
 use App\Repository\PathRepository;
+use App\Repository\CaveRepository;
+use App\Repository\DungeonRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 class Game
@@ -14,16 +16,22 @@ class Game
     private Inventory $inventory;
     private HouseClass $house;
     private PathClass $path;
+    private CaveClass $cave;
+    private DungeonClass $dungeon;
 
     public function __construct(
         ManagerRegistry $doctrine,
         PlayerRepository $playerRepository,
         HouseRepository $houseRepository,
-        PathRepository $pathRepository
+        PathRepository $pathRepository,
+        CaveRepository $caveRepository,
+        DungeonRepository $dungeonRepository
     ) {
         $this->inventory = new Inventory($doctrine, $playerRepository);
         $this->house = new HouseClass($doctrine, $houseRepository);
         $this->path = new PathClass($doctrine, $pathRepository);
+        $this->cave = new CaveClass($doctrine, $caveRepository);
+        $this->dungeon = new DungeonClass($doctrine, $dungeonRepository);
     }
 
     /**
@@ -41,12 +49,64 @@ class Game
             return $this->inventory();
         } elseif ($actions[0] == "look") {
             return $this->look($pos);
+        } elseif ($actions[0] == "pickup") {
+            return $this->pickup($actions[1], $pos);
         }
 
         return [
             "error",
             ["I'm not familiar with your usage of '$command'"]
         ];
+    }
+
+    /** 
+     * Check if the item is a valid pickup and calls the appropriate method
+    */
+    public function pickup(string $item, string $pos): array
+    {
+        $pickupActions = [
+            "house" => [
+                "sword" => $this->pickupItem("sword"),
+                "quest" => $this->pickupItem("quest"),
+            ],
+        ];
+    
+        if ($pos === "house") {
+            if (isset($pickupActions[$pos][$item])) {
+                return ["pickup", [$pickupActions[$pos][$item]]];
+            } else {
+                return ["pickup", ["There is no item named $item"]];
+            }
+        }
+    
+        return ["pickup", ["To use 'pickup,' you must be inside the house."]];
+    }
+
+    public function pickupItem($item): string
+    {
+        $items = $this->house->getHousePickups();
+        $wholeItem = [];
+        foreach ($items as $i) {
+            if ($i[1] === $item) {
+                $wholeItem = $i;
+            }
+        }
+
+        $answer = "";
+        if (!empty($wholeItem)) {
+            $this->inventory->createInventoryEntry($wholeItem);
+            $this->house->removeHouseEntry($wholeItem[0]);
+            if ($item === "sword") {
+                $this->inventory->updateInventoryEntry(["attack", "stat", "10"]);
+                $answer = "You picked up the $item, and 10 attack has been added";
+            } else {
+                $answer = "You picked up the $item";
+            }
+        } else {
+            $answer = "There is no $item to be picked up";
+        }
+
+        return $answer;
     }
 
     /**
@@ -58,9 +118,97 @@ class Game
             return $this->house();
         } elseif ($pos === "path") {
             return $this->path();
+        } elseif ($pos === "cave") {
+            return $this->cave();
+        } elseif ($pos === "dungeon") {
+            return $this->dungeon();
         }
 
         return ["go", "You can't"];
+    }
+
+    /**
+     * Returns the message for the given position
+    */
+    public function message(string $pos): string
+    {
+        if ($pos === "house") {
+            return $this->house->getMessage();
+        } elseif ($pos === "path") {
+            return $this->path->getMessage();
+        } elseif ($pos === "cave") {
+            return $this->cave->getMessage();
+        } elseif ($pos === "dungeon") {
+            return $this->dungeon->getMessage();
+        }
+    }
+
+    /**
+     * Returns all items in the dungeon
+    */
+    public function dungeon(): array
+    {
+        return ["dungeon", $this->dungeon->getDungeonEntries()];
+    }
+
+    /**
+     * Sends an item to be added to the dungeon
+     * @param array<string> $item
+    */
+    public function addToDungeon(array $item): void
+    {
+        $this->dungeon->createDungeonEntry($item);
+    }
+
+    /**
+     * Sends an item to be removed from the dungeon
+    */
+    public function removeFromDungeon(string $item): void
+    {
+        $this->dungeon->removeDungeonEntry($item);
+    }
+
+    /**
+     * Sends an item to be update in the dungeon
+     * @param array<string> $item
+    */
+    public function updateDungeon(array $item): void
+    {
+        $this->dungeon->updateDungeonEntry($item);
+    }
+
+    /**
+     * Returns all items in the cave
+    */
+    public function cave(): array
+    {
+        return ["cave", $this->cave->getCaveEntries()];
+    }
+
+    /**
+     * Sends an item to be added to the cave
+     * @param array<string> $item
+    */
+    public function addToCave(array $item): void
+    {
+        $this->cave->createCaveEntry($item);
+    }
+
+    /**
+     * Sends an item to be removed from the cave
+    */
+    public function removeFromCave(string $item): void
+    {
+        $this->cave->removeCaveEntry($item);
+    }
+
+    /**
+     * Sends an item to be update in the cave
+     * @param array<string> $item
+    */
+    public function updateCave(array $item): void
+    {
+        $this->cave->updateCaveEntry($item);
     }
 
     /**
