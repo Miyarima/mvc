@@ -48,10 +48,10 @@ class CaveClass
      */
     public function getCaveEntries(): array
     {
-        $Cave = $this->repository->findAll();
+        $cave = $this->repository->findAll();
 
         $allItems = [];
-        foreach ($Cave as $item) {
+        foreach ($cave as $item) {
             $type = $item->getType();
             if ($type === "info") {
                 $allItems[] = [$item->getContent()];
@@ -113,11 +113,11 @@ class CaveClass
         return $message;
     }
 
-    /** 
+    /**
      * When called this function resets the cave table in the database.
     */
     public function resetCave(): void
-    {   
+    {
         $arrays = [
             ["visit", "counter", "0"],
             ["first message", "message", "As I enter the cave, following your path, I seek strengh for my journey. Your inspiring stories push me to explore and overcome challenges. With your knowledge in my heart, each step and strike honors you in this mysterious realm of possibilities."],

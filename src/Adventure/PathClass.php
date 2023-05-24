@@ -111,11 +111,11 @@ class PathClass
         return $message;
     }
 
-    /** 
+    /**
      * When called this function resets the path table in the database.
     */
     public function resetPath(): void
-    {   
+    {
         $arrays = [
             ["visit", "counter", "0"],
             ["first message", "message", "Emotions filled the air as I left, carrying your legacy within. The cottage stood silent, but I felt both weight and excitement. Your knowledge lives on, and I'll honor it through my own adventure."],

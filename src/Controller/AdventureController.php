@@ -21,7 +21,7 @@ class AdventureController extends AbstractController
 
     #[Route("/proj", name: "project", methods: ['GET'])]
     public function project(): Response
-    {   
+    {
         $game = $this->game;
         $game->resetGame();
 
@@ -42,7 +42,7 @@ class AdventureController extends AbstractController
         $game = $this->game;
 
         $command = "";
-        foreach ($request->request as $key => $value) {
+        foreach ($request->request as $value) {
             $command = strtolower($value);
         }
 

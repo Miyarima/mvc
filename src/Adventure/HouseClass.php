@@ -128,11 +128,11 @@ class HouseClass
         return $message;
     }
 
-    /** 
+    /**
      * When called this function resets the house table in the database.
     */
     public function resetHouse(): void
-    {   
+    {
         $arrays = [
             ["visit", "counter", "0"],
             ["first message", "message", "After dreaming of my blacksmith grandfather, I inherited his legacy. With honor and responsibility, I embarked on my own adventure, forging a path filled with challenges and surprises. Each hammer strike honored his unique knowledge."],

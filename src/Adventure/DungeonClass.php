@@ -48,10 +48,10 @@ class DungeonClass
      */
     public function getDungeonEntries(): array
     {
-        $Dungeon = $this->repository->findAll();
+        $dungeon = $this->repository->findAll();
 
         $allItems = [];
-        foreach ($Dungeon as $item) {
+        foreach ($dungeon as $item) {
             $type = $item->getType();
             if ($type === "info") {
                 $allItems[] = [$item->getContent()];
@@ -128,11 +128,11 @@ class DungeonClass
         return $message;
     }
 
-    /** 
+    /**
      * When called this function resets the dungeon table in the database.
     */
     public function resetDungeon(): void
-    {   
+    {
         $arrays = [
             ["visit", "counter", "0"],
             ["first message", "message", "I'm ready for the treacherous dungeon. Perils and trials await, testing my strength. Armed with knowledge, I'll conquer the guardian and claim the treasure, honoring you with every step and strike."],
