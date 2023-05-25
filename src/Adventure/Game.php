@@ -2,8 +2,6 @@
 
 namespace App\Adventure;
 
-use App\Adventure\Inventory;
-
 use App\Repository\PlayerRepository;
 use App\Repository\HouseRepository;
 use App\Repository\PathRepository;
@@ -85,7 +83,7 @@ class Game
             return ["train", ["$monster, proved too powerful for you, and you fled like the coward you believed yourself to be"]];
         }
 
-        return ["train", ["To use the train, you must be inside the caves."]];
+        return ["kill", ["To use the kill, you must be inside the dungeon."]];
     }
 
     /**
@@ -185,7 +183,7 @@ class Game
             return $this->dungeon();
         }
 
-        return ["go", "You can't"];
+        return ["look", "You can't"];
     }
 
     /**
