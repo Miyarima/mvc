@@ -34,6 +34,7 @@ class CaveClassTest extends TestCase
         $cave->setType('info');
         $cave->setContent('looking to the east');
 
+        // scrutinizer-disable-next-line unmocked-method-call
         $this->repository->expects($this->once())
             ->method('findAll')
             ->willReturn([$cave]);
