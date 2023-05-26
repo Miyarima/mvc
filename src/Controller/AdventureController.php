@@ -34,6 +34,18 @@ class AdventureController extends AbstractController
         return $this->render('adventure/about.html.twig');
     }
 
+    #[Route("/proj/cheatsheet", name: "project_cheatsheet", methods: ['GET'])]
+    public function cheatSheet(): Response
+    {
+        return $this->render('adventure/cheatsheet.html.twig');
+    }
+
+    #[Route("/proj/about/database", name: "about_database_project", methods: ['GET'])]
+    public function aboutDatabaseProject(): Response
+    {
+        return $this->render('adventure/database.html.twig');
+    }
+
     #[Route('/proj/game/handle', name: 'handle_adventure', methods: ['POST'])]
     public function handelAdventure(
         Request $request,

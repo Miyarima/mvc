@@ -816,6 +816,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-AdventureController.html#method_aboutProject"
         },                {
+            "fqsen": "\\App\\Controller\\AdventureController\u003A\u003AcheatSheet\u0028\u0029",
+            "name": "cheatSheet",
+            "summary": "",
+            "url": "classes/App-Controller-AdventureController.html#method_cheatSheet"
+        },                {
+            "fqsen": "\\App\\Controller\\AdventureController\u003A\u003AaboutDatabaseProject\u0028\u0029",
+            "name": "aboutDatabaseProject",
+            "summary": "",
+            "url": "classes/App-Controller-AdventureController.html#method_aboutDatabaseProject"
+        },                {
             "fqsen": "\\App\\Controller\\AdventureController\u003A\u003AhandelAdventure\u0028\u0029",
             "name": "handelAdventure",
             "summary": "",
@@ -1535,6 +1545,21 @@ Search.appendIndex(
             "name": "dungeonMessageApi",
             "summary": "",
             "url": "classes/App-Controller-AdventureApiController.html#method_dungeonMessageApi"
+        },                {
+            "fqsen": "\\App\\Controller\\AdventureApiController\u003A\u003AinventoryApi\u0028\u0029",
+            "name": "inventoryApi",
+            "summary": "",
+            "url": "classes/App-Controller-AdventureApiController.html#method_inventoryApi"
+        },                {
+            "fqsen": "\\App\\Controller\\AdventureApiController\u003A\u003AtrainApi\u0028\u0029",
+            "name": "trainApi",
+            "summary": "",
+            "url": "classes/App-Controller-AdventureApiController.html#method_trainApi"
+        },                {
+            "fqsen": "\\App\\Controller\\AdventureApiController\u003A\u003AtrainApiPost\u0028\u0029",
+            "name": "trainApiPost",
+            "summary": "",
+            "url": "classes/App-Controller-AdventureApiController.html#method_trainApiPost"
         },                {
             "fqsen": "\\App\\Controller\\AdventureApiController\u003A\u003A\u0024game",
             "name": "game",

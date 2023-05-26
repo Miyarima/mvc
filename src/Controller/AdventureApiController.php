@@ -49,7 +49,7 @@ class AdventureApiController extends AbstractController
         return $response;
     }
 
-    #[Route("/proj/message/house", name: "house_message_api", methods: ['GET'])]
+    #[Route("/proj/api/message/house", name: "house_message_api", methods: ['GET'])]
     public function houseMessageApi(): Response
     {
         $game = $this->game;
@@ -69,7 +69,7 @@ class AdventureApiController extends AbstractController
         return $response;
     }
 
-    #[Route("/proj/message/cave", name: "cave_message_api", methods: ['GET'])]
+    #[Route("/proj/api/message/cave", name: "cave_message_api", methods: ['GET'])]
     public function caveMessageApi(): Response
     {
         $game = $this->game;
@@ -89,7 +89,7 @@ class AdventureApiController extends AbstractController
         return $response;
     }
 
-    #[Route("/proj/message/dungeon", name: "dungeon_message_api", methods: ['GET'])]
+    #[Route("/proj/api/message/dungeon", name: "dungeon_message_api", methods: ['GET'])]
     public function dungeonMessageApi(): Response
     {
         $game = $this->game;
@@ -109,38 +109,39 @@ class AdventureApiController extends AbstractController
         return $response;
     }
 
-    // #[Route('/proj/game/handle', name: 'handle_adventure', methods: ['POST'])]
-    // public function handelAdventure(
-    //     Request $request,
-    //     SessionInterface $session
-    // ): Response {
-    //     $game = $this->game;
+    #[Route("/proj/api/inventory", name: "inventory_api", methods: ['GET'])]
+    public function inventoryApi(): Response
+    {
+        $game = $this->game;
 
-    //     $command = "";
-    //     foreach ($request->request as $value) {
-    //         $command = strtolower($value);
-    //     }
+        $inventory = $game->command("inventory", "house");
 
-    //     $pos = $session->get("position");
+        $response = new JsonResponse($inventory);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
 
-    //     [$action, $answer] = $game->command($command, $pos);
+    #[Route("/proj/api/train/get", name: "cave_train_api", methods: ['GET'])]
+    public function trainApi(): Response
+    {
+        return $this->trainApiPost("train", "cave");
+    }
 
-    //     if($action === "go" && $answer !== "You can't") {
-    //         return $this->redirectToRoute($answer);
-    //     }
+    #[Route("/proj/api/train", name: "cave_train_api_post", methods: ['POST'])]
+    public function trainApiPost(
+        string $command,
+        string $pos
+    ): Response {
+        $game = $this->game;
 
-    //     if ($action === "go") {
-    //         $answer = ["$answer $command from here!"];
-    //     } elseif ($action === "inventory") {
-    //         $answer = array_map(
-    //             fn ($item) => "{$item[0]} {$item[1]} {$item[2]}",
-    //             $answer
-    //         );
-    //     } elseif ($action === "house" || $action === "path" ||
-    //                 $action === "cave" || $action === "dungeon") {
-    //         $answer = array_map(
-    //             fn ($item) => $item[0],
-    //             $answer
-    //         );
-    //     }
+        $train = $game->command($command, $pos);
+
+        $response = new JsonResponse($train);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
 }
