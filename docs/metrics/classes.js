@@ -414,6 +414,113 @@ var classes = [
         "violations": {}
     },
     {
+        "name": "App\\Controller\\AdventureApiController",
+        "interface": false,
+        "abstract": false,
+        "final": false,
+        "methods": [
+            {
+                "name": "__construct",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "project",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "pathMessageApi",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "houseMessageApi",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "caveMessageApi",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "dungeonMessageApi",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            }
+        ],
+        "nbMethodsIncludingGettersSetters": 6,
+        "nbMethods": 5,
+        "nbMethodsPrivate": 0,
+        "nbMethodsPublic": 5,
+        "nbMethodsGetter": 0,
+        "nbMethodsSetters": 1,
+        "wmc": 5,
+        "ccn": 1,
+        "ccnMethodMax": 1,
+        "externals": [
+            "Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "App\\Adventure\\Game",
+            "Symfony\\Component\\HttpFoundation\\Response",
+            "Symfony\\Component\\HttpFoundation\\Response",
+            "Symfony\\Component\\HttpFoundation\\JsonResponse",
+            "Symfony\\Component\\HttpFoundation\\Response",
+            "Symfony\\Component\\HttpFoundation\\JsonResponse",
+            "Symfony\\Component\\HttpFoundation\\Response",
+            "Symfony\\Component\\HttpFoundation\\JsonResponse",
+            "Symfony\\Component\\HttpFoundation\\Response",
+            "Symfony\\Component\\HttpFoundation\\JsonResponse"
+        ],
+        "parents": [
+            "Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController"
+        ],
+        "implements": [],
+        "lcom": 1,
+        "length": 130,
+        "vocabulary": 25,
+        "volume": 603.7,
+        "difficulty": 6.75,
+        "effort": 4074.98,
+        "level": 0.15,
+        "bugs": 0.2,
+        "time": 226,
+        "intelligentContent": 89.44,
+        "number_operators": 31,
+        "number_operands": 99,
+        "number_operators_unique": 3,
+        "number_operands_unique": 22,
+        "cloc": 34,
+        "loc": 89,
+        "lloc": 55,
+        "mi": 83.32,
+        "mIwoC": 42.43,
+        "commentWeight": 40.89,
+        "kanDefect": 0.15,
+        "relativeStructuralComplexity": 36,
+        "relativeDataComplexity": 0.74,
+        "relativeSystemComplexity": 36.74,
+        "totalStructuralComplexity": 216,
+        "totalDataComplexity": 4.43,
+        "totalSystemComplexity": 220.43,
+        "package": "App\\Controller\\",
+        "pageRank": 0.01,
+        "afferentCoupling": 0,
+        "efferentCoupling": 4,
+        "instability": 1,
+        "violations": {}
+    },
+    {
         "name": "App\\Controller\\GameController",
         "interface": false,
         "abstract": false,
@@ -1510,10 +1617,10 @@ var classes = [
         "totalDataComplexity": 28.33,
         "totalSystemComplexity": 34684.33,
         "package": "App\\Adventure\\",
-        "pageRank": 0.01,
-        "afferentCoupling": 1,
+        "pageRank": 0.02,
+        "afferentCoupling": 2,
         "efferentCoupling": 11,
-        "instability": 0.92,
+        "instability": 0.85,
         "violations": {}
     },
     {
@@ -1580,7 +1687,7 @@ var classes = [
         "totalDataComplexity": 4,
         "totalSystemComplexity": 4,
         "package": "App\\Deck\\",
-        "pageRank": 0.2,
+        "pageRank": 0.19,
         "afferentCoupling": 6,
         "efferentCoupling": 0,
         "instability": 0,

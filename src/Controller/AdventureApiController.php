@@ -30,7 +30,8 @@ class AdventureApiController extends AbstractController
     }
 
     #[Route("/proj/api/message/path", name: "path_message_api", methods: ['GET'])]
-    public function pathMessageApi(): Response {
+    public function pathMessageApi(): Response
+    {
         $game = $this->game;
 
         $message = $game->message("path");
@@ -49,7 +50,8 @@ class AdventureApiController extends AbstractController
     }
 
     #[Route("/proj/message/house", name: "house_message_api", methods: ['GET'])]
-    public function houseMessageApi(): Response {
+    public function houseMessageApi(): Response
+    {
         $game = $this->game;
 
         $message = $game->message("house");
@@ -68,7 +70,8 @@ class AdventureApiController extends AbstractController
     }
 
     #[Route("/proj/message/cave", name: "cave_message_api", methods: ['GET'])]
-    public function caveMessageApi(): Response {
+    public function caveMessageApi(): Response
+    {
         $game = $this->game;
 
         $message = $game->message("cave");
@@ -87,7 +90,8 @@ class AdventureApiController extends AbstractController
     }
 
     #[Route("/proj/message/dungeon", name: "dungeon_message_api", methods: ['GET'])]
-    public function dungeonMessageApi(): Response {
+    public function dungeonMessageApi(): Response
+    {
         $game = $this->game;
 
         $message = $game->message("dungeon");

@@ -136,7 +136,11 @@ class GameTest extends TestCase
             [
             "Theses are the things you can do:",
             "Use the 'go' command to move in different directions e.g south.",
-            "Use 'look' to see what's around you.","Inventory","Pickup","Train","Help"
+            "Use 'look' to see what's around you.",
+            "'Inventory' to see your stats and what's on your person",
+            "'Pickup' to pick up items",
+            "'Train' to enhance you stats",
+            "'Help' to see this message again",
             ]
         ], $result);
     }

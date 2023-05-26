@@ -39,7 +39,7 @@ class CaveClassTest extends TestCase
             ->method('findAll')
             ->willReturn([$cave]);
 
-        $expectedResult = [['looking to the east'], ['To return to the path, it also says to go east.']];
+        $expectedResult = [['looking to the east'], ['To return to the path, go east.']];
         $actualResult = $this->caveClass->getCaveEntries();
 
         $this->assertEquals($expectedResult, $actualResult);

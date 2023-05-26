@@ -1501,6 +1501,46 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Repository-PathRepository.html#method_deleteAllRows"
         },                {
+            "fqsen": "\\App\\Controller\\AdventureApiController",
+            "name": "AdventureApiController",
+            "summary": "",
+            "url": "classes/App-Controller-AdventureApiController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\AdventureApiController\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Controller-AdventureApiController.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Controller\\AdventureApiController\u003A\u003Aproject\u0028\u0029",
+            "name": "project",
+            "summary": "",
+            "url": "classes/App-Controller-AdventureApiController.html#method_project"
+        },                {
+            "fqsen": "\\App\\Controller\\AdventureApiController\u003A\u003ApathMessageApi\u0028\u0029",
+            "name": "pathMessageApi",
+            "summary": "",
+            "url": "classes/App-Controller-AdventureApiController.html#method_pathMessageApi"
+        },                {
+            "fqsen": "\\App\\Controller\\AdventureApiController\u003A\u003AhouseMessageApi\u0028\u0029",
+            "name": "houseMessageApi",
+            "summary": "",
+            "url": "classes/App-Controller-AdventureApiController.html#method_houseMessageApi"
+        },                {
+            "fqsen": "\\App\\Controller\\AdventureApiController\u003A\u003AcaveMessageApi\u0028\u0029",
+            "name": "caveMessageApi",
+            "summary": "",
+            "url": "classes/App-Controller-AdventureApiController.html#method_caveMessageApi"
+        },                {
+            "fqsen": "\\App\\Controller\\AdventureApiController\u003A\u003AdungeonMessageApi\u0028\u0029",
+            "name": "dungeonMessageApi",
+            "summary": "",
+            "url": "classes/App-Controller-AdventureApiController.html#method_dungeonMessageApi"
+        },                {
+            "fqsen": "\\App\\Controller\\AdventureApiController\u003A\u003A\u0024game",
+            "name": "game",
+            "summary": "",
+            "url": "classes/App-Controller-AdventureApiController.html#property_game"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
