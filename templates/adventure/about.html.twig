@@ -1,49 +1,31 @@
 {% extends "adventure/adv_base.html.twig" %}
 
-{% block title %}About{% endblock %}
+{% block title %}About Hero's Quest{% endblock %}
 
 {% block body %}
     <h1 class="adv-title">About</h1>
 
     <section>
         <p class="text">
-            I detta spel kastas du in i en spännande värld fylld med mysterier 
-            och utmaningar. Din uppgift är att ta dig genom en serie rum för att 
-            nå det sista rummet och hitta en viktig skatt eller något som hjälper 
-            dig att nå ditt mål. Men det kommer inte vara enkelt. Varje rum är 
-            fyllt med överraskningar och föremål som kan hjälpa dig eller sätta 
-            käppar i hjulet för ditt äventyr.
+            Mitt projekt är ett gammaldags äventyrsspel. Jag försökte ge 
+            intrycket av en gammal pergamentrulle med färg valet och gammaldags 
+            skrift med typsnittet (men fortfarande läsbart). 
         </p><br>
         <p class="text">
-            Spelets struktur är byggd på ett sätt som gör det enkelt att utöka med nya 
-            rum, föremål och händelser på ett generellt sätt, utan att behöva göra 
-            förändringar i själva spellogiken. Jag har lagt fokus på att hålla spelet 
-            lättförståeligt och engagerande för alla spelare.
+            Där man i ett input fält kan skriva in vad man vill göra, till 
+            exempel att gå söder. I varje "rum" visas en bild, till bilden har 
+            jag lagt till text som man bara ser första gången ett rum visas. Sedan 
+            visas en ny text som om att man återigen har kommit tillbaka till det rummet.
         </p><br>
         <p class="text">
-            För att spela spelet, kommer du att mötas av en bild av varje rum som du 
-            befinner dig i. Du kan interagera med objekten i rummet genom att klicka på 
-            dem. När du klickar på ett objekt skickas en förfrågan till servern och sidan 
-            renderas om för att visa vad som händer eller vad som döljer sig bakom det 
-            interagerade objektet. Du kan också samla föremål genom att lägga dem i din 
-            virtuella ryggsäck, som du bär med dig genom spelet.
+            I varje rum kan man också göra något, du kan kolla i varje. I huset kan 
+            man plocka upp saker, i grotta öka ens stats och i dungeon:en möta slut bossen.
         </p><br>
         <p class="text">
-            För att navigera mellan rummen har du möjlighet att röra dig åt öst, väst, 
-            norr och söder, förutsatt att det finns öppningar i de riktningarna. Varje 
-            rum kan ha olika dolda föremål eller händelser som endast avslöjas genom att 
-            interagera med dem, kanske med hjälp av något föremål du har i ryggsäcken.
-        </p><br>
-        <p class="text">
-            Detta äventyrsspel består av 3-5 rum och är utformat för att ge en spännande 
-            och underhållande spelupplevelse utan att vara för omfattande. För att 
-            underlätta för lärare och andra spelare har Jag skapat en "fusklapp" som visar 
-            den snabbaste vägen genom spelet. Du kan hitta länken till fusklappen på 
-            landningssidan.
-        </p><br>
-        <p class="text">
-            Jag hoppas att du kommer att njuta av detta äventyrsspel och att du lyckas 
-            nå ditt mål! Lycka till!
+            Efter varje interaktion skickas en request till server och hämtar data från
+            databasen, alternativ lägger till. Så <a href="{{ path('about_project') }}">här</a>
+            kan du se dokumentationen för databasen. Det finns också API routes som du kan
+            se <a href="{{ path('about_project') }}">här</a>.
         </p><br>
     </section><br>
     <div class="adv-buttons">

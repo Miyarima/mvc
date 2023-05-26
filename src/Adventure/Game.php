@@ -72,15 +72,15 @@ class Game
             $monster = $boss[0][0];
 
             if ($boss[0][1] === "0") {
-                return ["train", ["$monster, has already been defeated."]];
+                return ["kill", ["$monster, has already been defeated."]];
             }
 
             if (intval($stats[0][1]) > 14) {
                 $this->updateDungeon([$boss[0][0], "boss", "0"]);
 
-                return ["train", ["You killed $monster, and claimed the treasure for yourself, containing the honor of this incredible achievement."]];
+                return ["kill", ["You killed $monster, and claimed the treasure for yourself, containing the honor of this incredible achievement."]];
             }
-            return ["train", ["$monster, proved too powerful for you, and you fled like the coward you believed yourself to be"]];
+            return ["kill", ["$monster, proved too powerful for you, and you fled like the coward you believed yourself to be"]];
         }
 
         return ["kill", ["To use the kill, you must be inside the dungeon."]];
@@ -376,10 +376,10 @@ class Game
             "Theses are the things you can do:",
             "Use the 'go' command to move in different directions e.g south.",
             "Use 'look' to see what's around you.",
-            "Inventory",
-            "Pickup",
-            "Train",
-            "Help"
+            "'Inventory' to see your stats and what's on your person",
+            "'Pickup' to pick up items",
+            "'Train' to enhance you stats",
+            "'Help' to see this message again",
             ]
         ];
     }

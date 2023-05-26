@@ -58,7 +58,7 @@ class CaveClass
             }
         }
 
-        $allItems[] = ["To return to the path, it also says to go east."];
+        $allItems[] = ["To return to the path, go east."];
 
         return $allItems;
     }
@@ -121,8 +121,8 @@ class CaveClass
         $arrays = [
             ["visit", "counter", "0"],
             ["first message", "message", "As I enter the cave, following your path, I seek strengh for my journey. Your inspiring stories push me to explore and overcome challenges. With your knowledge in my heart, each step and strike honors you in this mysterious realm of possibilities."],
-            ["repeated message", "message", "Once more, you stand within the depths of the cave, ready to enhance your stats and abilities further."],
-            ["look", "info", "Amidst the surroundings, you notice a sign next to one of the cave entrances, clearly indicating that this particular location is the prime spot for enhancing your stats."],
+            ["repeated message", "message", "Once more, you stand within the depths of the cave, ready to train your stats and abilities further."],
+            ["look", "info", "Amidst the surroundings, you notice a sign next to one of the cave entrances, clearly indicating that this particular location is the prime spot for training your stats, type Train."],
         ];
 
         $this->repository->deleteAllRows();

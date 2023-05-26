@@ -1,0 +1,19 @@
+{% extends "adventure/adv_base.html.twig" %}
+
+{% block title %}Hero's Quest{% endblock %}
+
+{% block body %}
+    <h1 class="adv-title">API</h1>
+        <section>
+            <p class="text">
+                Dessa retunerar meddelanden som visas genom spelet, samt 
+                de som kommer up när man göra 'look' kommandet!
+            </p>
+            <div class="adv-buttons">
+                <a class="adv-btn" href="{{ path('path_message_api') }}">Path Message</a>
+                <a class="adv-btn" href="{{ path('house_message_api') }}">House Message</a>
+                <a class="adv-btn" href="{{ path('cave_message_api') }}">Cave Message</a>
+                <a class="adv-btn" href="{{ path('dungeon_message_api') }}">Dungeon Message</a>
+            </div>
+        </section><br>
+{% endblock %}
