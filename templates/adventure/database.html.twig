@@ -6,8 +6,73 @@
     <h1 class="adv-title">Database</h1>
 
     <section>
+        <h2 class="text">
+            Er diagram. 
+        </h2><br>
+        <section class="game-img">
+            <img src="{{ asset('img/er.png') }}" alt="">
+        </section>
+        <h2 class="text">
+            Player: 
+        </h2><br>
         <p class="text">
-            Här kommer till att finnas när orken är här. 
+            I player sparas spelarens inventory, det vill säga attack och 
+            health points samt det svärdet och quest man eventuellt plockar upp.
+        </p><br>
+        <h2 class="text">
+            House: 
+        </h2><br>
+        <p class="text">
+            I house ligger svärdet och quest. Det finns också en visit counter 
+            och två olika meddelanden beroende på om man varit i rummet innan 
+            eller inte. Ett meddelane för visit kommandot.
+        </p><br>
+        <h2 class="text">
+            Path: 
+        </h2><br>
+        <p class="text">
+            Precis som i house finns en visit counter, två olika meddelande 
+            beroende på hur många gånger man varit i rummet, samt ett meddelande 
+            för visit kommandot.
+        </p><br>
+        <h2 class="text">
+            Cave: 
+        </h2><br>
+        <p class="text">
+            Cave är precis likadan som det förgående två. En visit counter, 
+            två meddelande och en för look kommandot.
+        </p><br>
+        <h2 class="text">
+            Dungeon: 
+        </h2><br>
+        <p class="text">
+            Dungeon är precis likadan som house, path och cave.
+        </p><br>
+    </section><br>
+    <section>
+        <h2 class="text">
+            Min lösning 
+        </h2><br>
+        <p class="text">
+            Jag löste relationerna mellan tabellerna genom att göra så att de 
+            innehåller samma data för att lättast kunna flytta till exempel 
+            svärdet från house tabellen till player (inventory). Det finns säker 
+            andra mycket bättre lösningar men det var den första jag kunde komma 
+            på som inte skulle kräv en massa extra kod för de andra tabeller som 
+            annars hade behövts mellan.
+            <br><br>
+            Jag har använt mig av SQLite för att jag ansåg den passa bäst för vad 
+            jag behövde databasen till. Vilket är i stort sätta bara att spara ett 
+            par meningar.
+            <br><br>
+            Eftersom att jag använder mig av en databas och i stort sätt spara allt 
+            i den har jag nästa bara metoder som hämtar eller spara data i den. Så 
+            om jag inte skrivit tester för databasen hade jag bara haft några få 
+            tester och min kodtäckning bara några procent. Så jag satt väldigt länge 
+            och till slut fick ihop ändå en ganska bra täckning. Eftersom att 
+            Scrutinizer rapporterar på kodtäckingen antar jag att jag lyckades, och 
+            det gjorde jag genom att läsa mig in på mock och nästa bara skriva mock 
+            tester, vilket var bland det värsta jag gjort.
         </p><br>
     </section><br>
     <div class="adv-buttons">
