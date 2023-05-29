@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1685118819">
-  <project timestamp="1685118819">
+<coverage generated="1685359746">
+  <project timestamp="1685359746">
     <file name="/home/jonathan/dbwebb-kurser/mvc/me/report/src/Adventure/CaveClass.php">
       <class name="App\Adventure\CaveClass" namespace="global">
         <metrics complexity="16" methods="8" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="47" coveredstatements="30" elements="55" coveredelements="35"/>
@@ -1320,12 +1320,12 @@
       <line num="217" type="stmt" count="2"/>
       <line num="218" type="stmt" count="1"/>
       <line num="221" type="stmt" count="5"/>
-      <line num="227" type="method" name="aceInHandHouse" visibility="public" complexity="3" crap="3" count="6"/>
-      <line num="229" type="stmt" count="6"/>
-      <line num="230" type="stmt" count="6"/>
-      <line num="231" type="stmt" count="6"/>
+      <line num="227" type="method" name="aceInHandHouse" visibility="public" complexity="3" crap="3" count="5"/>
+      <line num="229" type="stmt" count="5"/>
+      <line num="230" type="stmt" count="5"/>
+      <line num="231" type="stmt" count="5"/>
       <line num="232" type="stmt" count="4"/>
-      <line num="235" type="stmt" count="3"/>
+      <line num="235" type="stmt" count="2"/>
       <line num="241" type="method" name="aceInHandPlayer" visibility="public" complexity="3" crap="3" count="4"/>
       <line num="243" type="stmt" count="4"/>
       <line num="244" type="stmt" count="4"/>
